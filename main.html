@@ -204,10 +204,13 @@
     }
 
     .hero-image {
-      width: 200px;
+      width: 150px;
       height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
+      object-fit: fill;
+      object-position: center 20%;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
       border: 5px solid white;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       margin-bottom: 2rem;
@@ -774,34 +777,20 @@
     </div>
   </nav>
 
-  <!-- copy from gpt -->
- <style>
-.hero-image {
-  width: 150px;          /* set the display size */
-  height: 200px;         /* make it square for circle crop */
-  object-fit: fill;     /* crop instead of squish */
-  object-position: center 20%; /* keep the center part visible */
-  border-radius: 10px;    /* make it circular */
-  display: block;
-  margin: 0 auto;        /* center horizontally */
-}
-</style>
-
-<div class="hero">
-  <div class="hero-content">
-    <img src="https://zamrizahir88.github.io/cv/images/profile.JPG" 
-         alt="Ts. Dr. Mohd Zamri Bin Zahir Ahmad" 
-         class="hero-image">
-    <h1>Ts. Dr. Mohd Zamri Bin Zahir Ahmad</h1>
-    <h2>Senior Lecturer at Universiti Malaysia Perlis (UniMAP)</h2>
-    <p>Specializing in Optimization Algorithms, Combinatorial Testing, and Software Testing with extensive experience in academic teaching, research, and industry collaboration.</p>
-    <div>
-      <a href="#contact" class="btn">Contact Me</a>
-      <a href="#research" class="btn btn-outline">View Research</a>
+  <div class="hero">
+    <div class="hero-content">
+      <img src="https://zamrizahir88.github.io/cv/images/profile.JPG" 
+           alt="Ts. Dr. Mohd Zamri Bin Zahir Ahmad" 
+           class="hero-image">
+      <h1>Ts. Dr. Mohd Zamri Bin Zahir Ahmad</h1>
+      <h2>Senior Lecturer at Universiti Malaysia Perlis (UniMAP)</h2>
+      <p>Specializing in Optimization Algorithms, Combinatorial Testing, and Software Testing with extensive experience in academic teaching, research, and industry collaboration.</p>
+      <div>
+        <a href="#contact" class="btn">Contact Me</a>
+        <a href="#research" class="btn btn-outline">View Research</a>
+      </div>
     </div>
   </div>
-</div>
-    <!-- until this, it fixewd the picture issue -->
 
   <section id="about">
     <div class="section-title">About Me</div>
@@ -814,7 +803,8 @@
       <ul class="list">      
         <li><strong>Gender:</strong> Male</li>
         <li><strong>Nationality:</strong> Malaysian</li>
-        <li><strong>Marital Status:</strong> Married</li>       
+        <li><strong>Marital Status:</strong> Married</li>
+        <li><strong>Mobile No.:</strong> 011-28821198</li>       
         <li><strong>Email:</strong> zamrizahir@unimap.edu.my</li>
         <li><strong>Research Interests:</strong> Optimization Algorithm, Combinatorial Testing, Software Testing</li>
       </ul>
@@ -839,7 +829,7 @@
         <div class="timeline-title">PhD (Computer Engineering)</div>
         <div class="timeline-subtitle">Universiti Malaysia Perlis, UniMAP</div>
         <div class="section-content">
-          Doctoral research focused on advanced optimization algorithms for software testing applications.
+          Thesis Title: A Self-Adapting Ant Colony Optimization using Fuzzy Logic (ACOF) for Combinatorial Test Suite Generation
         </div>
       </div>
       
@@ -847,6 +837,8 @@
         <div class="timeline-date">2016</div>
         <div class="timeline-title">Master in Science (Computer Engineering)</div>
         <div class="timeline-subtitle">Universiti Malaysia Perlis, UniMAP</div>
+        <div class="section-content">
+          Thesis Title: A T-Way Test Suite Generation Strategy for Sequence-Based Interaction Testing.
       </div>
       
       <div class="timeline-item">
@@ -869,7 +861,7 @@
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-date">2016 - Present</div>
-        <div class="timeline-title">Lecturer</div>
+        <div class="timeline-title">Senior Lecturer</div>
         <div class="timeline-subtitle">Faculty of Engineering & Electronic Technology (FKTEN), Universiti Malaysia Perlis</div>
         <div class="section-content">
           Responsibilities include academic teaching, research, student supervision, and faculty management. Courses taught include:
@@ -879,9 +871,11 @@
             <li>Object-oriented Programming</li>
             <li>Database Systems</li>
             <li>Instrumentation</li>
+            <li>Writing in Engineering Technology</li>
             <li>Design Project</li>
-            <li>C Programming</li>
             <li>Digital System</li>
+            <li>Computer Architecture</li>
+            <li>C Programming</li>
           </ul>
         </div>
       </div>
@@ -919,9 +913,11 @@
         <li>Committee Members of Engineering Camp UniMAP-RUTS (2024)</li>
         <li>Coordinator – Program Hari Teknologi dan Masyarakat 2024 for Service Learning Malaysia Universiti for Society (SULAM)</li>
         <li>Judge for Karnival STEM Peringkat Negeri Perlis (2024)</li>
-        <li>Judge for AI & IOT INTERNATIONAL INNOVATION EXPO 2024</li>
-        <li>Coordinator for Work-Based Learning (WBL) Course (3uii) for Bachelor's Degree Engineering Technology (System Electronics)</li>
-        <li>Program Deputy Director for Asia Campus Plus – Shortmobility Program 2025 – UniMAP</li>
+        <li>Judge for AI & IOT INTERNATIONAL INNOVATION EXPO (2024, 2025)</li>
+        <li>Committee in KPI Multimedia, FKTEN (2025 & 2026)</li>
+        <li>Coordinator for Work-Based Learning (WBL) Course (3uti) for Bachelor's Degree Engineering Technology (System Electronics)</li>
+        <li>Deputy Director for Asia Campus Plus - Short Mobility Program 2025, UniMAP</li>
+        <li>Committee 'Program Pemerkasaan Pengaturcaraan Komputer Pelajar Tingkatan 6 STPM' 2025</li>
       </ul>
     </div>
   </section>
@@ -946,7 +942,8 @@
         <div class="timeline-title">Fundamental Research Grant Scheme (FRGS)</div>
         <div class="timeline-subtitle">Main Researcher</div>
         <div class="section-content">
-          Title: A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation
+          Title: A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation<br>
+          Total Amount: RM124,150
         </div>
       </div>
       
@@ -955,7 +952,9 @@
         <div class="timeline-title">Industrial Matching Program Grant (IMaP)</div>
         <div class="timeline-subtitle">Co-Researcher</div>
         <div class="section-content">
-          Title: Design and Development of Testing Tool for Solar Harvesting Application
+          Title: Design and Development of Testing Tool for Solar Harvesting Application<br>
+          Company: Thursinar Corporation Sdn. Bhd.<br>
+          Total Amount: RM100,000
         </div>
       </div>
     </div>
@@ -964,7 +963,7 @@
     <div class="section-content">
       <div class="section-content"><strong>MSc/PhD Supervision:</strong></div>
       <ul class="list">
-        <li>Muhammad Aiman Bin Mohd Asyraf - Master Of Science (Computer Engineering)<br>Title: A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation</li>
+        <li>Muhammad Aiman Bin Mohd Asyraf - Master Of Science (Computer Engineering)<br>Title: A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation<br>Status: Ongoing</li>
       </ul>
       
       <div class="section-content"><strong>Bachelor Engineering (Hons) Computer Engineering:</strong></div>
@@ -979,11 +978,11 @@
       <ul class="list">
         <li>Sharul Haqimi Bin Md.Halim (191383231, 2022/2023) - Automatic Cat Feeder and Litter Cleaner with Android Application</li>
         <li>Muhammad Haikal Bin Hamdi (201391576, 2023/2024) - IOT Warning System for Early Forest Fire Detection</li>
-        <li>Sharwini A/P Mugunthan (211371439, 2024/2025) - Intelligent Parcel Delivery and Notification System for Apartment Houses</li>
+        <li>Sharwini A/P Muganthan (211371439, 2024/2025) - Intelligent Parcel Delivery and Notification System for Apartment Houses</li>
         <li>Thejashviny A/P Sathgunalen (211372782, 2024/2025) - IOT Weather Station With Early Flood Detection System In Urban Areas</li>
         <li>Nor Amirah Syazwani Binti Kamarudin (221372354, 2024/2025) - Smart Office System: Resources, Security, Environmental Control</li>
         <li>Mohanambal A/P Loganathan (21373148, 2025/2026) - Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection For Home Bedridden Patients</li>
-        <li>Muhammad Fadlan Adli Bin Muhammad Amin (221372354, 2025/2026) - Fuzzy-AWOS: AI-Driven Weather & Runway Safety Monitoring System for Airports</li>
+        <li>Muhammad Fadlan Adli Bin Muhamad Amin (221372354, 2025/2026) - Fuzzy-AWOS: AI-Driven Weather & Runway Safety Monitoring System for Airports</li>
         <li>Nurul Alya Binti Abdul Aziz (221373175, 2025/2026) - Fuzzy-AirSense: In-Car Air Quality Monitoring & Safety System using Fuzzy Logic</li>
       </ul>
     </div>
@@ -993,7 +992,7 @@
     <div class="section-title">Selected Publications</div>
     
     <div class="publication-item">
-      <div class="publication-title">IOT Warning System for Early Forest Fire Detection</div>
+      <div class="publication-title">IoT Warning System for Early Forest Fire Detection</div>
       <div class="publication-authors">Ahmad, M.Z.Z., Hamdi, M.H.B., Halim, A.A.A., Nasrudin, M.W.B., Othman, R.R., Raja Ahmad, R.A., and ...</div>
       <div class="section-content">Studies in Computational Intelligence: Advances in Artificial Intelligence and Electronic Design Technologies, pp. 409–420, 2025. doi: 10.1007/978-3-031-78918-2_36</div>
     </div>
@@ -1088,6 +1087,12 @@
       </div>
       
       <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-title">Silver Medal, AI & IOT International Innovation Expo (AIOTIE)</div>
+        <div class="timeline-subtitle">Intelligent Parcel Delivery and Notification System For Apartment House</div>
+      </div>
+      
+      <div class="timeline-item">
         <div class="timeline-date">2024</div>
         <div class="timeline-title">Silver Medal, Ekspo Rekacipta UniMAP (EREKA)</div>
         <div class="timeline-subtitle">IOT Warning System for Early Forest Fire Detection</div>
@@ -1102,7 +1107,7 @@
       <div class="timeline-item">
         <div class="timeline-date">2022</div>
         <div class="timeline-title">Excellent Paper Presentation, International Conference on Software and Computer Applications (ICSCA)</div>
-        <div class="timeline-subtitle">YS-TACO: A Tuned Version of Ant Colony Optimization for Generating Variable Strength Interaction in T-Way Testing Strategy</div>
+        <div class="timeline-subtitle">VS-TACO: A Tuned Version of Ant Colony Optimization for Generating Variable Strength Interaction in T-Way Testing Strategy</div>
       </div>
       
       <div class="timeline-item">
@@ -1147,21 +1152,23 @@
     <div class="section-title">Contact</div>
     <div class="section-content">
       <strong>Email:</strong> zamrizahir@unimap.edu.my<br>
-      <strong>Mobile:</strong> 011-28821198<br>
-      <strong>Address:</strong> No. 34, Jalan Keriang Permai 2, Taman Keriang Permai, 06010 Changlun, Kedah, Malaysia
+      <strong>Address:</strong> Faculty of Electronic Engineering & Technolog​y (FKTEN)<br>
+                                Universiti Malaysia ​Perlis (UniMAP),<br>
+                                Pauh Putra Campus, 02600 Arau,<br>
+                                Perlis, MALAYSIA.
     </div>
     
     <div class="section-title">References</div>
     <div class="section-content">
       <strong>Associate Professor Dr. Rozmie Razif Bin Othman</strong><br>
-      Faculty of Electronic Engineering & Technology (FKTEN)<br>
+      Faculty of Intelligent Computing (FICOM)<br>
       Universiti Malaysia Perlis (UniMAP)<br>
       Email: rozmie@unimap.edu.my
     </div>
     
     <div class="section-content">
       <strong>Professor Ir. Ts. Dr. R. Badlishah Ahmad</strong><br>
-      Faculty of Electronic Engineering & Technology (FKTEN)<br>
+      Faculty of Intelligent Computing (FICOM)<br>
       Universiti Malaysia Perlis (UniMAP)<br>
       Email: badli@unimap.edu.my
     </div>
@@ -1183,7 +1190,7 @@
     <a href="https://www.linkedin.com/in/mohd-zamri-zahir-ahmad-98652a320/" target="_blank" class="social-link">
       <i class="fab fa-linkedin"></i> LinkedIn
     </a>
-    <a href="https://www.scopus.com/authid/detail.uri?authorId=57192404100" target="_blank" class="social-link">
+    <a href="https://www.scopus.com/authid/detail.uri?authorId=57192404" target="_blank" class="social-link">
       <i class="fab fa-scopus"></i> Scopus
     </a>
   </div>
