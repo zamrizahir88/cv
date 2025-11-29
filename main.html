@@ -290,6 +290,27 @@
       border-radius: 3px;
     }
 
+    .subsection-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin: 25px 0 15px 0;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .subsection-title::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary-light);
+      border-radius: 2px;
+    }
+
     .section-content {
       margin-bottom: 20px;
       line-height: 1.6;
@@ -766,7 +787,6 @@
       <li><a onclick="showSection('education')">Education</a></li>
       <li><a onclick="showSection('experience')">Experience</a></li>
       <li><a onclick="showSection('research')">Research</a></li>
-      <li><a onclick="showSection('publications')">Publications</a></li>
       <li><a onclick="showSection('Copyrights')">Copyrights</a></li>
       <li><a onclick="showSection('awards')">Awards</a></li>
       <li><a onclick="showSection('contact')">Contact</a></li>
@@ -803,9 +823,7 @@
     <div class="section-content">
       <ul class="list">      
         <li><strong>Gender:</strong> Male</li>
-        <li><strong>Nationality:</strong> Malaysian</li>
-        <li><strong>Marital Status:</strong> Married</li>
-        <li><strong>Mobile No.:</strong> 011-28821198</li>       
+        <li><strong>Nationality:</strong> Malaysian</li>  
         <li><strong>Email:</strong> zamrizahir@unimap.edu.my</li>
         <li><strong>Research Interests:</strong> Optimization Algorithm, Combinatorial Testing, Software Testing</li>
       </ul>
@@ -862,35 +880,43 @@
     
     <div class="timeline">
       <div class="timeline-item">
-        <div class="timeline-date">2016 - Present</div>
+        <div class="timeline-date">2020 - Present</div>
         <div class="timeline-title">Senior Lecturer</div>
         <div class="timeline-subtitle">Faculty of Engineering & Electronic Technology (FKTEN), Universiti Malaysia Perlis</div>
-        <div class="section-content">
-          <ul class="list">
-            <li>Teach core undergraduate courses including Software Engineering, Object-Oriented Programming, C Programming, Database Systems, Instrumentation, and Digital Systems.</li>
-            <li>Supervise undergraduate and postgraduate research projects in embedded systems, IoT, and artificial intelligence applications.</li>
-            <li>Develop and enhance course curriculum aligned with OBE and MQF standards.</li>
-            <li>Conduct research in optimization algorithms, smart system integration, and fuzzy logic control.</li>
-            <li>Publish and present research findings in indexed journals and international conferences.</li>
-            <li>Mentor students in innovation, product development, and final-year design projects.</li>
-            <li>Coordinate laboratory activities, assessment, and academic quality assurance.</li>
-            <li>Engage in faculty management, grant applications, and collaborative research initiatives.</li>
-          </ul>
-        </div>
       </div>
       
       <div class="timeline-item">
-        <div class="timeline-date">2012 - 2014</div>
-        <div class="timeline-title">Assistant Engineer (IBM Hardware Engineer)</div>
-        <div class="timeline-subtitle">ALL-Media Integration Technology Sdn. Bhd. (Outsource to IBM Malaysia)</div>
-        <div class="section-content">
-          <ul class="list">
-            <li>Outsourced to IBM Malaysia as Hardware Engineer working on i-Series platform</li>
-            <li>Appointed as Resident Engineer for CIMB 1P project to migrate from main frame server to IBM i-series server (Power System)</li>
-            <li>Performed preventive maintenance (PM) and software health check (SHC) at customer's i-Series servers quarterly</li>
-            <li>Handled customer complaints on hardware failures including storage devices, Hardware Machine Console (HMC), Input Output (IO) card, optical library, tape library, and power supply (AS400 / Power System)</li>
-          </ul>
-        </div>
+        <div class="timeline-date">2016 - 2020</div>
+        <div class="timeline-title">Lecturer</div>
+        <div class="timeline-subtitle">School of Computer & Communication Engineering (SCCE), Universiti Malaysia Perlis</div>
+      </div>
+    </div>
+    
+    <div class="section-title">Job Descriptions</div>
+    <div class="section-content">
+      <ul class="list">
+        <li>Teach core undergraduate courses including Software Engineering, Object-Oriented Programming, C Programming, Database Systems, Instrumentation, and Digital Systems.</li>
+        <li>Supervise undergraduate and postgraduate research projects in embedded systems, IoT, and artificial intelligence applications.</li>
+        <li>Develop and enhance course curriculum aligned with OBE and MQF standards.</li>
+        <li>Conduct research in optimization algorithms, smart system integration, and fuzzy logic control.</li>
+        <li>Publish and present research findings in indexed journals and international conferences.</li>
+        <li>Mentor students in innovation, product development, and final-year design projects.</li>
+        <li>Coordinate laboratory activities, assessment, and academic quality assurance.</li>
+        <li>Engage in faculty management, grant applications, and collaborative research initiatives.</li>
+      </ul>
+    </div>
+    
+    <div class="timeline-item">
+      <div class="timeline-date">2012 - 2014</div>
+      <div class="timeline-title">Assistant Engineer (IBM Hardware Engineer)</div>
+      <div class="timeline-subtitle">ALL-Media Integration Technology Sdn. Bhd. (Outsource to IBM Malaysia)</div>
+      <div class="section-content">
+        <ul class="list">
+          <li>Outsourced to IBM Malaysia as Hardware Engineer working on i-Series platform</li>
+          <li>Appointed as Resident Engineer for CIMB 1P project to migrate from main frame server to IBM i-series server (Power System)</li>
+          <li>Performed preventive maintenance (PM) and software health check (SHC) at customer's i-Series servers quarterly</li>
+          <li>Handled customer complaints on hardware failures including storage devices, Hardware Machine Console (HMC), Input Output (IO) card, optical library, tape library, and power supply (AS400 / Power System)</li>
+        </ul>
       </div>
     </div>
     
@@ -907,50 +933,108 @@
       
       <div class="section-content"><strong>Bachelor of Electronic Engineering Technology (System Electronic):</strong></div>
       <ul class="list">
-        <li>NMK42003 - Instrumentation Semester 1 2025/2026</li>
-        <li>NMK10702 - Writing in Engineering Technology Semester 1 2025/2026</li>
-        <li>NMK31704 – Design Project Semester 2 2024/2025</li>
-        <li>NMK10803 – Digital System Semester 2 2024/2025</li>
-        <li>NMK42003 - Instrumentation Semester 1 2024/2025</li>
-        <li>NMK31703 – Design Project Semester 2 2023/2024</li>
-        <li>NMK20603 - Computer Architecture - Additional Semester 2024/2025</li>
-        <li>NMK42003 - Instrumentation Semester 1 2023/2024</li>
-        <li>NMK10603 - C Programming, Semester 2 2022/2023</li>
+        <li>NMM42003 - Instrumentation Semester 1 2025/2026</li>
+        <li>NMM10702 - Writing in Engineering Technology Semester 1 2025/2026</li>
+        <li>NMM31704 – Design Project Semester 2 2024/2025</li>
+        <li>NMM10803 – Digital System Semester 2 2024/2025</li>
+        <li>NMM42003 - Instrumentation Semester 1 2024/2025</li>
+        <li>NMM31703 – Design Project Semester 2 2023/2024</li>
+        <li>NMM20603 - Computer Architecture - Additional Semester 2024/2025</li>
+        <li>NMM42003 - Instrumentation Semester 1 2023/2024</li>
+        <li>NMM10603 - C Programming, Semester 2 2022/2023</li>
         <li>PGT106 - C Programming, Semester 2, 2022/2023</li>
         <li>NMK10603 - C Programming, Semester 1 2022/2023</li>
         <li>PGT106 - C Programming, Semester 1, 2022/2023</li>
       </ul>
     </div>
     
-    <div class="section-title">Management Experience</div>
+    <div class="section-title">University Service, Leadership & Professional Contributions</div>
     <div class="section-content">
+      <div class="subsection-title">Administrative & Committee Appointments</div>
       <ul class="list">
-        <li>Committee for Promosi of School of Computer and Communication Engineering (2017)</li>
-        <li>Committee for Pelaksana MPP 2017 and Santapan Malam Konvokesyen 2017</li>
-        <li>Team Manager for Inter PPK Sport Day (2017, 2018, 2019)</li>
-        <li>Committee for Promosi Universiti Malaysia Perlis (2018)</li>
-        <li>Deputy Director for Program Ukuwah PPKKP bersama Anak Yatim (2018)</li>
-        <li>Evaluator's Panel for Diploma Exhibition on Technology and Engineering (DEXTE) (2018)</li>
-        <li>Committee for Program Pemerkasaan Pengaturcaraan Komputer Tingkatan 6 STPM (2022, 2023, 2025)</li>
-        <li>Team Manager for Sport Karnival Universiti (FKTEN) (2023)</li>
-        <li>Technical Reviewer for several international conferences including ICED, ICoEngTech, and ISETech</li>
-        <li>Committee in KPI Kerohanian & Kebajikan Raudhah (2023 & 2024)</li>
-        <li>Research Fellow at Centre of Excellence for Advance Computing (ADVCOMP)</li>
-        <li>Logistic and Transportation Committee for Program Deputy Director Asia Campus Plus – Shortmobility Program 2024</li>
-        <li>Committee Members of Engineering Camp UniMAP-RUTS (2024)</li>
-        <li>Coordinator – Program Hari Teknologi dan Masyarakat 2024 for Service Learning Malaysia Universiti for Society (SULAM)</li>
-        <li>Judge for Karnival STEM Peringkat Negeri Perlis (2024)</li>
-        <li>Judge for AI & IOT INTERNATIONAL INNOVATION EXPO (2024, 2025)</li>
-        <li>Committee in KPI Multimedia, FKTEN (2025 & 2026)</li>
-        <li>Coordinator for Work-Based Learning (WBL) Course (3uni) for Bachelor's Degree Engineering Technology (System Electronics)</li>
-        <li>Deputy Director for Asia Campus Plus - Short Mobility Program 2025, UniMAP</li>
-        <li>Committee 'Program Pemerkasaan Pengaturcaraan Komputer Pelajar Tingkatan 6 STPM' 2025</li>
-        <li>Jury for Ekspo Cipta 2025 (X-CIPTA 2025)</li>
+        <li>Committee in KPI Multimedia, FKTEN 2025 & 2026</li>
+        <li>Committee Program Pemerkasaan Pengaturcaraan Komputer Pelajar Tingkatan 6 STPM 2025</li>
+        <li>Committee in KPI Kerohanian & Kebajikan Raudhah, FKTEN 2023 & 2024</li>
+        <li>Logistic and Transportation Committee for Program Deputy Director Asia Campus Plus – Shortmobility Program 2024 – UniMAP</li>
+        <li>Committee Members of Engineering Camp UniMAP-RUTS, 2024</li>
+        <li>Moderator Tazkirah Raudhah@FKTEN, 2024</li>
+        <li>Committee 'Program Pemerkasaan Pengaturcaraan Komputer Tingkatan 6 STPM' 2023</li>
+        <li>Committee in 2nd International Conference on Engineering and Technology (ICoEngTech) 2023 (Technical Reviewer)</li>
+        <li>Committee in 2023 International Symposium on Engineering and Technology (ISETech 2023) (Local Arrangement & Logistic, and Technical Reviewer)</li>
+        <li>Technical Committee, AdvComp 3rd Workshop Series: "Mendeley Reference Manager & Systematic Literature Review", 2023</li>
+        <li>Technical Committee, AdvComp 5th Workshop Series: "User Behavioral Research On Human Computer Interaction", 2023</li>
+        <li>Committee in 6th International Conference on Electronic Design (ICED) 2022 (Technical Reviewer)</li>
+        <li>Committee, Kolej Vokasional Seberang Perai to UniMAP Benchamarking, 2022</li>
+        <li>Committee 'Program Pemerkasaan Pengaturcaraan Komputer Tingkatan 6 STPM' 2022</li>
+        <li>Committee, SCCE Postgraduate and Research Seminar Series, 2019</li>
+        <li>Secretariat, Innovation, Project Presentation, Exhibition (IPRoPEX), 2018</li>
+        <li>Secretariat, "Program Minggu STEM & Kerjaya", 2018</li>
+        <li>Secretariat, "Karnival Pendidikan Tinggi Negara (KPTN) 2018 Zon Mini Perlis dan Kedah", 2018</li>
+        <li>Committee for Promosi Universiti Malaysia Perlis, 2018</li>
+        <li>Committee for Promosi of School of Computer and Communication Engineering, 2017</li>
+        <li>Committee for Pelaksana MPP 2017</li>
+        <li>Committee for Santapan Malam Konvokesyen 2017, 27 October 2017: (Physical and Logistic bureau, and Security bureau)</li>
       </ul>
+      
+      <div class="subsection-title">Leadership & Coordination Roles</div>
+      <ul class="list">
+        <li>Research Fellow at Centre of Excellence for Advance Computing (ADVCOMP), 2022-2026</li>
+        <li>Deputy Director for Asia Campus Plus - Short Mobility Program 2025, UniMAP</li>
+        <li>Coordinator for Work-Based Learning (WBL) Course (3u1i) for Bachelor's Degree Engineering Technology (System Electronics), 2025/2026</li>
+        <li>Coordinator – "PROGRAM STEM: "Build-It Buddies: FKTEN - Sekolah Rendah Islam III" for Service Learning Malaysia Universiti for Society (SULAM), 2025</li>
+        <li>Leader, Big Data & Cloud Computing Cluster, ADVComp. 2024-2026</li>
+        <li>Coordinator – Program Hari Teknologi dan Masyarakat 2024 for Service Learning Malaysia Universiti for Society (SULAM), 2024</li>
+        <li>Coordinator – "Lawatan Rumah Kanak-Kanak Arau Ke UniMAP Eksplorasi Unimap : Kembara Sains, Teknologi Dan Media Fakulti Kejuruteraan & Teknologi Elektronik (FKTEN)" for Service Learning Malaysia Universiti for Society (SULAM), 2024</li>
+        <li>Team Manager FKTEN for Karnival Kejohanan Sukan (KSU) UniMAP, 2023</li>
+        <li>Team Manager PPKKP for Karnival Kejohanan Sukan (KSU) UniMAP, 2019</li>
+        <li>Team Manager PPKKP for Karnival Kejohanan Sukan (KSU) UniMAP, 2018</li>
+        <li>Deputy Director for Program Ukuwah PPKKP bersama Anak Yatim, 2018</li>
+        <li>Deputy Team Manager (PPKKP) for Karnival Kejohanan Sukan (KSU) UniMAP, 2017</li>
+      </ul>
+      
+      <div class="subsection-title">Scholarly & Technical Service (Reviewer / Examiner)</div>
+      <ul class="list">
+        <li>Reviewer, 6th International Conference on Electronic Design (ICED) 2022</li>
+        <li>Reviewer, 7th International Conference on Electronic Design (ICED) 2024</li>
+        <li>Reviewer, 5th International Conference on Mathematics, Engineering & Industrial Applications (ICOMEIA) 2024</li>
+        <li>Reviewer, International Symposium on Microelectronic Engineering & Design (ISMED) 2024</li>
+        <li>Panel Examiner (Internal) for Pre-Viva Session, M.Sc. (Computer Engineering), Candidate: Mohd Mizan bin Munif, FKTEN UniMAP (2024)</li>
+        <li>Reviewer, 9th International Conference on Man-Machines System (ICoMMS) 2025</li>
+        <li>Reviewer, eBook Juadah Minda Peringkat Kebangsaan 2025 (Politeknik Port Dickson) 2025</li>
+      </ul>
+      
+      <div class="subsection-title">Evaluation, Judging & Assessment Roles</div>
+      <ul class="list">
+        <li>Panel Evaluator for the NMK31704 Design Project, 2025</li>
+        <li>Judge for AI & IOT INTERNATIONAL INNOVATION EXPO 2025</li>
+        <li>Jury for Ekspo Cipta 2025 (X-CIPTA 2025)</li>
+        <li>Panel Evaluator for the NMK31703 Design Project, 2024</li>
+        <li>Judge for Karnival STEM Peringkat Negeri Perlis, 2024</li>
+        <li>Judge for AI & IOT INTERNATIONAL INNOVATION EXPO 2024</li>
+        <li>Judge for Exhibition for Young Agricultural & Food Engineers and Technologies, 2024</li>
+        <li>Panel Evaluator for Diploma Exhibition on Technology and Engineering (DEXTE), 2018</li>
+      </ul>
+    </div>
+    
+    <div class="section-title">Invited Speaker</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-title">Hybrid Metaheuristic Approaches for T-Way Test Suite Generation</div>
+        <div class="timeline-subtitle">University of Yamanashi, Japan</div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-title">MPKK IRC Workshop: Paperwork Writing Using AI Tools & Semester 2 Strategic Planning</div>
+        <div class="timeline-subtitle">International Resident College & Non-Resident (IRCNR), Universiti Malaysia Perlis</div>
+      </div>
     </div>
   </section>
 
   <section id="research">
+    <div class="section-title">Research & Publications</div>
+    
     <div class="section-title">Research Interests</div>
     <div class="skills-container">
       <div class="skill">Optimization Algorithms</div>
@@ -971,7 +1055,8 @@
         <div class="timeline-subtitle">Main Researcher</div>
         <div class="section-content">
           Title: A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation<br>
-          Total Amount: RM124,150
+          Total Amount: RM124,150<br>
+          Duration: 3 Years
         </div>
       </div>
       
@@ -981,8 +1066,8 @@
         <div class="timeline-subtitle">Co-Researcher</div>
         <div class="section-content">
           Title: Design and Development of Testing Tool for Solar Harvesting Application<br>
-          Company: Thursinar Corporation Sdn. Bhd.<br>
-          Total Amount: RM100,000
+          Total Amount: RM100,000<br>
+          Duration: 1 Year 6 Month
         </div>
       </div>
     </div>
@@ -991,44 +1076,74 @@
     <div class="section-content">
       <div class="section-content"><strong>MSc/PhD Supervision:</strong></div>
       <ul class="list">
-        <li>Muhammad Aiman Bin Mohd Asyraf - Master Of Science (Computer Engineering)<br>Title: A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation<br>Status: Ongoing</li>
+        <li>Muhammad Aiman Bin Mohd Asyraf - Master of Science (Computer Engineering)<br>Title: A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation<br>Role: Co-Supervisor<br>Status: Ongoing</li>
       </ul>
       
       <div class="section-content"><strong>Bachelor Engineering (Hons) Computer Engineering:</strong></div>
       <ul class="list">
         <li>Nur Farah Hanim Binti Mat Ali (141020924, 2017/2018) - Online UniMAP's Qurban Management System</li>
-        <li>Che Muhammad Amin Bin Che Jaafar (141020865, 2017/2018) - Mobile Queue Management System</li>
-        <li>Tan Chang Cun (141020947, 2017/2018) - Online system for property sales and management</li>
-        <li>Hilal Sheikh Ali Nur (141020086-1, 2017/2018) - Online voting system for UniMAP's election management</li>
+        <li>Che Muhamad Amin Bin Che Jaafar (141020865, 2017/2018) - Mobile Queue Management System</li>
+        <li>Tan Chang Cun (141020947, 2017/2018) - Online System for Property Sales and Management</li>
+        <li>Hilal Sheikh Ali Nur (141020086-1, 2017/2018) - Online Voting System for UniMAP's Election Management</li>
       </ul>
       
       <div class="section-content"><strong>Bachelor of Electronic Engineering Technology (Electronic System):</strong></div>
       <ul class="list">
         <li>Sharul Haqimi Bin Md.Halim (191383231, 2022/2023) - Automatic Cat Feeder and Litter Cleaner with Android Application</li>
         <li>Muhammad Haikal Bin Hamdi (201391576, 2023/2024) - IOT Warning System for Early Forest Fire Detection</li>
-        <li>Sharwini A/P Mugunthan (211371439, 2024/2025) - Intelligent Parcel Delivery and Notification System for Apartment Houses</li>
-        <li>Thejashviny A/P Sathgunalen (211372782, 2024/2025) - IOT Weather Station With Early Flood Detection System In Urban Areas</li>
+        <li>Shanvini A/P Mugunthan (211371439, 2024/2025) - Intelligent Parcel Delivery and Notification System for Apartment Houses</li>
+        <li>Thejashviny A/P Sathgunalen (211372782, 2024/2025) - IOT Weather Station with Early Flood Detection System in Urban Areas</li>
         <li>Nor Amirah Syazwani Binti Kamarudin (221372354, 2024/2025) - Smart Office System: Resources, Security, Environmental Control</li>
-        <li>Mohanambal A/P Loganathan (21373148, 2025/2026) - Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection For Home Bedridden Patients</li>
+        <li>Mohanambal A/P Loganathan (21373148, 2025/2026) - Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
         <li>Muhammad Fadlan Adli Bin Muhamad Amin (221372354, 2025/2026) - Fuzzy-AWOS: AI-Driven Weather & Runway Safety Monitoring System for Airports</li>
         <li>Nurul Alya Binti Abdul Aziz (221373175, 2025/2026) - Fuzzy-AirSense: In-Car Air Quality Monitoring & Safety System using Fuzzy Logic</li>
       </ul>
     </div>
-  </section>
-
-  <section id="publications">
-    <div class="section-title">Selected Publications</div>
+    
+    <div class="section-title">Publications</div><br>
+    
+    <div class="subsection-title">Submitted, Accepted and Waiting to be published (2025)</div>
+    <div class="publication-item">
+      <div class="publication-title">Implementation of Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</div>
+      <div class="publication-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., Othman, R. R., Halim, A. A. A., Go, K., Ramli, N., Ahmad, R. B., Kamarudin, L. M., & Al-Walidi, M. M. H. S.</div>
+      <div class="section-content">Journal of Advanced Mobile Robotics and Intelligent Systems (JAMRIS)</div>
+    </div>
     
     <div class="publication-item">
+      <div class="publication-title">Variable Strength Sand Cat Swarm Optimization (VSCSO) for T-Way Combinatorial Test Suite Generation</div>
+      <div class="publication-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., Othman, R. R., Halim, A. A. A., Go, K., Al-Walid, M. M. H. S., Suali, A. J., Rose, N. H. C., & Kamal, F. B.</div>
+      <div class="section-content">Proceedings of the International Exchange and Innovation Conference on Engineering & Sciences (IEICES 2025)</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">ISCSO: Input-Output Relation Driven Sand Cat Swarm Optimization for Combinatorial Testing</div>
+      <div class="publication-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., Othman, R. R., Halim, A. A. A., Go, K., & Al-Walidi, M. M. H. S.</div>
+      <div class="section-content">Proceedings of the International Conference on Science, Engineering and Technology Application (ICOSETA 2025)</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">Application of Sewing Training-Based Optimization in Generating Effective Input-Output Relation-Based T-Way Test Suite Generation Strategies</div>
+      <div class="publication-authors">Murad, M. M. H. S., Halim, A. A. A., Ahmad, M. Z. Z., Ramli, N., Zakaria, H. L., Aiman, M. A. M., Go, K., & Rahim, M. S. A.</div>
+      <div class="section-content">Proceedings of the International Exchange and Innovation Conference on Engineering & Sciences (Conference: IEICES 2025)</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">A variable strength interaction test suites generation strategy using Sewing Training Optimization</div>
+      <div class="publication-authors">Murad, M. M. H. S. A.-W., Halim, A. A. A., Othman, R. R., Ahmad, M. Z. Z., Go, K., & Asyraf, M. A. M.</div>
+      <div class="section-content">Proceedings of the International Conference on Artificial Intelligence and Applied Sciences (Journal Scopus: i-CAIAS 2025)</div>
+    </div>
+    
+    <div class="subsection-title">Published</div>
+    <div class="publication-item">
       <div class="publication-title">IoT Warning System for Early Forest Fire Detection</div>
-      <div class="publication-authors">Ahmad, M.Z.Z., Hamdi, M.H.B., Halim, A.A.A., Nasrudin, M.W.B., Othman, R.R., Raja Ahmad, R.A., and ...</div>
-      <div class="section-content">Studies in Computational Intelligence: Advances in Artificial Intelligence and Electronic Design Technologies, pp. 409–420, 2025. doi: 10.1007/978-3-031-78918-2_36</div>
+      <div class="publication-authors">Ahmad, M. Z. Z., Hamdi, M. H. B., Halim, A. A. A., Nasrudin, M. W. B., Othman, R. R., Raja Ahmad, R. A., & Mat Salleh, S.</div>
+      <div class="section-content">Studies in Computational Intelligence: Advances in Artificial Intelligence and Electronic Design Technologies (Proceedings of ICED 2024, Studies in Computational Intelligence, Vol. 1015, pp. 409–420). Springer. https://doi.org/10.1007/978-3-031-78918-2_36</div>
     </div>
     
     <div class="publication-item">
       <div class="publication-title">IoT Based Fertilizer System for Crop Cultivation</div>
-      <div class="publication-authors">Yee, F.P., Raja Ahmad, R.A., Ahmad, M.I., Ahmad, M.Z.Z., ...</div>
-      <div class="section-content">Studies in Computational Intelligence: Advances in Artificial Intelligence and Electronic Design Technologies, pp. 517–530, 2025. doi: 10.1007/978-3-031-78918-2_45</div>
+      <div class="publication-authors">Fong, P. Y., Raja Ahmad, R. A., Ahmad, M. I., & Ahmad, M. Z. Z.</div>
+      <div class="section-content">Studies in Computational Intelligence: Advances in Artificial Intelligence and Electronic Design Technologies (pp. 517–530). Springer. https://doi.org/10.1007/978-3-031-78918-2_45</div>
     </div>
     
     <div class="publication-item">
@@ -1040,48 +1155,95 @@
     <div class="publication-item">
       <div class="publication-title">Experimental investigation on improving photovoltaic module efficiency using adaptive fuzzy-PID water cooling</div>
       <div class="publication-authors">Abdul Rahim, M.S., Tajuddin, M.F.N.B., Saad, M.S., Hasanuzzaman, M., Ahmad, M.Z.Z., Halim, A.A.A., and Mid, E.C.</div>
-      <div class="section-content">Solar Energy, vol. 283, p. 113828, 2025. doi: 10.1016/j.solener.2025.113828</div>
+      <div class="section-content">Sol. Energy, vol. 283, p. 113828, 2025. doi: 10.1016/j.solener.2025.113828</div>
     </div>
     
     <div class="publication-item">
       <div class="publication-title">UWB-Based Early Breast Cancer Existence Prediction Using Artificial Intelligence for Large Data Set</div>
       <div class="publication-authors">Abdul Halim, A. A., Veeraperumal, V., Andrew, A. M., Mohd Yasin, M. N., Zahir Ahmad, M. Z., Hossain, K., Bari, B. S., & Kamal, F.</div>
-      <div class="section-content">Journal of Advanced Research in Applied Sciences and Engineering Technology, 29(2), 81–90 (2023)</div>
+      <div class="section-content">Journal of Advanced Research in Applied Sciences and Engineering Technology, 29(2), 81–90, 2023</div>
     </div>
     
     <div class="publication-item">
       <div class="publication-title">Smart Management Waiting System for Outpatient Clinic</div>
-      <div class="publication-authors">Nasrudin, M.W., Zainuddin, N.S.A., Ahmad, R.A.R., Yob, R.C., Ahmad, M.Z.Z., and ...</div>
+      <div class="publication-authors">Nasrudin, M.W., Zainuddin, N.S.A., Ahmad, R.A.R., Yob, R.C., Ahmad, M.Z.Z., and …</div>
       <div class="section-content">Journal of Advanced Research in Applied Sciences and Engineering Technology, vol. 29, no. 3, pp. 4861–4870, 2023. doi: 10.37934/araset.29.3.4861</div>
     </div>
     
     <div class="publication-item">
       <div class="publication-title">VSTACO: A Tuned Version of Ant Colony Optimization for Generating Variable Strength Interaction in T-Way Testing Strategy</div>
       <div class="publication-authors">Zahir Ahmad, M. Z., Othman, R. R., Ramli, N., & Rashid Ali, M. S. A.</div>
-      <div class="section-content">International Conference on Software and Computer Applications (2022)</div>
+      <div class="section-content">International Conference on Software and Computer Applications, 2022</div>
     </div>
     
     <div class="publication-item">
       <div class="publication-title">A Tuned Version of Ant Colony Optimization Algorithm (TACO) for Uniform Strength T-way Test Suite Generator: An Execution's Time Comparison</div>
       <div class="publication-authors">M. Z. Z. Ahmad, R. R. Othman, M. S. A. R. Ali, N. Ramli, M. W. Nasrudin, and A. A. A. Halim</div>
-      <div class="section-content">Journal of Physics: Conference Series, vol. 1962, no. 1 (2021)</div>
+      <div class="section-content">Journal of Physics: Conference Series, vol. 1962, no. 1, 2021</div>
     </div>
     
     <div class="publication-item">
       <div class="publication-title">Adopting Ant Colony Optimization Algorithm for Pairwise T-Way Test Suite Generation Strategy</div>
       <div class="publication-authors">N. Ramli et al.</div>
-      <div class="section-content">Journal of Physics: Conference Series, vol. 1962, no. 1 (2021)</div>
+      <div class="section-content">Journal of Physics: Conference Series, vol. 1962, no. 1, 2021</div>
     </div>
     
     <div class="publication-item">
       <div class="publication-title">Moment Invariants Technique for Image Analysis and Its Applications: A Review</div>
-      <div class="publication-authors">M. W. Nasrudin, shahrul nizam Yaakob, amir nazreen abdul Rahim, M. Z. Zahir Ahmad, and M. S. A. R. Ali</div>
-      <div class="section-content">Journal of Physics: Conference Series, vol. 1962, no. 1 (2021)</div>
+      <div class="publication-authors">M. W. Nasrudin, Shahrui Nizam Yaakob, Amir Nazreen Abdul Rahim, M. Z. Zahir Ahmad, and M. S. A. R. Ali</div>
+      <div class="section-content">Journal of Physics: Conference Series, vol. 1962, no. 1, 2021</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">A Modified Artificial Bee Colony Based Test Suite Generation Strategy for Uniform T-Way Testing</div>
+      <div class="publication-authors">M. S. A. Rashid Ali, R. R. Othman, Z. R. Yahya, and M. Z. Zahir</div>
+      <div class="section-content">IOP Conf. Ser. Mater. Sci. Eng., vol. 767, no. 1, 2020</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">Ant colony algorithm to generate t-way test suite with constraints</div>
+      <div class="publication-authors">N. Ramli, R. R. Othman, Z. I. A. Khalib, M. Z. Z. Ahmad, and S. S. M. Fauzi</div>
+      <div class="section-content">Journal of Physics: Conference Series, vol. 1529, no. 4, 2020</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">A Self-Adapting Ant Colony Optimization Algorithm Using Fuzzy Logic (ACOF) for Combinatorial Test Suite Generation</div>
+      <div class="publication-authors">M. Z. Zahir Ahmad, R. R. Othman, M. S. A. Rashid Ali, and N. Ramli</div>
+      <div class="section-content">IOP Conference Series: Materials Science and Engineering, vol. 767, no. 1, 2020</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">Implementation of artificial bee colony algorithm for T-way testing</div>
+      <div class="publication-authors">Mohd Shafiul Aziz Rashid Ali, Rozmie R. Othman, Zainor Ridzuan Yahya, Mohd Zamri Zahir Ahmad, Nuraminah Ramli</div>
+      <div class="section-content">2016 3rd International Conference on Electronic Design (ICED), August 11-12, 2016, Phuket, Thailand</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">Sequence Covering Array Generator (SCAT) For Sequence Based Combinatorial Testing</div>
+      <div class="publication-authors">Mohd Zamri Zahir Ahmad, Rozmie Razif Othman and Mohd Shafiul Aziz Rashid Ali</div>
+      <div class="section-content">International Journal of Applied Engineering Research ISSN 0973-4562 Volume 11, Number 8 (2016) pp 5984-5991. 2016</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">Effectiveness comparison of partially executed t-way test suite based generated by existing strategies</div>
+      <div class="publication-authors">Rozmie R. Othman, Mohd Zamri Zahir Ahmad, Mohd Shafiul Aziz Rashid Ali, Hasneeza Liza Zakaria, and Md. Mostafijur Rahman</div>
+      <div class="section-content">2014, International Conference of Mathematic, Engineering & Industrial Applications (ICoMEIA), May 28 – 30, 2014, Penang, Malaysia</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">Input-Input Relationship Constraints in T-Way Testing</div>
+      <div class="publication-authors">Rozmie R. Othman, Kamal Z. Zamil, Mohd Shafiul Aziz Rashid Ali, Mohd Zamri Zahir Ahmad</div>
+      <div class="section-content">UniMAP – PSU Engineering Postgraduate Conference 1st 2014, Thailand</div>
+    </div>
+    
+    <div class="publication-item">
+      <div class="publication-title">Addressing Constraints Support from within a T-Way Strategy</div>
+      <div class="publication-authors">Rozmie R. Othman, Kamal Z. Zamil, Mohd Shafiul Aziz Rashid Ali, Mohd Zamri Zahir Ahmad</div>
+      <div class="section-content">UniMAP – PSU Engineering Postgraduate Conference 1st 2014, Thailand</div>
     </div>
   </section>
        
-
-<section id="Copyrights">
+  <section id="Copyrights">
     <div class="section-title">Copyright Registration</div>
     
     <div class="timeline">
@@ -1099,57 +1261,62 @@
     </div>
   </section>
 
-  
   <section id="awards">
     <div class="section-title">Awards & Exhibition Participation</div>
     
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-date">2025</div>
-        <div class="timeline-title">Gold Medal, Ekspo Cipta 2025 (X-CIPTA)</div>
-        <div class="timeline-subtitle">SandCatTest: Software Testing Tool Based on Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</div>
+        <div class="timeline-title">Ekspo Rekacipta UniMAP (EREKA)</div>
+        <div class="section-content">
+          <ul class="list">
+            <li>Gold Medal: Adaptive Water-Cooling System for photovoltaic Modules Using AI Optimization</li>
+            <li>Gold Medal: IoT-Based Smart Paddy Field Monitoring Crop Management System</li>
+            <li>Silver Medal: Intelligent Parcel Delivery and Notification System for Apartment House</li>
+            <li>Silver Medal: Smart Waste Management System with IoT Integration using ESP32</li>
+          </ul>
+        </div>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-date">2025</div>
         <div class="timeline-title">Gold Medal, Ekspo Cipta 2025 (X-CIPTA)</div>
-        <div class="timeline-subtitle">Design and Development of T-Way Test Suite Generator Adopting Sewing Training Based Optimization Algorithm</div>
+        <div class="section-content">
+          <ul class="list">
+            <li>SandCatTest: Software Testing Tool Based on Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</li>
+            <li>Design and Development of T-Way Test Suite Generator Adopting Sewing Training Based Optimization Algorithm</li>
+          </ul>
+        </div>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-date">2025</div>
-        <div class="timeline-title">Gold Medal, Ekspo Rekacipta UniMAP (EREKA)</div>
-        <div class="timeline-subtitle">Adaptive Water-Cooling System for photovoltaic Modules Using Ai Optimization</div>
+        <div class="timeline-title">IDEA BESTARI Innovation Exhibition</div>
+        <div class="section-content">
+          <ul class="list">
+            <li>Gold Medal: Smart Fire Detection and Prevention System Using Fuzzy Logic</li>
+            <li>Gold Medal: SandCatTest: Software Testing Tool Based on Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</li>
+            <li>Silver Medal: Fuzzy-Medcare : Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
+          </ul>
+        </div>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-date">2025</div>
-        <div class="timeline-title">Gold Medal, Ekspo Rekacipta UniMAP (EREKA)</div>
-        <div class="timeline-subtitle">IoT-Based Smart Paddy Field Monitoring Crop Management System</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Gold Medal, Integrated Design Project Exhibition (IDPEx)</div>
+        <div class="timeline-title">Gold Medal, Integrated Design Project Exhibition (IDPEX)</div>
         <div class="timeline-subtitle">UniTAG: Renewable Vehicle Access System for UniMAP Campus using RFID-Based</div>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-date">2025</div>
-        <div class="timeline-title">Silver Medal, Ekspo Rekacipta UniMAP (EREKA)</div>
-        <div class="timeline-subtitle">Intelligent Parcel Delivery and Notification System for Apartment House</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Silver Medal, Ekspo Rekacipta UniMAP (EREKA)</div>
-        <div class="timeline-subtitle">Smart Waste Management System with IoT Integration using ESP32</div>
+        <div class="timeline-title">Silver Medal, Postgraduate Research Poster Competition</div>
+        <div class="timeline-subtitle">Implementation of Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</div>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-date">2025</div>
         <div class="timeline-title">Silver Medal, AI & IOT International Innovation Expo (AIOTIE)</div>
-        <div class="timeline-subtitle">Intelligent Parcel Delivery and Notification System For Apartment House</div>
+        <div class="timeline-subtitle">Intelligent Parcel Delivery And Notification System For Apartment House</div>
       </div>
       
       <div class="timeline-item">
@@ -1212,8 +1379,8 @@
     <div class="section-title">Contact</div>
     <div class="section-content">
       <strong>Email:</strong> zamrizahir@unimap.edu.my<br>
-      <strong>Address:</strong> Faculty of Electronic Engineering & Technolog​y (FKTEN)<br>
-                                Universiti Malaysia ​Perlis (UniMAP),<br>
+      <strong>Address:</strong> Faculty of Electronic Engineering & Technology (FKTEN)<br>
+                                Universiti Malaysia Perlis (UniMAP),<br>
                                 Pauh Putra Campus, 02600 Arau,<br>
                                 Perlis, MALAYSIA.
     </div>
@@ -1221,14 +1388,14 @@
     <div class="section-title">References</div>
     <div class="section-content">
       <strong>Associate Professor Dr. Rozmie Razif Bin Othman</strong><br>
-      Faculty of Intelligent Computing (FICOM)<br>
+      Faculty of Intelligent Computing (FKC)<br>
       Universiti Malaysia Perlis (UniMAP)<br>
       Email: rozmie@unimap.edu.my
     </div>
     
     <div class="section-content">
       <strong>Professor Ir. Ts. Dr. R. Badlishah Ahmad</strong><br>
-      Faculty of Intelligent Computing (FICOM)<br>
+      Faculty of Intelligent Computing (FKC)<br>
       Universiti Malaysia Perlis (UniMAP)<br>
       Email: badli@unimap.edu.my
     </div>
