@@ -3,1415 +3,631 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ts. Dr. Mohd Zamri Bin Zahir Ahmad</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+  <title>Ts. Dr. Mohd Zamri Bin Zahir Ahmad - CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
+    /* CSS Variables for Light & Dark Mode */
     :root {
       --primary: #2e7d32;
       --primary-light: #4caf50;
       --primary-dark: #1b5e20;
-      --light: #f5f5f5;
-      --dark: #263238;
-      --darker: #1a237e;
-      --gray: #757575;
-      --glow: 0 0 10px rgba(46, 125, 50, 0.3);
+      --bg-color: #f8f9fa;
+      --bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      --card-bg: #ffffff;
+      --text-main: #263238;
+      --text-muted: #6c757d;
+      --border-color: rgba(46, 125, 50, 0.15);
+      --card-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      --card-hover-shadow: 0 10px 20px rgba(0,0,0,0.1);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --nature-bg: linear-gradient(135deg, #f5f5f5 0%, #e8f5e9 100%);
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    [data-theme="dark"] {
+      --primary: #4caf50;
+      --primary-light: #81c784;
+      --primary-dark: #2e7d32;
+      --bg-color: #121212;
+      --bg-gradient: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+      --card-bg: #1e1e1e;
+      --text-main: #e0e0e0;
+      --text-muted: #aaaaaa;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --card-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      --card-hover-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    
     body {
-      background: var(--nature-bg);
-      color: var(--dark);
+      background: var(--bg-gradient);
+      color: var(--text-main);
       font-family: 'Montserrat', sans-serif;
       line-height: 1.6;
-      overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
-    ::selection {
-      background: var(--primary-light);
-      color: white;
-    }
-
-    /* Leaf-like scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #e8f5e9;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: var(--primary);
-      border-radius: 5px;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="%23ffffff"><path d="M17 8C8 10 5.9 16.2 4 22c3 .5 6.2.6 9.5-.5 3.3-1.2 6.4-3.4 7.4-6.6.8-2.7.4-5.5-1.4-7.1-1.8-1.6-4.9-1.8-7.5-.8z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: center;
-    }
+    ::selection { background: var(--primary-light); color: #fff; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-color); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
 
     /* Navigation */
     nav {
-      background: rgba(255, 255, 255, 0.95);
-      color: var(--dark);
+      background: var(--card-bg);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 3rem;
+      padding: 1rem 3rem;
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(46, 125, 50, 0.2);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--card-shadow);
       transition: var(--transition);
-    }
-
-    nav.scrolled {
-      padding: 1rem 3rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
     nav .logo {
       font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 2px;
+      font-weight: 700;
       color: var(--primary);
       font-family: 'Quicksand', sans-serif;
-      transition: var(--transition);
     }
+    nav .logo span { color: var(--text-main); }
 
-    nav .logo span {
-      color: var(--primary-dark);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
+    nav ul { list-style: none; display: flex; gap: 1.5rem; align-items: center; }
     nav ul li a {
-      color: var(--dark);
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       font-weight: 600;
-      letter-spacing: 1px;
       transition: var(--transition);
       position: relative;
       padding: 0.5rem 0;
     }
-
     nav ul li a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: var(--transition);
+      content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+      background: var(--primary); transition: var(--transition);
     }
+    nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
+    nav ul li a:hover, nav ul li a.active { color: var(--primary); }
 
-    nav ul li a:hover::after,
-    nav ul li a.active::after {
-      width: 100%;
+    #theme-toggle {
+      background: transparent; border: none; color: var(--text-main);
+      font-size: 1.2rem; cursor: pointer; transition: var(--transition);
+      margin-left: 1rem;
     }
+    #theme-toggle:hover { color: var(--primary); }
 
-    nav ul li a:hover,
-    nav ul li a.active {
-      color: var(--primary);
-    }
-
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: var(--primary);
-      margin: 5px;
-      transition: var(--transition);
-    }
+    .hamburger { display: none; cursor: pointer; z-index: 1001; border: none; background: transparent; }
+    .hamburger div { width: 25px; height: 3px; background: var(--primary); margin: 5px; transition: var(--transition); }
 
     /* Hero Section */
     .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 100px 2rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      min-height: 100vh; padding: 120px 2rem 4rem; text-align: center;
     }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="%232e7d32" opacity="0.05"><path d="M30,10 Q50,5 70,10 Q95,20 90,40 Q85,65 50,90 Q15,65 10,40 Q5,20 30,10 Z"/></svg>');
-      background-size: 200px;
-      z-index: -1;
-    }
-
     .hero-content {
-      max-width: 800px;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(46, 125, 50, 0.2);
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: var(--primary-dark);
-      font-family: 'Quicksand', sans-serif;
-    }
-
-    .hero h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: var(--primary);
-      font-weight: 400;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: var(--dark);
-    }
-
-    .hero-image {
-      width: 150px;
-      height: 200px;
-      object-fit: cover;
-      object-position: center 20%;
-      border-radius: 10px;
-      display: block;
-      margin: 0 auto;
-      border: 5px solid white;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: 600;
+      max-width: 900px; padding: 3rem; background: var(--card-bg); border-radius: 12px;
+      box-shadow: var(--card-hover-shadow); border: 1px solid var(--border-color);
       transition: var(--transition);
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+    }
+    .hero h1 { font-size: 2.8rem; margin-bottom: 0.5rem; color: var(--text-main); font-family: 'Quicksand', sans-serif; }
+    .hero h2 { font-size: 1.4rem; margin-bottom: 1.5rem; color: var(--primary); font-weight: 600; }
+    .hero p { font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-muted); }
+    
+    .hero-image {
+      width: 160px; height: 160px; object-fit: cover; object-position: center 20%;
+      border-radius: 50%; display: block; margin: 0 auto 2rem;
+      border: 4px solid var(--primary); box-shadow: var(--card-shadow);
     }
 
-    .btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(46, 125, 50, 0.4);
+    .btn-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px; padding: 0.8rem 1.5rem;
+      background: var(--primary); color: white; text-decoration: none;
+      border-radius: 30px; font-weight: 600; transition: var(--transition); border: none; cursor: pointer;
     }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(46, 125, 50, 0.3); }
+    .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+    .btn-outline:hover { background: var(--primary); color: white; }
 
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-      margin-left: 1rem;
-    }
-
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
-
-    /* Sections */
+    /* Layout & Sections */
     section {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out, transform 0.5s ease;
-      transform: translateY(30px);
-      max-width: 1000px;
-      margin: 50px auto;
-      padding: 40px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      border-left: 5px solid var(--primary);
+      max-width: 1100px; margin: 0 auto 4rem; padding: 3rem;
+      background: var(--card-bg); border-radius: 12px;
+      box-shadow: var(--card-shadow); border: 1px solid var(--border-color);
+      opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
-    section.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
+    section.visible { opacity: 1; transform: translateY(0); }
 
     .section-title {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: var(--primary-dark);
-      position: relative;
-      display: inline-block;
-      font-family: 'Quicksand', sans-serif;
+      font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-main);
+      position: relative; display: inline-block; font-family: 'Quicksand', sans-serif;
     }
-
     .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--primary-light);
-      border-radius: 3px;
+      content: ''; position: absolute; bottom: -8px; left: 0; width: 60px; height: 4px;
+      background: var(--primary); border-radius: 2px;
     }
 
     .subsection-title {
-      font-size: 1.4rem;
-      font-weight: bold;
-      margin: 25px 0 15px 0;
-      color: var(--primary);
-      position: relative;
-      display: inline-block;
-      font-family: 'Quicksand', sans-serif;
+      font-size: 1.3rem; font-weight: 700; margin: 2rem 0 1rem 0; color: var(--primary);
+      font-family: 'Quicksand', sans-serif; border-bottom: 1px solid var(--border-color); padding-bottom: 5px;
     }
 
-    .subsection-title::after {
-      content: '';
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 40px;
-      height: 2px;
-      background: var(--primary-light);
-      border-radius: 2px;
-    }
+    .section-content { color: var(--text-muted); margin-bottom: 1.5rem; }
 
-    .section-content {
-      margin-bottom: 20px;
-      line-height: 1.6;
-      color: var(--dark);
+    /* Grids & Cards */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+    
+    .card {
+      background: var(--card-bg); border: 1px solid var(--border-color);
+      padding: 1.5rem; border-radius: 8px; box-shadow: var(--card-shadow);
+      transition: var(--transition);
     }
-
-    .list {
-      padding-left: 0;
-      list-style: none;
-    }
-
-    .list li {
-      position: relative;
-      padding-left: 30px;
-      margin-bottom: 15px;
-    }
-
-    .list li::before {
-      content: '🌿';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-    }
-
-    .timeline {
-      position: relative;
-      padding-left: 30px;
-      margin-bottom: 30px;
-    }
-
+    .card:hover { transform: translateY(-3px); box-shadow: var(--card-hover-shadow); border-color: var(--primary-light); }
+    
+    .card-title { font-weight: 700; color: var(--text-main); margin-bottom: 5px; }
+    .card-subtitle { font-size: 0.9rem; color: var(--primary); font-weight: 600; margin-bottom: 10px; }
+    
+    /* Timeline styling */
+    .timeline { position: relative; padding-left: 2rem; margin-top: 1rem; }
     .timeline::before {
-      content: '';
-      position: absolute;
-      left: 7px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--primary-light);
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--border-color);
     }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 30px;
-    }
-
+    .timeline-item { position: relative; margin-bottom: 2rem; }
     .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -30px;
-      top: 5px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--primary);
-      border: 2px solid white;
-      box-shadow: 0 0 0 2px var(--primary);
+      content: ''; position: absolute; left: -35px; top: 5px; width: 14px; height: 14px;
+      border-radius: 50%; background: var(--primary); border: 3px solid var(--card-bg);
     }
+    .timeline-date { font-size: 0.85rem; font-weight: 700; color: var(--primary); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
 
-    .timeline-date {
-      font-weight: 600;
-      color: var(--primary);
-      margin-bottom: 5px;
+    /* Lists */
+    ul.custom-list { list-style: none; margin-left: 0; padding-left: 0; }
+    ul.custom-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: var(--text-muted); }
+    ul.custom-list li::before { content: '▹'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+    /* Skills Pill */
+    .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2rem; }
+    .skill-pill {
+      background: rgba(46, 125, 50, 0.1); color: var(--primary);
+      padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+      border: 1px solid var(--border-color); transition: var(--transition);
     }
+    .skill-pill:hover { background: var(--primary); color: white; }
 
-    .timeline-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: var(--dark);
+    /* Publications */
+    .publication-item { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); }
+    .publication-item:last-child { border-bottom: none; }
+    .pub-title { font-weight: 700; color: var(--text-main); margin-bottom: 5px; display: flex; gap: 10px; align-items: flex-start; }
+    .pub-title i { color: var(--primary); margin-top: 4px; }
+    .pub-authors { font-size: 0.9rem; font-style: italic; color: var(--text-muted); margin-bottom: 5px; }
+    .pub-journal { font-size: 0.9rem; color: var(--text-main); }
+
+    /* Social Links & Back to Top */
+    .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; padding-bottom: 2rem; }
+    .social-icon { color: var(--text-muted); font-size: 1.5rem; transition: var(--transition); }
+    .social-icon:hover { color: var(--primary); transform: scale(1.1); }
+
+    #backToTop {
+      position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white;
+      width: 45px; height: 45px; border-radius: 50%; border: none; font-size: 1.2rem;
+      cursor: pointer; box-shadow: var(--card-shadow); opacity: 0; visibility: hidden;
+      transition: var(--transition); z-index: 999; display: flex; align-items: center; justify-content: center;
     }
+    #backToTop.show { opacity: 1; visibility: visible; }
+    #backToTop:hover { background: var(--primary-dark); transform: translateY(-3px); }
 
-    .timeline-subtitle {
-      font-style: italic;
-      color: var(--gray);
-      margin-bottom: 10px;
-    }
-
-    .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-bottom: 30px;
-    }
-
-    .skill {
-      background: #e8f5e9;
-      color: var(--primary-dark);
-      padding: 8px 15px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: var(--transition);
-    }
-
-    .skill:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-    }
-
-    .publication-item {
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px dashed #e0e0e0;
-    }
-
-    .publication-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: var(--dark);
-    }
-
-    .publication-authors {
-      font-style: italic;
-      color: var(--gray);
-      margin-bottom: 5px;
-    }
-
-    /* Floating leaves */
-    .floating-leaves {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: -1;
-    }
-
-    .leaf {
-      position: absolute;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="%232e7d32" opacity="0.6"><path d="M17 8C8 10 5.9 16.2 4 22c3 .5 6.2.6 9.5-.5 3.3-1.2 6.4-3.4 7.4-6.6.8-2.7.4-5.5-1.4-7.1-1.8-1.6-4.9-1.8-7.5-.8z"/></svg>');
-      background-repeat: no-repeat;
-      width: 30px;
-      height: 30px;
-      animation: float 15s infinite linear;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      100% {
-        transform: translateY(-1000px) rotate(720deg);
-      }
-    }
-
-    .social-links-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      margin-top: 30px;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      padding: 10px 15px;
-      border-radius: 30px;
-      transition: var(--transition);
-      background: rgba(46, 125, 50, 0.1);
-    }
-
-    .social-link:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: var(--glow);
-    }
-
-    .social-link i {
-      font-size: 1.2rem;
-    }
-
+    /* Responsive */
     @media (max-width: 900px) {
-      nav {
-        padding: 15px 20px;
-      }
-
+      nav { padding: 1rem 2rem; }
       nav ul {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: white;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
+        position: fixed; top: 65px; left: -100%; width: 100%; height: calc(100vh - 65px);
+        background: var(--card-bg); flex-direction: column; justify-content: center;
         transition: var(--transition);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       }
-
-      nav ul.active {
-        left: 0;
-      }
-
-      .hamburger {
-        display: block;
-      }
-
-      .hamburger.active div:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-      }
-
-      .hamburger.active div:nth-child(2) {
-        opacity: 0;
-      }
-
-      .hamburger.active div:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      .hero h2 {
-        font-size: 1.2rem;
-      }
-
-      section {
-        padding: 30px 20px;
-        margin: 30px 20px;
-      }
+      nav ul.active { left: 0; }
+      .hamburger { display: block; }
+      .hamburger.active div:nth-child(1) { transform: rotate(-45deg) translate(-5px, 5px); }
+      .hamburger.active div:nth-child(2) { opacity: 0; }
+      .hamburger.active div:nth-child(3) { transform: rotate(45deg) translate(-5px, -5px); }
+      .hero h1 { font-size: 2.2rem; }
+      section { padding: 2rem; margin: 2rem 1rem; }
     }
   </style>
 </head>
 <body>
-  <div class="floating-leaves" id="floatingLeaves"></div>
 
   <nav id="navbar">
     <div class="logo">Dr. <span>Zamri</span></div>
     <ul class="nav-links">
-      <li><a onclick="showSection('about')">About</a></li>
-      <li><a onclick="showSection('education')">Education</a></li>
-      <li><a onclick="showSection('experience')">Experience</a></li>
-      <li><a onclick="showSection('research')">Research & Publications</a></li>
-      <li><a onclick="showSection('Copyrights')">Copyrights</a></li>
-      <li><a onclick="showSection('awards')">Awards</a></li>
-      <li><a onclick="showSection('contact')">Contact</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#research" class="nav-link">Research</a></li>
+      <li><a href="#awards" class="nav-link">Awards</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div style="display: flex; align-items: center;">
+      <button id="theme-toggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="hamburger" aria-label="Toggle Menu">
+        <div></div><div></div><div></div>
+      </button>
     </div>
   </nav>
 
-  <div class="hero">
+  <header class="hero" id="home">
     <div class="hero-content">
-      <img src="https://zamrizahir88.github.io/cv/images/MohdZamri5.jpg" 
-           alt="Ts. Dr. Mohd Zamri Bin Zahir Ahmad" 
-           class="hero-image">
+      <img src="https://zamrizahir88.github.io/cv/images/ZamriZahir.jpg" alt="Dr. Mohd Zamri" class="hero-image">
       <h1>Ts. Dr. Mohd Zamri Bin Zahir Ahmad</h1>
       <h2>Senior Lecturer at Universiti Malaysia Perlis (UniMAP)</h2>
       <p>Specializing in Optimization Algorithms, Combinatorial Testing, and Software Testing with extensive experience in academic teaching, research, and industry collaboration.</p>
-      <div>
-        <a href="javascript:void(0)" class="btn" onclick="showSection('contact')">Contact Me</a>
-        <a href="javascript:void(0)" class="btn" onclick="showSection('research')">View Research</a>
+      <div class="btn-group">
+        <a href="#contact" class="btn"><i class="fas fa-envelope"></i> Contact Me</a>
+        <a href="#research" class="btn btn-outline"><i class="fas fa-microscope"></i> View Research</a>
+        <a href="#" class="btn btn-outline" target="_blank"><i class="fas fa-file-pdf"></i> Download CV</a>
       </div>
     </div>
-  </div>
+  </header>
 
-  <section id="about">
+  <section id="about" class="scroll-section">
     <div class="section-title">About Me</div>
-    <div class="section-content">
-      I am a dedicated senior lecturer and researcher at Universiti Malaysia Perlis (UniMAP) with a strong background in Computer Engineering. My research focuses on Optimization Algorithms, Combinatorial Testing, and Software Testing. I am passionate about bridging the gap between academic research and practical applications in the field of computer engineering.
-    </div>
+    <p class="section-content">I am a dedicated senior lecturer and researcher at Universiti Malaysia Perlis (UniMAP) with a strong background in Computer Engineering. My research focuses on Optimization Algorithms, Combinatorial Testing, and Software Testing. I am passionate about bridging the gap between academic research and practical applications in the field of computer engineering.</p>
     
-    <div class="section-title">Personal Details</div>
-    <div class="section-content">
-      <ul class="list">      
-        <li><strong>Gender:</strong> Male</li>
-        <li><strong>Nationality:</strong> Malaysian</li>  
-        <li><strong>Email:</strong> zamrizahir@unimap.edu.my</li>
-        <li><strong>Research Interests:</strong> Optimization Algorithm, Combinatorial Testing, Software Testing</li>
-      </ul>
-    </div>
-    
-    <div class="section-title">Professional Memberships</div>
-    <div class="section-content">
-      <ul class="list">
-        <li><strong>Professional Technologist,</strong> Malaysian Board of Technologist (MBOT)<br>Reg. No.: PT24100248<br>Field: Electrical & Electronics Technology (EE)</li>
-        <li><strong>Graduate Technologist (MBOT)</strong><br>Reg. No.: GT21050921<br>Field: Electrical & Electronics Technology (EE)</li>
-        <li><strong>Graduate Member of Board Engineer Malaysia (BEM)</strong><br>Reg. No.: G1159102A<br>Branch: Computer</li>
-      </ul>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Personal Details</div>
+        <ul class="custom-list mt-3">
+          <li><strong>Nationality:</strong> Malaysian</li>
+          <li><strong>Email:</strong> zamrizahir@unimap.edu.my</li>
+          <li><strong>Based in:</strong> Arau, Perlis, Malaysia</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title">Professional Memberships</div>
+        <ul class="custom-list mt-3">
+          <li><strong>Professional Technologist</strong> (MBOT) - PT24100248</li>
+          <li><strong>Graduate Technologist</strong> (MBOT) - GT21050921</li>
+          <li><strong>Graduate Member</strong> (BEM) - G1159102A (Computer)</li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <section id="education">
+  <section id="education" class="scroll-section">
     <div class="section-title">Education</div>
-    
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-date">2023</div>
-        <div class="timeline-title">PhD (Computer Engineering)</div>
-        <div class="timeline-subtitle">Universiti Malaysia Perlis, UniMAP</div>
-        <div class="section-content">
-          Thesis Title: A Self-Adapting Ant Colony Optimization using Fuzzy Logic (ACOF) for Combinatorial Test Suite Generation
-        </div>
+        <div class="card-title">PhD (Computer Engineering)</div>
+        <div class="card-subtitle">Universiti Malaysia Perlis, UniMAP</div>
+        <p class="section-content text-sm">Thesis Title: A Self-Adapting Ant Colony Optimization using Fuzzy Logic (ACOF) for Combinatorial Test Suite Generation</p>
       </div>
-      
       <div class="timeline-item">
         <div class="timeline-date">2016</div>
-        <div class="timeline-title">Master of Science (Computer Engineering)</div>
-        <div class="timeline-subtitle">Universiti Malaysia Perlis, UniMAP</div>
-        <div class="section-content">
-          Thesis Title: A T-Way Test Suite Generation Strategy for Sequence-Based Interaction Testing.
-        </div>
+        <div class="card-title">Master of Science (Computer Engineering)</div>
+        <div class="card-subtitle">Universiti Malaysia Perlis, UniMAP</div>
+        <p class="section-content text-sm">Thesis Title: A T-Way Test Suite Generation Strategy for Sequence-Based Interaction Testing.</p>
       </div>
-      
       <div class="timeline-item">
         <div class="timeline-date">2012</div>
-        <div class="timeline-title">Bachelor of Engineering (Hons) (Computer Engineering)</div>
-        <div class="timeline-subtitle">Universiti Malaysia Perlis, UniMAP</div>
+        <div class="card-title">Bachelor of Engineering (Hons) (Computer Engineering)</div>
+        <div class="card-subtitle">Universiti Malaysia Perlis, UniMAP</div>
       </div>
-      
       <div class="timeline-item">
         <div class="timeline-date">2009</div>
-        <div class="timeline-title">Diploma in Computer Engineering</div>
-        <div class="timeline-subtitle">Universiti Malaysia Perlis, UniMAP</div>
+        <div class="card-title">Diploma in Computer Engineering</div>
+        <div class="card-subtitle">Universiti Malaysia Perlis, UniMAP</div>
       </div>
     </div>
   </section>
 
-  <section id="experience">
+  <section id="experience" class="scroll-section">
     <div class="section-title">Professional Experience</div>
-    
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-date">2023 - Present</div>
-        <div class="timeline-title">Senior Lecturer</div>
-        <div class="timeline-subtitle">Faculty of Electronic Engineering & Technology (FKTEN), Universiti Malaysia Perlis</div>
+        <div class="card">
+            <div class="card-title">Senior Lecturer</div>
+            <div class="card-subtitle">Faculty of Electronic Engineering & Technology (FKTEN), UniMAP</div>
+        </div>
       </div>
-      
       <div class="timeline-item">
         <div class="timeline-date">2016 - 2023</div>
-        <div class="timeline-title">Lecturer</div>
-        <div class="timeline-subtitle">Faculty of Electronic Engineering & Technology (FKTEN), Universiti Malaysia Perlis</div>
-        <div class="timeline-subtitle">School of Computer & Communication Engineering (SCCE), Universiti Malaysia Perlis</div>
-        <div class="section-subtitle">Job Descriptions</div>
-          <div class="section-content">
-              <ul class="list">
-                <li>Teach core undergraduate courses including Software Engineering, Object-Oriented Programming, C Programming, Database Systems, Instrumentation, and Digital Systems.</li>
-                <li>Supervise undergraduate and postgraduate research projects in embedded systems, IoT, and artificial intelligence applications.</li>
-                <li>Develop and enhance course curriculum aligned with OBE and MQF standards.</li>
-                <li>Conduct research in optimization algorithms, smart system integration, and fuzzy logic control.</li>
-                <li>Publish and present research findings in indexed journals and international conferences.</li>
-                <li>Mentor students in innovation, product development, and final-year design projects.</li>
-                <li>Coordinate laboratory activities, assessment, and academic quality assurance.</li>
-                <li>Engage in faculty management, grant applications, and collaborative research initiatives.</li>
-              </ul>
-    </div>
-
-        
+        <div class="card">
+            <div class="card-title">Lecturer</div>
+            <div class="card-subtitle">SCCE & FKTEN, UniMAP</div>
+            <ul class="custom-list" style="font-size: 0.9rem; margin-top: 10px;">
+              <li>Teach core undergraduate courses including Software Engineering, Object-Oriented Programming, C Programming, Database Systems.</li>
+              <li>Supervise undergraduate and postgraduate research projects in embedded systems, IoT, and AI applications.</li>
+              <li>Conduct research in optimization algorithms, smart system integration, and fuzzy logic control.</li>
+            </ul>
+        </div>
       </div>
-        
-    <div class="timeline-item">
-      <div class="timeline-date">2012 - 2014</div>
-      <div class="timeline-title">Assistant Engineer (IBM Hardware Engineer)</div>
-      <div class="timeline-subtitle">ALL-Media Integration Technology Sdn. Bhd. (Outsource to IBM Malaysia)</div>
-      <div class="section-content">
-        <ul class="list">
-          <li>Outsourced to IBM Malaysia as Hardware Engineer working on i-Series platform</li>
-          <li>Appointed as Resident Engineer for CIMB 1P project to migrate from main frame server to IBM i-series server (Power System)</li>
-          <li>Performed preventive maintenance (PM) and software health check (SHC) at customer's i-Series servers quarterly</li>
-          <li>Handled customer complaints on hardware failures including storage devices, Hardware Machine Console (HMC), Input Output (IO) card, optical library, tape library, and power supply (AS400 / Power System)</li>
-        </ul>
+      <div class="timeline-item">
+        <div class="timeline-date">2012 - 2014</div>
+        <div class="card">
+            <div class="card-title">Assistant Engineer (IBM Hardware Engineer)</div>
+            <div class="card-subtitle">ALL-Media Integration Technology Sdn. Bhd.</div>
+            <ul class="custom-list" style="font-size: 0.9rem; margin-top: 10px;">
+              <li>Outsourced to IBM Malaysia as Hardware Engineer working on i-Series platform.</li>
+              <li>Appointed as Resident Engineer for CIMB 1P project.</li>
+              <li>Performed preventive maintenance and handled hardware failures.</li>
+            </ul>
+        </div>
       </div>
-    </div>
-
     </div>
     
-    <div class="section-title">Teaching Experiences</div>
-    <div class="section-content">
-      <div class="section-content"><strong>Diploma Computer Engineering:</strong></div>
-      <ul class="list">
-        <li>DKT 311 – Software Engineering, Semester 1 2016/2017</li>
-        <li>DKT 121 – Fundamental of Computer Programming, Semester 2 2016/2017</li>
-        <li>DKT 216 – Object-oriented Programming, Semester 1 2017/2018</li>
-        <li>DKT 121 – Fundamental of Computer Programming, Semester 2 2017/2018</li>
-        <li>DKT 223 - Database System, Semester 2, 2017/2018</li>
-      </ul>
-      
-      <div class="section-content"><strong>Bachelor of Electronic Engineering Technology (System Electronic):</strong></div>
-      <ul class="list">
-        <li>NMK20603 - Computer Architecture Semester 2 2025/2026</li>
-        <li>NMK31704 – Design Project Semester 2 2025/2026</li>
-        <li>NMK42003 - Instrumentation Semester 1 2025/2026</li>
-        <li>NMK10702 - Writing in Engineering Technology Semester 1 2025/2026</li>
-        <li>NMK31704 – Design Project Semester 2 2024/2025</li>
-        <li>NMK10803 – Digital System Semester 2 2024/2025</li>
-        <li>NMK42003 - Instrumentation Semester 1 2024/2025</li>
-        <li>NMK20603 - Computer Architecture - Additional Semester 2024/2025</li>
-        <li>NMK31703 – Design Project Semester 2 2023/2024</li>
-        <li>NMK42003 - Instrumentation Semester 1 2023/2024</li>
-        <li>NMK10603 - C Programming, Semester 2 2022/2023</li>
-        <li>PGT106 - C Programming, Semester 2, 2022/2023</li>
-        <li>NMK10603 - C Programming, Semester 1 2022/2023</li>
-        <li>PGT106 - C Programming, Semester 1, 2022/2023</li>
-      </ul>
-    </div>
-    
-    <div class="section-title">University Service, Leadership & Professional Contributions</div>
-    <div class="section-content">
-      <div class="subsection-title">Administrative & Committee Appointments</div>
-      <ul class="list">
-        <li>Program Committee for International Engineering Postgraduate Colloquium (IEPC), 2026</li>
-        <li>Committee in KPI Multimedia, FKTEN 2025 & 2026</li>
-        <li>Committee Program Pemerkasaan Pengaturcaraan Komputer Pelajar Tingkatan 6 STPM 2025</li>
-        <li>Committee in KPI Kerohanian & Kebajikan Raudhah, FKTEN 2023 & 2024</li>
-        <li>Logistic and Transportation Committee for Program Deputy Director Asia Campus Plus – Shortmobility Program 2024 – UniMAP</li>
-        <li>Committee Members of Engineering Camp UniMAP-RUTS, 2024</li>
-        <li>Moderator Tazkirah Raudhah@FKTEN, 2024</li>
-        <li>Committee 'Program Pemerkasaan Pengaturcaraan Komputer Tingkatan 6 STPM' 2023</li>
-        <li>Committee in 2nd International Conference on Engineering and Technology (ICoEngTech) 2023 (Technical Reviewer)</li>
-        <li>Committee in 2023 International Symposium on Engineering and Technology (ISETech 2023) (Local Arrangement & Logistic, and Technical Reviewer)</li>
-        <li>Technical Committee, AdvComp 3rd Workshop Series: "Mendeley Reference Manager & Systematic Literature Review", 2023</li>
-        <li>Technical Committee, AdvComp 5th Workshop Series: "User Behavioral Research On Human Computer Interaction", 2023</li>
-        <li>Committee in 6th International Conference on Electronic Design (ICED) 2022 (Technical Reviewer)</li>
-        <li>Committee, Kolej Vokasional Seberang Perai to UniMAP Benchamarking, 2022</li>
-        <li>Committee 'Program Pemerkasaan Pengaturcaraan Komputer Tingkatan 6 STPM' 2022</li>
-        <li>Committee, SCCE Postgraduate and Research Seminar Series, 2019</li>
-        <li>Secretariat, Innovation, Project Presentation, Exhibition (IPRoPEX), 2018</li>
-        <li>Secretariat, "Program Minggu STEM & Kerjaya", 2018</li>
-        <li>Secretariat, "Karnival Pendidikan Tinggi Negara (KPTN) 2018 Zon Mini Perlis dan Kedah", 2018</li>
-        <li>Committee for Promosi Universiti Malaysia Perlis, 2018</li>
-        <li>Committee for Promosi of School of Computer and Communication Engineering, 2017</li>
-        <li>Committee for Pelaksana MPP 2017</li>
-        <li>Committee for Santapan Malam Konvokesyen 2017, 27 October 2017: (Physical and Logistic bureau, and Security bureau)</li>
-      </ul>
-      
-      <div class="subsection-title">Leadership & Coordination Roles</div>
-      <ul class="list">
-        <li>Research Fellow at Centre of Excellence for Advance Computing (ADVCOMP), 2022-2026</li>
-        <li>Deputy Director for Asia Campus Plus - Short Mobility Program 2025, UniMAP</li>
-        <li>Coordinator for Work-Based Learning (WBL) Course (3u1i) for Bachelor's Degree Engineering Technology (System Electronics), 2025/2026</li>
-        <li>Coordinator – "PROGRAM STEM: "Build-It Buddies: FKTEN - Sekolah Rendah Islam III" for Service Learning Malaysia Universiti for Society (SULAM), 2025</li>
-        <li>Leader, Big Data & Cloud Computing Cluster, ADVComp. 2024-2026</li>
-        <li>Coordinator – Program Hari Teknologi dan Masyarakat 2024 for Service Learning Malaysia Universiti for Society (SULAM), 2024</li>
-        <li>Coordinator – "Lawatan Rumah Kanak-Kanak Arau Ke UniMAP Eksplorasi Unimap : Kembara Sains, Teknologi Dan Media Fakulti Kejuruteraan & Teknologi Elektronik (FKTEN)" for Service Learning Malaysia Universiti for Society (SULAM), 2024</li>
-        <li>Team Manager FKTEN for Karnival Kejohanan Sukan (KSU) UniMAP, 2023</li>
-        <li>Team Manager PPKKP for Karnival Kejohanan Sukan (KSU) UniMAP, 2019</li>
-        <li>Team Manager PPKKP for Karnival Kejohanan Sukan (KSU) UniMAP, 2018</li>
-        <li>Deputy Director for Program Ukuwah PPKKP bersama Anak Yatim, 2018</li>
-        <li>Deputy Team Manager (PPKKP) for Karnival Kejohanan Sukan (KSU) UniMAP, 2017</li>
-      </ul>
-      
-      <div class="subsection-title">Scholarly & Technical Service (Reviewer / Examiner)</div>
-      <ul class="list">
-        <li>Reviewer, 6th International Conference on Electronic Design (ICED) 2022</li>
-        <li>Reviewer, 7th International Conference on Electronic Design (ICED) 2024</li>
-        <li>Reviewer, 5th International Conference on Mathematics, Engineering & Industrial Applications (ICOMEIA) 2024</li>
-        <li>Reviewer, International Symposium on Microelectronic Engineering & Design (ISMED) 2024</li>
-        <li>Panel Examiner (Internal) for Pre-Viva Session, M.Sc. (Computer Engineering), Candidate: Mohd Mizan bin Munif, FKTEN UniMAP (2024)</li>
-        <li>Reviewer, 9th International Conference on Man-Machines System (ICoMMS) 2025</li>
-        <li>Reviewer, eBook Juadah Minda Peringkat Kebangsaan 2025 (Politeknik Port Dickson) 2025</li>
-      </ul>
-      
-      <div class="subsection-title">Evaluation, Judging & Assessment Roles</div>
-      <ul class="list">
-        <li>Panel Evaluator for the NMK31704 Design Project, 2025</li>
-        <li>Judge for AI & IOT INTERNATIONAL INNOVATION EXPO 2025</li>
-        <li>Jury for Ekspo Cipta 2025 (X-CIPTA 2025)</li>
-        <li>Panel Evaluator for the NMK31703 Design Project, 2024</li>
-        <li>Judge for Karnival STEM Peringkat Negeri Perlis, 2024</li>
-        <li>Judge for AI & IOT INTERNATIONAL INNOVATION EXPO 2024</li>
-        <li>Judge for Exhibition for Young Agricultural & Food Engineers and Technologies, 2024</li>
-        <li>Panel Evaluator for Diploma Exhibition on Technology and Engineering (DEXTE), 2018</li>
-      </ul>
-    </div>
-    
-    <div class="section-title">Invited Speaker</div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Hybrid Metaheuristic Approaches for T-Way Test Suite Generation</div>
-        <div class="timeline-subtitle">University of Yamanashi, Japan</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">MPKK IRC Workshop: Paperwork Writing Using AI Tools & Semester 2 Strategic Planning</div>
-        <div class="timeline-subtitle">International Resident College & Non-Resident (IRCNR), Universiti Malaysia Perlis</div>
-      </div>
-    </div>
-  </section>
-  
-  <section id="mobility">
-    <div class="section-title">International Mobility Program</div>
-    
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Research Collaboration Visit</div>
-        <div class="timeline-subtitle">University of Yamanashi (Outbound Mobility Program)</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2024 - 2025</div>
-        <div class="timeline-title">A31 Campus Asia Plus Program</div>
-        <div class="timeline-subtitle">Inbound Mobility Program</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-title">Engineering Camp UniMAP-RUTS</div>
-        <div class="timeline-subtitle">Thailand (Outbound Mobility Program)</div>
-      </div>
+    <div class="subsection-title">International Mobility Program</div>
+    <div class="grid-2">
+        <div class="card">
+            <div class="timeline-date">2025</div>
+            <div class="card-title">Research Collaboration Visit</div>
+            <div class="section-content text-sm">University of Yamanashi (Outbound Mobility)</div>
+        </div>
+        <div class="card">
+            <div class="timeline-date">2024 - 2025</div>
+            <div class="card-title">A31 Campus Asia Plus Program</div>
+            <div class="section-content text-sm">Inbound Mobility Program</div>
+        </div>
+        <div class="card">
+            <div class="timeline-date">2024</div>
+            <div class="card-title">Engineering Camp UniMAP-RUTS</div>
+            <div class="section-content text-sm">Thailand (Outbound Mobility)</div>
+        </div>
     </div>
   </section>
 
-  <section id="research">
+  <section id="research" class="scroll-section">
     <div class="section-title">Research & Publications</div><br>
     
-    <div class="section-title">Research Interests</div>
+    <div class="subsection-title" style="margin-top:0;">Core Competencies</div>
     <div class="skills-container">
-      <div class="skill">Optimization Algorithms</div>
-      <div class="skill">Combinatorial Testing</div>
-      <div class="skill">Software Testing</div>
-      <div class="skill">Test Suite Generation</div>
-      <div class="skill">Ant Colony Optimization</div>
-      <div class="skill">Swarm Intelligence</div>
-      <div class="skill">IoT Systems</div>
-      <div class="skill">Fuzzy Logic</div>
+      <div class="skill-pill">Optimization Algorithms</div>
+      <div class="skill-pill">Combinatorial Testing</div>
+      <div class="skill-pill">Software Testing</div>
+      <div class="skill-pill">Test Suite Generation</div>
+      <div class="skill-pill">Ant Colony Optimization</div>
+      <div class="skill-pill">Swarm Intelligence</div>
+      <div class="skill-pill">IoT Systems</div>
+      <div class="skill-pill">Fuzzy Logic</div>
     </div>
-    
-    <div class="section-title">Research Grants</div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-title">Fundamental Research Grant Scheme (FRGS)</div>
-        <div class="timeline-subtitle">Main Researcher</div>
-        <div class="section-content">
-          Title: A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation<br>
-          Total Amount: RM124,150<br>
-          Duration: 3 Years
+
+    <div class="subsection-title">Recent Grants (2024)</div>
+    <div class="grid-2">
+        <div class="card">
+            <div class="card-title">Fundamental Research Grant Scheme (FRGS)</div>
+            <div class="card-subtitle">Role: Main Researcher | RM124,150</div>
+            <p class="section-content" style="font-size: 0.9rem;">A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation</p>
         </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-title">Industrial Matching Program Grant (IMaP)</div>
-        <div class="timeline-subtitle">Co-Researcher</div>
-        <div class="section-content">
-          Title: Design and Development of Testing Tool for Solar Harvesting Application<br>
-          Total Amount: RM100,000<br>
-          Duration: 1 Year 6 Month
+        <div class="card">
+            <div class="card-title">Industrial Matching Program Grant (IMaP)</div>
+            <div class="card-subtitle">Role: Co-Researcher | RM100,000</div>
+            <p class="section-content" style="font-size: 0.9rem;">Design and Development of Testing Tool for Solar Harvesting Application</p>
         </div>
-      </div>
     </div>
-    
-    <div class="section-title">Supervision</div>
-    <div class="section-content">
-      <div class="section-content"><strong>MSc/PhD Supervision:</strong></div>
-      <ul class="list">
-        <li>Siti Shamirah Binti Sabri - Doctor Of Philosophy (Computer Engineering)<br>
-        Title: Design and Development of a Multi-factorial Sand Cat Swarm Optimization Algorithm for T-Way Combinatorial Testing.<br>
-        Role: Co-Supervisor<br>
-        Status: Offered - Will start on April 2026</li>
-        <li>Muhammad Aiman Bin Mohd Asyraf - Doctor Of Philosophy (Computer Engineering)<br>
-        Title: A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation<br>
-        Role: Co-Supervisor<br>
-        Status: Ongoing</li>
+
+    <div class="subsection-title">Student Supervision Highlights</div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-subtitle">PhD Level</div>
+        <ul class="custom-list text-sm" style="font-size: 0.85rem;">
+          <li><strong>Siti Shamirah Sabri</strong> (2026) - Multi-factorial Sand Cat Swarm Optimization Algorithm.</li>
+          <li><strong>Muhammad Aiman Mohd Asyraf</strong> (Ongoing) - Phase Transition Controller in SCSO.</li>
         </ul>
-      
-      <div class="section-content"><strong>Bachelor Engineering (Hons) Computer Engineering:</strong></div>
-      <ul class="list">
-        <li>Nur Farah Hanim Binti Mat Ali (141020924, 2017/2018) - Online UniMAP's Qurban Management System</li>
-        <li>Che Muhamad Amin Bin Che Jaafar (141020865, 2017/2018) - Mobile Queue Management System</li>
-        <li>Tan Chang Cun (141020947, 2017/2018) - Online System for Property Sales and Management</li>
-        <li>Hilal Sheikh Ali Nur (141020086-1, 2017/2018) - Online Voting System for UniMAP's Election Management</li>
-      </ul>
-      
-      <div class="section-content"><strong>Bachelor of Electronic Engineering Technology (Electronic System):</strong></div>
-      <ul class="list">
-        <li>Sharul Haqimi Bin Md.Halim (191383231, 2022/2023) - Automatic Cat Feeder and Litter Cleaner with Android Application</li>
-        <li>Muhammad Haikal Bin Hamdi (201391576, 2023/2024) - IOT Warning System for Early Forest Fire Detection</li>
-        <li>Sharwini A/P Mugunthan (211371439, 2024/2025) - Intelligent Parcel Delivery and Notification System for Apartment Houses</li>
-        <li>Thejashviny A/P Sathgunalen (211372782, 2024/2025) - IOT Weather Station with Early Flood Detection System in Urban Areas</li>
-        <li>Nor Amirah Syazwani Binti Kamarudin (221372354, 2024/2025) - Smart Office System: Resources, Security, Environmental Control</li>
-        <li>Mohanambal A/P Loganathan (21373148, 2025/2026) - Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
-        <li>Muhammad Fadlan Adli Bin Muhamad Amin (221372354, 2025/2026) - Fuzzy-AWOS: AI-Driven Weather & Runway Safety Monitoring System for Airports</li>
-        <li>Nurul Alya Binti Abdul Aziz (221373175, 2025/2026) - Fuzzy-AirSense: In-Car Air Quality Monitoring & Safety System using Fuzzy Logic</li>
-        <li>Vaashienie A/P Santhiramogan (231373903, 2025/2026) - FuzzyFishCare: ESP32-Based Intelligent Aquaculture Monitoring and Aeration Control Using Fuzzy Logic</li>
-        <li>Muhammad Sufian Hakeem Bin Sofi (231373117, 2025/2026) - Fuzzy DamGuard: Fuzzy Logic-Based Dam Monitoring and Gate Control using ESP32</li>
-      </ul>
+      </div>
+      <div class="card">
+        <div class="card-subtitle">Latest UG Projects (2025/2026)</div>
+        <ul class="custom-list text-sm" style="font-size: 0.85rem;">
+          <li>Fuzzy-Medcare: Health Monitoring</li>
+          <li>Fuzzy-AWOS: AI-Driven Weather Monitoring</li>
+          <li>Fuzzy-AirSense: In-Car Air Quality</li>
+          <li>FuzzyFishCare: ESP32-Based Aquaculture</li>
+        </ul>
+      </div>
+    </div>
 
-      <div class="section-content"><strong>Design Project (Bachelor of Electronic Engineering Technology):</strong></div>
-      <ul class="list">
-        <li>Muhammad Nabil Aiman, Zarul Al-Amin, Priatharsshen, Nur Amalina, Diviyaa (2023/2024) - Safeguarding Apartments: IoT Fire Detection and Prevention System</li>
-        <li>Mohamad Zariff Daniel, Mohamad Sallehudin, Tengku Ahmad Naqiuddin, Muhammad Afnan (2024/2025) - Unitag Renewable vehicle access system for UniMAP Campus Using RFID-Based</li>
-        <li>Muhammad Nazri, Darawadi Khewmani, Ahmad Irfan Darwisy, Muhammad Izad (2024/2025) - Development of an Automated Integrated Aquaculture-Agriculture (IAA) System for the Asnaf Community</li>
-      </ul>
-    </div>
-    
-    <div class="section-title">Publications</div><br>
-    
-    <div class="subsection-title">Submitted, Accepted and Waiting to be published (2025)</div>
+    <div class="subsection-title">Selected Recent Publications</div>
     <div class="publication-item">
-      <div class="publication-title">Implementation of Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</div>
-      <div class="publication-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., Othman, R. R., Halim, A. A. A., Go, K., Ramli, N., Ahmad, R. B., Kamarudin, L. M., & Al-Walidi, M. M. H. S.</div>
-      <div class="section-content">Journal of Advanced Mobile Robotics and Intelligent Systems (JAMRIS)</div>
+      <div class="pub-title"><i class="fas fa-book-open"></i> Implementation of Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</div>
+      <div class="pub-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., et al. (2025)</div>
+      <div class="pub-journal">Journal of Advanced Mobile Robotics and Intelligent Systems (JAMRIS)</div>
     </div>
-    
     <div class="publication-item">
-      <div class="publication-title">Variable Strength Sand Cat Swarm Optimization (VSCSO) for T-Way Combinatorial Test Suite Generation</div>
-      <div class="publication-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., Othman, R. R., Halim, A. A. A., Go, K., Al-Walid, M. M. H. S., Suali, A. J., Rose, N. H. C., & Kamal, F. B.</div>
-      <div class="section-content">Proceedings of the International Exchange and Innovation Conference on Engineering & Sciences (IEICES 2025)</div>
+      <div class="pub-title"><i class="fas fa-book-open"></i> IoT Warning System for Early Forest Fire Detection</div>
+      <div class="pub-authors">Ahmad, M. Z. Z., Hamdi, M. H. B., et al. (2025)</div>
+      <div class="pub-journal">Studies in Computational Intelligence. Springer.</div>
     </div>
-    
     <div class="publication-item">
-      <div class="publication-title">ISCSO: Input-Output Relation Driven Sand Cat Swarm Optimization for Combinatorial Testing</div>
-      <div class="publication-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., Othman, R. R., Halim, A. A. A., Go, K., & Al-Walidi, M. M. H. S.</div>
-      <div class="section-content">Proceedings of the International Conference on Science, Engineering and Technology Application (ICOSETA 2025)</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Application of Sewing Training-Based Optimization in Generating Effective Input-Output Relation-Based T-Way Test Suite Generation Strategies</div>
-      <div class="publication-authors">Murad, M. M. H. S., Halim, A. A. A., Ahmad, M. Z. Z., Ramli, N., Zakaria, H. L., Aiman, M. A. M., Go, K., & Rahim, M. S. A.</div>
-      <div class="section-content">Proceedings of the International Exchange and Innovation Conference on Engineering & Sciences (Conference: IEICES 2025)</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">A variable strength interaction test suites generation strategy using Sewing Training Optimization</div>
-      <div class="publication-authors">Murad, M. M. H. S. A.-W., Halim, A. A. A., Othman, R. R., Ahmad, M. Z. Z., Go, K., & Asyraf, M. A. M.</div>
-      <div class="section-content">Proceedings of the International Conference on Artificial Intelligence and Applied Sciences (Journal Scopus: i-CAIAS 2025)</div>
-    </div>
-    
-    <div class="subsection-title">Published</div>
-    <div class="publication-item">
-      <div class="publication-title">IoT Warning System for Early Forest Fire Detection</div>
-      <div class="publication-authors">Ahmad, M. Z. Z., Hamdi, M. H. B., Halim, A. A. A., Nasrudin, M. W. B., Othman, R. R., Raja Ahmad, R. A., & Mat Salleh, S.</div>
-      <div class="section-content">Studies in Computational Intelligence: Advances in Artificial Intelligence and Electronic Design Technologies (Proceedings of ICED 2024, Studies in Computational Intelligence, Vol. 1015, pp. 409–420). Springer. https://doi.org/10.1007/978-3-031-78918-2_36</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">IoT Based Fertilizer System for Crop Cultivation</div>
-      <div class="publication-authors">Fong, P. Y., Raja Ahmad, R. A., Ahmad, M. I., & Ahmad, M. Z. Z.</div>
-      <div class="section-content">Studies in Computational Intelligence: Advances in Artificial Intelligence and Electronic Design Technologies (pp. 517–530). Springer. https://doi.org/10.1007/978-3-031-78918-2_45</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Polyvinyl Chloride (PVC) Ultra-Wideband Wearable Antenna Under Bending and Wet Conditions</div>
-      <div class="publication-authors">Anvar, H.H., Salleh, S.M., Kamarudin, L.M., and Ahmad, M.Z.Z.</div>
-      <div class="section-content">Proc. 2024 IEEE 1st International Conference on Communication Engineering and Emerging Technologies (ICoCET), pp. 1–5, 2024. doi: 10.1109/ICoCET63343.2024.10730245</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Experimental investigation on improving photovoltaic module efficiency using adaptive fuzzy-PID water cooling</div>
-      <div class="publication-authors">Abdul Rahim, M.S., Tajuddin, M.F.N.B., Saad, M.S., Hasanuzzaman, M., Ahmad, M.Z.Z., Halim, A.A.A., and Mid, E.C.</div>
-      <div class="section-content">Sol. Energy, vol. 283, p. 113828, 2025. doi: 10.1016/j.solener.2025.113828</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">UWB-Based Early Breast Cancer Existence Prediction Using Artificial Intelligence for Large Data Set</div>
-      <div class="publication-authors">Abdul Halim, A. A., Veeraperumal, V., Andrew, A. M., Mohd Yasin, M. N., Zahir Ahmad, M. Z., Hossain, K., Bari, B. S., & Kamal, F.</div>
-      <div class="section-content">Journal of Advanced Research in Applied Sciences and Engineering Technology, 29(2), 81–90, 2023</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Smart Management Waiting System for Outpatient Clinic</div>
-      <div class="publication-authors">Nasrudin, M.W., Zainuddin, N.S.A., Ahmad, R.A.R., Yob, R.C., Ahmad, M.Z.Z., and …</div>
-      <div class="section-content">Journal of Advanced Research in Applied Sciences and Engineering Technology, vol. 29, no. 3, pp. 4861–4870, 2023. doi: 10.37934/araset.29.3.4861</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">VSTACO: A Tuned Version of Ant Colony Optimization for Generating Variable Strength Interaction in T-Way Testing Strategy</div>
-      <div class="publication-authors">Zahir Ahmad, M. Z., Othman, R. R., Ramli, N., & Rashid Ali, M. S. A.</div>
-      <div class="section-content">International Conference on Software and Computer Applications, 2022</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">A Tuned Version of Ant Colony Optimization Algorithm (TACO) for Uniform Strength T-way Test Suite Generator: An Execution's Time Comparison</div>
-      <div class="publication-authors">M. Z. Z. Ahmad, R. R. Othman, M. S. A. R. Ali, N. Ramli, M. W. Nasrudin, and A. A. A. Halim</div>
-      <div class="section-content">Journal of Physics: Conference Series, vol. 1962, no. 1, 2021</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Adopting Ant Colony Optimization Algorithm for Pairwise T-Way Test Suite Generation Strategy</div>
-      <div class="publication-authors">N. Ramli et al.</div>
-      <div class="section-content">Journal of Physics: Conference Series, vol. 1962, no. 1, 2021</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Moment Invariants Technique for Image Analysis and Its Applications: A Review</div>
-      <div class="publication-authors">M. W. Nasrudin, Shahrui Nizam Yaakob, Amir Nazreen Abdul Rahim, M. Z. Zahir Ahmad, and M. S. A. R. Ali</div>
-      <div class="section-content">Journal of Physics: Conference Series, vol. 1962, no. 1, 2021</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">A Modified Artificial Bee Colony Based Test Suite Generation Strategy for Uniform T-Way Testing</div>
-      <div class="publication-authors">M. S. A. Rashid Ali, R. R. Othman, Z. R. Yahya, and M. Z. Zahir</div>
-      <div class="section-content">IOP Conf. Ser. Mater. Sci. Eng., vol. 767, no. 1, 2020</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Ant colony algorithm to generate t-way test suite with constraints</div>
-      <div class="publication-authors">N. Ramli, R. R. Othman, Z. I. A. Khalib, M. Z. Z. Ahmad, and S. S. M. Fauzi</div>
-      <div class="section-content">Journal of Physics: Conference Series, vol. 1529, no. 4, 2020</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">A Self-Adapting Ant Colony Optimization Algorithm Using Fuzzy Logic (ACOF) for Combinatorial Test Suite Generation</div>
-      <div class="publication-authors">M. Z. Zahir Ahmad, R. R. Othman, M. S. A. Rashid Ali, and N. Ramli</div>
-      <div class="section-content">IOP Conference Series: Materials Science and Engineering, vol. 767, no. 1, 2020</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Implementation of artificial bee colony algorithm for T-way testing</div>
-      <div class="publication-authors">Mohd Shafiul Aziz Rashid Ali, Rozmie R. Othman, Zainor Ridzuan Yahya, Mohd Zamri Zahir Ahmad, Nuraminah Ramli</div>
-      <div class="section-content">2016 3rd International Conference on Electronic Design (ICED), August 11-12, 2016, Phuket, Thailand</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Sequence Covering Array Generator (SCAT) For Sequence Based Combinatorial Testing</div>
-      <div class="publication-authors">Mohd Zamri Zahir Ahmad, Rozmie Razif Othman and Mohd Shafiul Aziz Rashid Ali</div>
-      <div class="section-content">International Journal of Applied Engineering Research ISSN 0973-4562 Volume 11, Number 8 (2016) pp 5984-5991. 2016</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Effectiveness comparison of partially executed t-way test suite based generated by existing strategies</div>
-      <div class="publication-authors">Rozmie R. Othman, Mohd Zamri Zahir Ahmad, Mohd Shafiul Aziz Rashid Ali, Hasneeza Liza Zakaria, and Md. Mostafijur Rahman</div>
-      <div class="section-content">2014, International Conference of Mathematic, Engineering & Industrial Applications (ICoMEIA), May 28 – 30, 2014, Penang, Malaysia</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Input-Input Relationship Constraints in T-Way Testing</div>
-      <div class="publication-authors">Rozmie R. Othman, Kamal Z. Zamil, Mohd Shafiul Aziz Rashid Ali, Mohd Zamri Zahir Ahmad</div>
-      <div class="section-content">UniMAP – PSU Engineering Postgraduate Conference 1st 2014, Thailand</div>
-    </div>
-    
-    <div class="publication-item">
-      <div class="publication-title">Addressing Constraints Support from within a T-Way Strategy</div>
-      <div class="publication-authors">Rozmie R. Othman, Kamal Z. Zamil, Mohd Shafiul Aziz Rashid Ali, Mohd Zamri Zahir Ahmad</div>
-      <div class="section-content">UniMAP – PSU Engineering Postgraduate Conference 1st 2014, Thailand</div>
+      <div class="pub-title"><i class="fas fa-microchip"></i> Polyvinyl Chloride (PVC) Ultra-Wideband Wearable Antenna Under Bending and Wet Conditions</div>
+      <div class="pub-authors">Anvar, H.H., Salleh, S.M., Kamarudin, L.M., and Ahmad, M.Z.Z. (2024)</div>
+      <div class="pub-journal">Proc. 2024 IEEE 1st International Conference on Communication Engineering (ICoCET)</div>
     </div>
   </section>
-        
-  <section id="Copyrights">
-    <div class="section-title">Copyright Registration</div>
+
+  <section id="awards" class="scroll-section">
+    <div class="section-title">Copyrights & Awards</div>
     
+    <div class="grid-2">
+      <div>
+        <div class="subsection-title" style="margin-top:0;">Copyright Registrations</div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">2026</div>
+            <div class="card-title text-sm">CRLY2026E02231</div>
+            <p class="section-content text-sm">FUZZY-MEDCARE: Fuzzy Logic based Health Monitoring and Emergency Detection.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025</div>
+            <div class="card-title text-sm">CRLY2025P00907</div>
+            <p class="section-content text-sm">Intelligent Parcel Delivery and Notification System for Apartment House.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="subsection-title" style="margin-top:0;">Notable Awards (2025)</div>
+        <div class="card mb-3">
+          <div class="card-title text-sm">Anugerah Seri Gemilang UniMAP</div>
+          <p class="section-content text-sm mb-0">Anugerah Perkhidmatan Cemerlang</p>
+        </div>
+        <div class="card mb-3 mt-3">
+          <div class="card-title text-sm">Anugerah Kecemerlangan Penyelidikan</div>
+          <p class="section-content text-sm mb-0">Anugerah Projek Komuniti (UniMAP for Society)</p>
+        </div>
+        <div class="card mt-3">
+          <div class="card-title text-sm">Anugerah Pencetus Program 3U11</div>
+          <p class="section-content text-sm mb-0">Fakulti Kejuruteraan & Teknologi Elektronik</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-title">Recent Exhibition Participations</div>
     <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2026</div>
-        <div class="timeline-title">Notification Number: CRLY2026E02231</div>
-        <div class="timeline-subtitle">FUZZY-MEDCARE: Fuzzy Logic based Health Monitoring and Emergency Detection For Home Bedridden Patients</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Notification Number: CRLY2025P00907</div>
-        <div class="timeline-subtitle">Intelligent Parcel Delivery and Notification System for Apartment House</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2023</div>
-        <div class="timeline-title">Notification Number: CRLY2023P03962</div>
-        <div class="timeline-subtitle">A Self-Adapting Ant Colony Optimization Algorithm using Fuzzy Logic (ACOF) for Combinatorial Test Suite Generation</div>
-      </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2026 - Innovation Excellence (INNOVEX)</div>
+            <div class="card">
+                <ul class="custom-list text-sm mb-0">
+                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Flexisolar: A Metaheuristic Testing Tool</li>
+                    <li><strong style="color:var(--primary)">Gold Medal:</strong> SandCatGo: Intelligent T-Way Testing Platform</li>
+                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Fuzzy-Medcare: Health Monitoring</li>
+                    <li><strong>Silver Medal:</strong> Self-Sustained Active Water-Cooling System for PV Modules</li>
+                </ul>
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2025 - Ekspo Rekacipta UniMAP (EREKA)</div>
+            <div class="card">
+                <ul class="custom-list text-sm mb-0">
+                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Adaptive Water-Cooling System for PV Modules</li>
+                    <li><strong style="color:var(--primary)">Gold Medal:</strong> IoT-Based Smart Paddy Field Monitoring</li>
+                    <li><strong>Silver Medal:</strong> Intelligent Parcel Delivery System</li>
+                </ul>
+            </div>
+        </div>
     </div>
   </section>
 
-  <section id="awards">
-    <div class="section-title">Awards & Exhibition Participation</div>
-
-    <div class="subsection-title">Awards</div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Anugerah Kecemerlangan Penyelidikan 2025 - Anugerah Projek Komuniti</div>
-        <div class="timeline-subtitle">UniMAP for Society</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Anugerah Seri Gemilang UniMAP 2025</div>
-        <div class="timeline-subtitle">Anugerah Perkhidmatan Cemerlang</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Anugerah Pencetus Program 3U11</div>
-        <div class="timeline-subtitle">Fakulti Kejuruteraan & Teknologi Elektronik</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-title">Anugerah Kecemerlangan Penyelidikan 2024 - Anugerah Project Komuniti</div>
-        <div class="timeline-subtitle">UniMAP for Society</div>
-      </div>
-    </div>
-
-    <div class="subsection-title">Exhibition Participations</div>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">2026</div>
-        <div class="timeline-title">Innovation Excellence (INNOVEX)</div>
-        <div class="section-content">
-          <ul class="list">
-            <li>Gold Medal: Flexisolar: A Metaheuristic Testing Tool For Solar Dashboard Monitoring System</li>
-            <li>Gold Medal: SandCatGo: Intelligent T-Way Testing Platform</li>
-            <li>Gold Medal: Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring And Emergency Detection for Home Bedridden Patients</li>
-            <li>Silver Medal: Self-Sustained Active Water-Cooling System for PV Modules using Irradiance-Based Control</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Ekspo Rekacipta UniMAP (EREKA)</div>
-        <div class="section-content">
-          <ul class="list">
-            <li>Gold Medal: Adaptive Water-Cooling System for photovoltaic Modules Using AI Optimization</li>
-            <li>Gold Medal: IoT-Based Smart Paddy Field Monitoring Crop Management System</li>
-            <li>Silver Medal: Intelligent Parcel Delivery and Notification System for Apartment House</li>
-            <li>Silver Medal: Smart Waste Management System with IoT Integration using ESP32</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Gold Medal, Ekspo Cipta 2025 (X-CIPTA)</div>
-        <div class="section-content">
-          <ul class="list">
-            <li>SandCatTest: Software Testing Tool Based on Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</li>
-            <li>Design and Development of T-Way Test Suite Generator Adopting Sewing Training Based Optimization Algorithm</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">IDEA BESTARI Innovation Exhibition</div>
-        <div class="section-content">
-          <ul class="list">
-            <li>Gold Medal: Smart Fire Detection and Prevention System Using Fuzzy Logic</li>
-            <li>Gold Medal: SandCatTest: Software Testing Tool Based on Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</li>
-            <li>Silver Medal: Fuzzy-Medcare : Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Gold Medal, Integrated Design Project Exhibition (IDPEX)</div>
-        <div class="timeline-subtitle">UniTAG: Renewable Vehicle Access System for UniMAP Campus using RFID-Based</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Silver Medal, Postgraduate Research Poster Competition</div>
-        <div class="timeline-subtitle">Implementation of Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation (in conjunction with iFuture 2025 @ UniMAP)</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Silver Medal, AI & IOT International Innovation Expo (AIOTIE)</div>
-        <div class="timeline-subtitle">Intelligent Parcel Delivery And Notification System For Apartment House</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Silver Award, Sulam Innovate Showcase And Symposium (SUISS 2025)</div>
-        <div class="timeline-subtitle">Hari Teknologi & Masyarakat 2024 (HTM2024): Empowering Youth Through Stem Activities With Rumah Kanak-Kanak Arau</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">2025</div>
-        <div class="timeline-title">Participated in "Pertandingan SULAM Innovate Ke-3"</div>
-        <div class="timeline-subtitle">In conjunction with 3rd International Conference on SULAM 2025</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-title">Undergraduate Project Exhibition (UPEx 2024)</div>
-        <div class="timeline-subtitle">FKTEN 2024</div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-title">Silver Medal, Ekspo Rekacipta UniMAP (EREKA)</div>
-        <div class="timeline-subtitle">IOT Warning System for Early Forest Fire Detection</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2024</div>
-        <div class="timeline-title">Bronze Medal, AI & IOT International Innovation Expo (AIOTIE)</div>
-        <div class="timeline-subtitle">IoT Warning System for Early Forest Fire Detection</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2022</div>
-        <div class="timeline-title">Excellent Paper Presentation, International Conference on Software and Computer Applications (ICSCA)</div>
-        <div class="timeline-subtitle">VS-TACO: A Tuned Version of Ant Colony Optimization for Generating Variable Strength Interaction in T-Way Testing Strategy</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2021</div>
-        <div class="timeline-title">Best Paper Award, The 1st International Conference on Engineering and Technology (ICOEngTech)</div>
-        <div class="timeline-subtitle">A Tuned Version of Ant Colony Optimization Algorithm (TACO) for Uniform Strength T-way Test Suite Generator: An Execution's Time Comparison</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2020</div>
-        <div class="timeline-title">Gold Award, Virtual Research and Innovation Exhibition (EREKA)</div>
-        <div class="timeline-subtitle">TTSGA T-Way Test Suite Generator</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2020</div>
-        <div class="timeline-title">Gold Medal, International Invention, Innovation & Technology Exhibition (ITEX)</div>
-        <div class="timeline-subtitle">TTSGA T-Way Test Suite Generator</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2015</div>
-        <div class="timeline-title">Gold Medal, International Engineering Invention and Innovation Exhibition (I-ENVEX)</div>
-        <div class="timeline-subtitle">GVS: T-Way Test Suite Generator Supporting Constraints</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2015</div>
-        <div class="timeline-title">Silver Medal, Malaysia Technology Exhibition (MTE)</div>
-        <div class="timeline-subtitle">GVS: T-Way Test Suite Generator Supporting Constraints</div>
-      </div>
-      
-      <div class="timeline-item">
-        <div class="timeline-date">2015</div>
-        <div class="timeline-title">Silver Medal, International Invention, Innovation & Technology Exhibition (ITEX)</div>
-        <div class="timeline-subtitle">GVS: T-Way Test Suite Generator Supporting Constraints</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="section-title">Contact</div>
-    <div class="section-content">
-      <strong>Email:</strong> zamrizahir@unimap.edu.my<br>
-      <strong>Mobile:</strong> 011-28821198<br>
-      <strong>Address:</strong> Faculty of Electronic Engineering & Technology (FKTEN)<br>
-                                Universiti Malaysia Perlis (UniMAP),<br>
-                                Pauh Putra Campus, 02600 Arau,<br>
-                                Perlis, MALAYSIA.
-    </div>
+  <section id="contact" class="scroll-section">
+    <div class="section-title">Contact Information</div>
     
-    <div class="section-title">References</div>
-    <div class="section-content">
-      <strong>Associate Professor Dr. Rozmie Razif Bin Othman</strong><br>
-      Faculty of Intelligent Computing (FKC)<br>
-      Universiti Malaysia Perlis (UniMAP)<br>
-      Email: rozmie@unimap.edu.my
+    <div class="grid-2 text-center">
+        <div class="card">
+            <i class="fas fa-envelope fa-2x mb-2" style="color:var(--primary)"></i>
+            <div class="card-title mt-2">Email</div>
+            <a href="mailto:zamrizahir@unimap.edu.my" style="color:var(--text-muted); text-decoration:none;">zamrizahir@unimap.edu.my</a>
+        </div>
+        <div class="card">
+            <i class="fas fa-map-marker-alt fa-2x mb-2" style="color:var(--primary)"></i>
+            <div class="card-title mt-2">Address</div>
+            <p class="section-content text-sm mb-0">Faculty of Electronic Engineering & Technology (FKTEN)<br>Universiti Malaysia Perlis (UniMAP)<br>02600 Arau, Perlis, Malaysia.</p>
+        </div>
     </div>
-    
-    <div class="section-content">
-      <strong>Professor Ir. Ts. Dr. R. Badlishah Ahmad</strong><br>
-      Faculty of Intelligent Computing (FKC)<br>
-      Universiti Malaysia Perlis (UniMAP)<br>
-      Email: badli@unimap.edu.my
+
+    <div class="social-links">
+      <a href="https://orcid.org/0000-0003-3839-2284" target="_blank" class="social-icon" title="ORCID"><i class="fab fa-orcid"></i></a>
+      <a href="https://www.linkedin.com/in/mohd-zamri-zahir-ahmad-98652a320/" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="#" target="_blank" class="social-icon" title="Scopus"><i class="fas fa-graduation-cap"></i></a>
     </div>
   </section>
 
-  <div id="modal" class="modal">
-    <span class="close-btn" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
-      <iframe id="pdf-viewer" style="display:none; width:100%; height:100%; border:none;"></iframe>
-      <img id="modal-image" style="display:none; max-width:100%; max-height:80vh;">
-    </div>
-  </div>
-
-  <div class="social-links-container">
-    <a href="https://orcid.org/0000-0003-3839-2284" target="_blank" class="social-link">
-      <i class="fab fa-orcid"></i> ORCID
-    </a>
-    <a href="https://www.linkedin.com/in/mohd-zamri-zahir-ahmad-98652a320/" target="_blank" class="social-link">
-      <i class="fab fa-linkedin"></i> LinkedIn
-    </a>
-    <a href="https://www.scopus.com/authid/detail.uri?authorId=57192404100" target="_blank" class="social-link">
-      <i class="fab fa-scopus"></i> Scopus
-    </a>
-  </div>
+  <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    // Mobile menu toggle
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const icon = themeToggle.querySelector('i');
+    
+    // Check saved theme
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if(currentTheme === 'dark') {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    }
+
+    themeToggle.addEventListener('click', () => {
+        let theme = document.documentElement.getAttribute('data-theme');
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    });
+
+    // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    const navLinksContainer = document.querySelector('.nav-links');
 
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active');
+      navLinksContainer.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
+    document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
+        navLinksContainer.classList.remove('active');
       });
     });
 
-    // Navbar scroll effect
+    // Scrollspy & Reveal Animations
+    const sections = document.querySelectorAll('.scroll-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const backToTop = document.getElementById('backToTop');
+
     window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
+        let current = '';
+        const scrollY = window.pageYOffset;
 
-    // Show section function
-    function showSection(id) {
-      const section = document.getElementById(id);
-      if (!section) return; // Exit if section doesn't exist
-      
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
-      });
-      
-      section.classList.add('active');
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
+        // Reveal sections
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 300)) {
+                section.classList.add('visible');
+            }
+            if (scrollY >= (sectionTop - 150)) {
+                current = section.getAttribute('id');
+            }
+        });
 
-    // Intersection Observer for section animations
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+        // Update Nav Links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+
+        // Back to top button visibility
+        if (scrollY > 500) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
         }
-      });
-    }, { threshold: 0.1 });
-
-    sections.forEach(section => {
-      observer.observe(section);
     });
 
-    // Modal functions
-    function showPdf(pdfUrl) {
-      const modal = document.getElementById('modal');
-      const pdfViewer = document.getElementById('pdf-viewer');
-      const modalImage = document.getElementById('modal-image');
-      
-      modalImage.style.display = 'none';
-      pdfViewer.style.display = 'block';
-      pdfViewer.src = pdfUrl;
-      modal.style.display = 'block';
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-    }
-    
-    function showImage(imgUrl) {
-      const modal = document.getElementById('modal');
-      const pdfViewer = document.getElementById('pdf-viewer');
-      const modalImage = document.getElementById('modal-image');
-      
-      pdfViewer.style.display = 'none';
-      modalImage.style.display = 'block';
-      modalImage.src = imgUrl;
-      modal.style.display = 'block';
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-    }
-    
-    function closeModal() {
-      const modal = document.getElementById('modal');
-      const pdfViewer = document.getElementById('pdf-viewer');
-      const modalImage = document.getElementById('modal-image');
-      
-      modal.style.display = 'none';
-      pdfViewer.src = '';
-      modalImage.src = '';
-      document.body.style.overflow = 'auto'; // Re-enable scrolling
-    }
-    
-    // Create floating leaves
-    document.addEventListener('DOMContentLoaded', function() {
-      const floatingLeaves = document.getElementById('floatingLeaves');
-      if (floatingLeaves) {
-        for (let i = 0; i < 20; i++) {
-          const leaf = document.createElement('div');
-          leaf.classList.add('leaf');
-          leaf.style.left = `${Math.random() * 100}%`;
-          leaf.style.top = `${Math.random() * 100}%`;
-          leaf.style.opacity = Math.random() * 0.5 + 0.2;
-          leaf.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
-          leaf.style.animationDuration = `${Math.random() * 20 + 10}s`;
-          leaf.style.animationDelay = `${Math.random() * 5}s`;
-          floatingLeaves.appendChild(leaf);
-        }
-      }
+    // Back to top action
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Close modal when clicking outside content
-    window.addEventListener('click', function(event) {
-      const modal = document.getElementById('modal');
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
+    // Initial check to reveal elements above the fold on load
+    window.dispatchEvent(new Event('scroll'));
   </script>
 </body>
 </html>
