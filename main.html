@@ -410,58 +410,6 @@
       transform: translateY(-3px);
     }
 
-    .project-card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      margin-bottom: 30px;
-      transition: var(--transition);
-      border: 1px solid rgba(46, 125, 50, 0.1);
-    }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      border-color: var(--primary-light);
-    }
-
-    .project-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .project-content {
-      padding: 20px;
-    }
-
-    .project-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: var(--primary-dark);
-    }
-
-    .project-description {
-      margin-bottom: 15px;
-      color: var(--gray);
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .project-tag {
-      background: #e8f5e9;
-      color: var(--primary-dark);
-      padding: 5px 10px;
-      border-radius: 15px;
-      font-size: 0.8rem;
-    }
-
     .publication-item {
       margin-bottom: 20px;
       padding-bottom: 20px;
@@ -478,54 +426,6 @@
       font-style: italic;
       color: var(--gray);
       margin-bottom: 5px;
-    }
-
-    .publication-link {
-      color: var(--primary);
-      text-decoration: none;
-      transition: var(--transition);
-      display: inline-block;
-      font-weight: 600;
-    }
-
-    .publication-link:hover {
-      color: var(--primary-dark);
-      text-decoration: underline;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-
-    .contact-item {
-      flex: 1;
-      min-width: 200px;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      text-align: center;
-      transition: var(--transition);
-    }
-
-    .contact-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-
-    .contact-icon {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 15px;
-    }
-
-    .contact-title {
-      font-weight: bold;
-      margin-bottom: 5px;
-      color: var(--primary-dark);
     }
 
     /* Floating leaves */
@@ -557,165 +457,38 @@
       }
     }
 
-    /* View button styles */
-    .view-btn {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      margin-left: 10px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: var(--transition);
-      border-radius: 15px;
-      font-weight: 600;
-    }
-    
-    .view-btn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-    
-    /* Modal styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      overflow: auto;
-    }
-    
-    .modal-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      position: relative;
-    }
-    
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: white;
-      font-size: 35px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: var(--transition);
-      z-index: 2001;
-    }
-    
-    .close-btn:hover {
-      color: var(--primary-light);
-    }
-
-    /* Slideshow styles */
-    .slideshow-container {
-      position: relative;
-      max-width: 100%;
-      margin: 20px 0;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    .slideshow {
-      display: flex;
-      transition: transform 0.5s ease;
-    }
-
-    .slide {
-      min-width: 100%;
-      box-sizing: border-box;
-      text-align: center;
-    }
-
-    .slide img {
-      max-width: 100%;
-      max-height: 400px;
-      object-fit: contain;
-    }
-
-    .slideshow-nav {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
-
-    .slideshow-nav button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      margin: 0 5px;
-      cursor: pointer;
-      transition: var(--transition);
-      border-radius: 5px;
-      font-weight: 600;
-    }
-
-    .slideshow-nav button:hover {
-      background: var(--primary-dark);
-    }
-
-    .slide-indicators {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
-
-    .indicator {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #e0e0e0;
-      margin: 0 5px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .indicator.active {
-      background: var(--primary);
-      transform: scale(1.2);
-    }
-
     .social-links-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  margin-top: 30px;
-}
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      margin-top: 30px;
+    }
 
-.social-link {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-  padding: 10px 15px;
-  border-radius: 30px;
-  transition: var(--transition);
-  background: rgba(46, 125, 50, 0.1);
-}
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 30px;
+      transition: var(--transition);
+      background: rgba(46, 125, 50, 0.1);
+    }
 
-.social-link:hover {
-  background: var(--primary);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: var(--glow);
-}
+    .social-link:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: var(--glow);
+    }
 
-.social-link i {
-  font-size: 1.2rem;
-}
+    .social-link i {
+      font-size: 1.2rem;
+    }
 
     @media (max-width: 900px) {
       nav {
@@ -769,15 +542,10 @@
         padding: 30px 20px;
         margin: 30px 20px;
       }
-
-      .slide img {
-        max-height: 300px;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Floating leaves background -->
   <div class="floating-leaves" id="floatingLeaves"></div>
 
   <nav id="navbar">
@@ -936,13 +704,15 @@
       
       <div class="section-content"><strong>Bachelor of Electronic Engineering Technology (System Electronic):</strong></div>
       <ul class="list">
+        <li>NMK20603 - Computer Architecture Semester 2 2025/2026</li>
+        <li>NMK31704 – Design Project Semester 2 2025/2026</li>
         <li>NMK42003 - Instrumentation Semester 1 2025/2026</li>
         <li>NMK10702 - Writing in Engineering Technology Semester 1 2025/2026</li>
         <li>NMK31704 – Design Project Semester 2 2024/2025</li>
         <li>NMK10803 – Digital System Semester 2 2024/2025</li>
         <li>NMK42003 - Instrumentation Semester 1 2024/2025</li>
-        <li>NMK31703 – Design Project Semester 2 2023/2024</li>
         <li>NMK20603 - Computer Architecture - Additional Semester 2024/2025</li>
+        <li>NMK31703 – Design Project Semester 2 2023/2024</li>
         <li>NMK42003 - Instrumentation Semester 1 2023/2024</li>
         <li>NMK10603 - C Programming, Semester 2 2022/2023</li>
         <li>PGT106 - C Programming, Semester 2, 2022/2023</li>
@@ -955,6 +725,7 @@
     <div class="section-content">
       <div class="subsection-title">Administrative & Committee Appointments</div>
       <ul class="list">
+        <li>Program Committee for International Engineering Postgraduate Colloquium (IEPC), 2026</li>
         <li>Committee in KPI Multimedia, FKTEN 2025 & 2026</li>
         <li>Committee Program Pemerkasaan Pengaturcaraan Komputer Pelajar Tingkatan 6 STPM 2025</li>
         <li>Committee in KPI Kerohanian & Kebajikan Raudhah, FKTEN 2023 & 2024</li>
@@ -1034,6 +805,28 @@
       </div>
     </div>
   </section>
+  
+  <section id="mobility">
+    <div class="section-title">International Mobility Program</div>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-title">Research Collaboration Visit</div>
+        <div class="timeline-subtitle">University of Yamanashi (Outbound Mobility Program)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2024 - 2025</div>
+        <div class="timeline-title">A31 Campus Asia Plus Program</div>
+        <div class="timeline-subtitle">Inbound Mobility Program</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-title">Engineering Camp UniMAP-RUTS</div>
+        <div class="timeline-subtitle">Thailand (Outbound Mobility Program)</div>
+      </div>
+    </div>
+  </section>
 
   <section id="research">
     <div class="section-title">Research & Publications</div><br>
@@ -1079,7 +872,11 @@
     <div class="section-content">
       <div class="section-content"><strong>MSc/PhD Supervision:</strong></div>
       <ul class="list">
-        <li>Muhammad Aiman Bin Mohd Asyraf - Master of Science (Computer Engineering)<br>
+        <li>Siti Shamirah Binti Sabri - Doctor Of Philosophy (Computer Engineering)<br>
+        Title: Design and Development of a Multi-factorial Sand Cat Swarm Optimization Algorithm for T-Way Combinatorial Testing.<br>
+        Role: Co-Supervisor<br>
+        Status: Offered - Will start on April 2026</li>
+        <li>Muhammad Aiman Bin Mohd Asyraf - Doctor Of Philosophy (Computer Engineering)<br>
         Title: A New Phase Transition Controller in Sand Cat Swarm Optimization for Combinatorial Test Suite Generation<br>
         Role: Co-Supervisor<br>
         Status: Ongoing</li>
@@ -1103,6 +900,15 @@
         <li>Mohanambal A/P Loganathan (21373148, 2025/2026) - Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
         <li>Muhammad Fadlan Adli Bin Muhamad Amin (221372354, 2025/2026) - Fuzzy-AWOS: AI-Driven Weather & Runway Safety Monitoring System for Airports</li>
         <li>Nurul Alya Binti Abdul Aziz (221373175, 2025/2026) - Fuzzy-AirSense: In-Car Air Quality Monitoring & Safety System using Fuzzy Logic</li>
+        <li>Vaashienie A/P Santhiramogan (231373903, 2025/2026) - FuzzyFishCare: ESP32-Based Intelligent Aquaculture Monitoring and Aeration Control Using Fuzzy Logic</li>
+        <li>Muhammad Sufian Hakeem Bin Sofi (231373117, 2025/2026) - Fuzzy DamGuard: Fuzzy Logic-Based Dam Monitoring and Gate Control using ESP32</li>
+      </ul>
+
+      <div class="section-content"><strong>Design Project (Bachelor of Electronic Engineering Technology):</strong></div>
+      <ul class="list">
+        <li>Muhammad Nabil Aiman, Zarul Al-Amin, Priatharsshen, Nur Amalina, Diviyaa (2023/2024) - Safeguarding Apartments: IoT Fire Detection and Prevention System</li>
+        <li>Mohamad Zariff Daniel, Mohamad Sallehudin, Tengku Ahmad Naqiuddin, Muhammad Afnan (2024/2025) - Unitag Renewable vehicle access system for UniMAP Campus Using RFID-Based</li>
+        <li>Muhammad Nazri, Darawadi Khewmani, Ahmad Irfan Darwisy, Muhammad Izad (2024/2025) - Development of an Automated Integrated Aquaculture-Agriculture (IAA) System for the Asnaf Community</li>
       </ul>
     </div>
     
@@ -1248,11 +1054,17 @@
       <div class="section-content">UniMAP – PSU Engineering Postgraduate Conference 1st 2014, Thailand</div>
     </div>
   </section>
-       
+        
   <section id="Copyrights">
     <div class="section-title">Copyright Registration</div>
     
     <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2026</div>
+        <div class="timeline-title">Notification Number: CRLY2026E02231</div>
+        <div class="timeline-subtitle">FUZZY-MEDCARE: Fuzzy Logic based Health Monitoring and Emergency Detection For Home Bedridden Patients</div>
+      </div>
+
       <div class="timeline-item">
         <div class="timeline-date">2025</div>
         <div class="timeline-title">Notification Number: CRLY2025P00907</div>
@@ -1269,8 +1081,46 @@
 
   <section id="awards">
     <div class="section-title">Awards & Exhibition Participation</div>
-    
+
+    <div class="subsection-title">Awards</div>
     <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-title">Anugerah Kecemerlangan Penyelidikan 2025 - Anugerah Projek Komuniti</div>
+        <div class="timeline-subtitle">UniMAP for Society</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-title">Anugerah Seri Gemilang UniMAP 2025</div>
+        <div class="timeline-subtitle">Anugerah Perkhidmatan Cemerlang</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-title">Anugerah Pencetus Program 3U11</div>
+        <div class="timeline-subtitle">Fakulti Kejuruteraan & Teknologi Elektronik</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-title">Anugerah Kecemerlangan Penyelidikan 2024 - Anugerah Project Komuniti</div>
+        <div class="timeline-subtitle">UniMAP for Society</div>
+      </div>
+    </div>
+
+    <div class="subsection-title">Exhibition Participations</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2026</div>
+        <div class="timeline-title">Innovation Excellence (INNOVEX)</div>
+        <div class="section-content">
+          <ul class="list">
+            <li>Gold Medal: Flexisolar: A Metaheuristic Testing Tool For Solar Dashboard Monitoring System</li>
+            <li>Gold Medal: SandCatGo: Intelligent T-Way Testing Platform</li>
+            <li>Gold Medal: Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring And Emergency Detection for Home Bedridden Patients</li>
+            <li>Silver Medal: Self-Sustained Active Water-Cooling System for PV Modules using Irradiance-Based Control</li>
+          </ul>
+        </div>
+      </div>
+
       <div class="timeline-item">
         <div class="timeline-date">2025</div>
         <div class="timeline-title">Ekspo Rekacipta UniMAP (EREKA)</div>
@@ -1316,7 +1166,7 @@
       <div class="timeline-item">
         <div class="timeline-date">2025</div>
         <div class="timeline-title">Silver Medal, Postgraduate Research Poster Competition</div>
-        <div class="timeline-subtitle">Implementation of Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</div>
+        <div class="timeline-subtitle">Implementation of Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation (in conjunction with iFuture 2025 @ UniMAP)</div>
       </div>
       
       <div class="timeline-item">
@@ -1333,11 +1183,16 @@
 
       <div class="timeline-item">
         <div class="timeline-date">2025</div>
-        <div class="timeline-title">Participated in "Partandingan SULAM Innovate Ke-3"</div>
+        <div class="timeline-title">Participated in "Pertandingan SULAM Innovate Ke-3"</div>
         <div class="timeline-subtitle">In conjunction with 3rd International Conference on SULAM 2025</div>
       </div>
 
-      
+      <div class="timeline-item">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-title">Undergraduate Project Exhibition (UPEx 2024)</div>
+        <div class="timeline-subtitle">FKTEN 2024</div>
+      </div>
+
       <div class="timeline-item">
         <div class="timeline-date">2024</div>
         <div class="timeline-title">Silver Medal, Ekspo Rekacipta UniMAP (EREKA)</div>
@@ -1421,7 +1276,6 @@
     </div>
   </section>
 
-  <!-- Modal for displaying images and PDFs -->
   <div id="modal" class="modal">
     <span class="close-btn" onclick="closeModal()">&times;</span>
     <div class="modal-content">
