@@ -285,6 +285,21 @@
       section { padding: 2.5rem; margin: 2rem 1rem 4rem; }
       .column-list { column-count: 1; }
     }
+
+    /* --- MOBILE RESPONSIVENESS FIXES --- */
+    @media (max-width: 768px) {
+      /* 1. Shrink massive paddings that are squeezing content off-screen */
+      section { padding: 1.5rem 1rem !important; margin: 1.5rem 0.5rem 3rem !important; }
+      .card { padding: 1.2rem !important; }
+      
+      /* 2. Force grids to stack gracefully instead of overflowing horizontally */
+      .grid-2, .grid-3 { grid-template-columns: 1fr !important; gap: 1.5rem; }
+      
+      /* 3. Allow the T-Way interactive buttons to stack on tiny phones */
+      div[style*="display: flex; gap: 10px"] { flex-wrap: wrap; }
+      div[style*="display: flex; gap: 10px"] > button { width: 100%; flex: none !important; }
+    }
+   
   </style>
 </head>
 <body>
