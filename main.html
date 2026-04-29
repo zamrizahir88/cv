@@ -229,6 +229,34 @@
     .gauge-fill-explore { height: 100%; background: #3498db; width: 50%; float: left; transition: width 0.2s linear; }
     .gauge-fill-exploit { height: 100%; background: #e74c3c; width: 50%; float: right; transition: width 0.2s linear; }
 
+    /* Tab System CSS */
+    .expertise-tabs {
+      display: flex; gap: 15px; margin-bottom: 2rem; border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+    }
+    .expertise-tabs::-webkit-scrollbar { height: 4px; }
+    .tab-btn {
+      background: transparent; border: none; color: var(--text-muted); font-weight: 700;
+      font-size: 1.05rem; padding: 12px 20px; cursor: pointer; transition: 0.3s ease;
+      position: relative; font-family: 'Quicksand', sans-serif; white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--primary); background: rgba(46, 125, 50, 0.05); border-radius: 8px 8px 0 0; }
+    .tab-btn.active { color: var(--primary); }
+    .tab-btn.active::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px;
+      background: var(--primary); border-radius: 3px 3px 0 0;
+    }
+    .tab-content { display: none; animation: fadeInTab 0.5s ease forwards; }
+    .tab-content.active { display: block; }
+    @keyframes fadeInTab { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Mobile Fix for Canvas */
+    .canvas-responsive-wrapper {
+        width: 100%; max-width: 400px; margin: 0 auto; position: relative; 
+        border-radius: 8px; overflow: hidden; background: #1a1a2e; border: 2px solid var(--border-color);
+    }
+    #swarmCanvas { width: 100%; height: auto; display: block; aspect-ratio: 400 / 340; }
+
     /* Responsive */
     @media (max-width: 1024px) {
       nav { padding: 1rem 2rem; }
@@ -566,37 +594,6 @@
   </section>
 
   <section id="expertise">
-  <style>
-    /* Tab System CSS */
-    .expertise-tabs {
-      display: flex; gap: 15px; margin-bottom: 2rem; border-bottom: 2px solid var(--border-color);
-      padding-bottom: 0; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
-    }
-    .expertise-tabs::-webkit-scrollbar { height: 4px; }
-    .tab-btn {
-      background: transparent; border: none; color: var(--text-muted); font-weight: 700;
-      font-size: 1.05rem; padding: 12px 20px; cursor: pointer; transition: 0.3s ease;
-      position: relative; font-family: 'Quicksand', sans-serif; white-space: nowrap;
-    }
-    .tab-btn:hover { color: var(--primary); background: rgba(46, 125, 50, 0.05); border-radius: 8px 8px 0 0; }
-    .tab-btn.active { color: var(--primary); }
-    .tab-btn.active::after {
-      content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px;
-      background: var(--primary); border-radius: 3px 3px 0 0;
-    }
-    .tab-content { display: none; animation: fadeInTab 0.5s ease forwards; }
-    .tab-content.active { display: block; }
-    @keyframes fadeInTab { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* Mobile Fix for Canvas */
-    .canvas-responsive-wrapper {
-        width: 100%; max-width: 400px; margin: 0 auto; position: relative; 
-        border-radius: 8px; overflow: hidden; background: #1a1a2e; border: 2px solid var(--border-color);
-    }
-    #swarmCanvas { width: 100%; height: auto; display: block; aspect-ratio: 400 / 340; }
-  </style>
-
-  <section id="expertise">
     <div class="section-title"><i class="fas fa-project-diagram text-primary"></i> Core Expertise & Innovations</div>
     
     <div class="expertise-tabs">
@@ -715,33 +712,6 @@
         </div>
     </div>
 
-  </section>
-
-  <script>
-    // TABS LOGIC
-    function openExpertiseTab(evt, tabId) {
-      // Hide all tab content
-      const tabContents = document.getElementsByClassName("tab-content");
-      for (let i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove("active");
-      }
-      
-      // Remove active class from all buttons
-      const tabBtns = document.getElementsByClassName("tab-btn");
-      for (let i = 0; i < tabBtns.length; i++) {
-        tabBtns[i].classList.remove("active");
-      }
-      
-      // Show the current tab, and add an "active" class to the button that opened the tab
-      document.getElementById(tabId).classList.add("active");
-      evt.currentTarget.classList.add("active");
-
-      // Redraw canvas if switching to Tab 1 to prevent glitching
-      if(tabId === 'tab-concepts' && typeof drawLandscape === "function") {
-          setTimeout(() => { drawLandscape(); }, 50); // slight delay ensures container is visible before rendering
-      }
-    }
-  </script>
   </section>
 
   <section id="research">
@@ -1006,7 +976,8 @@
 
     <div class="subsection-title mt-5"><i class="fas fa-medal text-main"></i> Exhibition Participations & Medals</div>
     <div class="timeline mt-4">
-      <div class="timeline-item">
+
+        <div class="timeline-item">
             <div class="timeline-date">2026</div>
             <div class="card">
                 <div class="card-title mb-3">Ekspo Rekacipta UniMAP (EREKA)</div>
@@ -1364,6 +1335,30 @@
     }
     
     drawLandscape();
+
+    // TABS LOGIC
+    function openExpertiseTab(evt, tabId) {
+      // Hide all tab content
+      const tabContents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+      
+      // Remove active class from all buttons
+      const tabBtns = document.getElementsByClassName("tab-btn");
+      for (let i = 0; i < tabBtns.length; i++) {
+        tabBtns[i].classList.remove("active");
+      }
+      
+      // Show the current tab, and add an "active" class to the button that opened the tab
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
+
+      // Redraw canvas if switching to Tab 1 to prevent glitching
+      if(tabId === 'tab-concepts' && typeof drawLandscape === "function") {
+          setTimeout(() => { drawLandscape(); }, 50); // slight delay ensures container is visible before rendering
+      }
+    }
   </script>
 </body>
 </html>
