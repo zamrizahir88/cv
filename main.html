@@ -566,99 +566,182 @@
   </section>
 
   <section id="expertise">
-    <div class="section-title"><i class="fas fa-project-diagram text-primary"></i> Core Research: Metaheuristics & Software Testing</div>
+  <style>
+    /* Tab System CSS */
+    .expertise-tabs {
+      display: flex; gap: 15px; margin-bottom: 2rem; border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+    }
+    .expertise-tabs::-webkit-scrollbar { height: 4px; }
+    .tab-btn {
+      background: transparent; border: none; color: var(--text-muted); font-weight: 700;
+      font-size: 1.05rem; padding: 12px 20px; cursor: pointer; transition: 0.3s ease;
+      position: relative; font-family: 'Quicksand', sans-serif; white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--primary); background: rgba(46, 125, 50, 0.05); border-radius: 8px 8px 0 0; }
+    .tab-btn.active { color: var(--primary); }
+    .tab-btn.active::after {
+      content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px;
+      background: var(--primary); border-radius: 3px 3px 0 0;
+    }
+    .tab-content { display: none; animation: fadeInTab 0.5s ease forwards; }
+    .tab-content.active { display: block; }
+    @keyframes fadeInTab { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Mobile Fix for Canvas */
+    .canvas-responsive-wrapper {
+        width: 100%; max-width: 400px; margin: 0 auto; position: relative; 
+        border-radius: 8px; overflow: hidden; background: #1a1a2e; border: 2px solid var(--border-color);
+    }
+    #swarmCanvas { width: 100%; height: auto; display: block; aspect-ratio: 400 / 340; }
+  </style>
+
+  <section id="expertise">
+    <div class="section-title"><i class="fas fa-project-diagram text-primary"></i> Core Expertise & Innovations</div>
     
-    <div class="card">
-      <div class="card-title" style="font-size: 1.3rem;"><i class="fas fa-bomb"></i> 1. The Challenge: Combinatorial Explosion</div>
-      <p class="text-muted">
-        In software engineering, testing every possible combination of features (Exhaustive Testing) is mathematically impossible for large systems. <strong>T-Way Testing</strong> solves this by ensuring every possible interaction between a specific number of parameters (<em>T</em>) is covered, drastically reducing tests while maintaining high fault-detection rates.
-      </p>
+    <div class="expertise-tabs">
+        <button class="tab-btn active" onclick="openExpertiseTab(event, 'tab-concepts')"><i class="fas fa-brain"></i> 1. The Science Explained</button>
+        <button class="tab-btn" onclick="openExpertiseTab(event, 'tab-foundations')"><i class="fas fa-graduation-cap"></i> 2. Research Foundations</button>
+        <button class="tab-btn" onclick="openExpertiseTab(event, 'tab-tools')"><i class="fas fa-tools"></i> 3. Live Testing Tools</button>
+    </div>
+
+    <div id="tab-concepts" class="tab-content active">
+        
+        <div style="background: var(--primary); color: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(46,125,50,0.3);">
+            <h3 style="font-family: 'Quicksand', sans-serif; margin-bottom: 10px;"><i class="fas fa-globe"></i> The Big Picture: T-Way Testing & Optimization</h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 10px;">In modern software engineering, applications have too many interacting parameters. Testing every single combination (Exhaustive Testing) causes a "Combinatorial Explosion" that costs companies billions in wasted time and resources. <strong>T-Way Testing</strong> solves this by intelligently sampling interactions, drastically reducing test cases while maintaining high fault-detection rates.</p>
+            <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">However, finding the absolute <em>smallest</em> T-Way test suite is mathematically proven to be an NP-Hard problem. Traditional computation fails here. That is why my research applies <strong>Metaheuristic Optimization</strong> (like Swarm Intelligence). I build algorithms that act as AI "search parties" to navigate millions of possibilities, mathematically balancing exploration and exploitation to find the most perfectly optimized test suite.</p>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-title" style="font-size: 1.3rem;"><i class="fas fa-bomb"></i> The Challenge: Combinatorial Explosion</div>
+          <div class="grid-2" style="background: rgba(0,0,0,0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin-top: 1rem;">
+            <div>
+              <div class="card-title"><i class="fas fa-mobile-alt"></i> Interactive Example: Smartphone App</div>
+              <p style="font-size: 0.9rem;">Imagine testing an app with 3 parameters, each with 2 values:</p>
+              <ul class="custom-list text-sm" style="font-size: 0.9rem; margin-bottom: 1.5rem; background: var(--bg-base); padding: 15px 15px 15px 30px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <li><strong>OS:</strong> iOS <em>or</em> Android</li>
+                <li><strong>Network:</strong> WiFi <em>or</em> 5G</li>
+                <li><strong>Theme:</strong> Light <em>or</em> Dark</li>
+              </ul>
+              <div style="display: flex; gap: 10px; margin-bottom: 1rem;">
+                <button onclick="showExhaustive()" class="btn btn-outline" style="flex: 1; justify-content: center; font-size: 0.85rem; padding: 0.5rem;"><i class="fas fa-list"></i> Exhaustive</button>
+                <button onclick="showPairwise()" class="btn" style="flex: 1; justify-content: center; font-size: 0.85rem; padding: 0.5rem;"><i class="fas fa-compress-arrows-alt"></i> Pairwise</button>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column;">
+              <div id="explainer-stats" style="background: rgba(46, 125, 50, 0.1); color: var(--primary); padding: 10px; border-radius: 8px; font-weight: 700; margin-bottom: 10px; text-align: center; font-size: 0.9rem;">Select an option to generate tests.</div>
+              <div id="explainer-output" style="flex-grow: 1; background: var(--bg-base); color: var(--text-main); font-family: monospace; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); height: 180px; overflow-y: auto; overflow-x: auto; font-size: 0.85rem;">
+                <div style="color: var(--text-muted); text-align: center; margin-top: 50px;">Waiting for generation...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title" style="font-size: 1.3rem;"><i class="fas fa-brain"></i> The Solution: Metaheuristics & The Search Dilemma</div>
+          <p class="text-muted">A successful algorithm must actively balance two opposing forces: <strong style="color: #3498db;">Exploration</strong> (searching new areas) and <strong style="color: #e74c3c;">Exploitation</strong> (refining a known good area). If it explores too much, it wastes time. If it exploits too early, it suffers from premature convergence (getting trapped).</p>
+          <div class="grid-2" style="background: rgba(0,0,0,0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); align-items: center;">
+            <div>
+              <div class="card-title"><i class="fas fa-play-circle"></i> Live Algorithm Sandbox</div>
+              <p style="font-size: 0.9rem; margin-bottom: 1rem;">Watch how different strategies perform in a simulated solution space containing multiple "good" solutions, but only one "best" solution.</p>
+              <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem;">
+                <button onclick="runSimulation('explore')" class="btn btn-outline" style="justify-content: flex-start; font-size: 0.85rem;"><i class="fas fa-search" style="width: 20px; color: #3498db;"></i> 1. Pure Exploration (Random)</button>
+                <button onclick="runSimulation('exploit')" class="btn btn-outline" style="justify-content: flex-start; font-size: 0.85rem;"><i class="fas fa-magnet" style="width: 20px; color: #e74c3c;"></i> 2. Pure Exploitation (Greedy)</button>
+                <button onclick="runSimulation('balanced')" class="btn" style="justify-content: flex-start; font-size: 0.85rem; background: var(--primary); color: white;"><i class="fas fa-balance-scale" style="width: 20px;"></i> 3. Dynamic Balance (SCSO Algorithm)</button>
+              </div>
+              <div style="background: var(--bg-base); border: 1px solid var(--border-color); padding: 10px; border-radius: 8px;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">
+                  <span style="color: #3498db;">Explore</span><span style="color: #e74c3c;">Exploit</span>
+                </div>
+                <div class="gauge-container">
+                  <div id="gauge-explore" class="gauge-fill-explore" style="width: 50%;"></div>
+                  <div id="gauge-exploit" class="gauge-fill-exploit" style="width: 50%;"></div>
+                </div>
+                <div id="sim-status" style="margin-top: 10px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); min-height: 55px;"><em>Click a mode above to observe the algorithm's behavior.</em></div>
+              </div>
+            </div>
+            
+            <div class="canvas-responsive-wrapper">
+              <canvas id="swarmCanvas" width="400" height="340"></canvas>
+              <div style="position: absolute; top: 10px; left: 10px; color: rgba(255,255,255,0.7); font-size: 0.7rem; font-family: monospace;">SOLUTION SPACE</div>
+            </div>
+
+          </div>
+        </div>
+    </div>
+
+    <div id="tab-foundations" class="tab-content">
+        <div class="grid-2 mt-2">
+            <div class="card" style="display: flex; flex-direction: column;">
+                <div class="timeline-date mb-2" style="align-self: flex-start;">Master of Science (2016)</div>
+                <div class="card-title text-primary" style="font-size: 1.15rem;">Sequence-Based Interaction Testing</div>
+                <div class="card-subtitle mb-4" style="color: var(--text-main); font-style: italic; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">"A T-Way Test Suite Generation Strategy for Sequence-Based Interaction Testing"</div>
+                
+                <p class="text-sm text-muted mb-3"><strong><i class="fas fa-exclamation-triangle text-primary"></i> The Sequence Bottleneck:</strong> Traditional t-way strategies assume all software inputs happen simultaneously. But in the real world—like with alarms, control systems, and reactive hardware—the <em>exact sequence</em> of inputs is the difference between success and failure. Exhaustively testing these sequences is computationally paralyzing; just 5 events create 120 unique test sequences.</p>
+                
+                <p class="text-sm text-muted mb-3"><strong><i class="fas fa-cogs text-primary"></i> The Engineering Breakthrough:</strong> I engineered the <strong>SCATS</strong> strategy. Building upon existing research, I adapted and implemented a "Sequence Tree" data structure to efficiently store and search uncovered sequence tuples. This was paired with a greedy Test Case Generator that evaluates partial test candidates to systematically build the optimal sequence array.</p>
+                
+                <p class="text-sm text-muted mb-0"><strong><i class="fas fa-chart-line text-primary"></i> The Big Win (Impact):</strong> SCATS achieved a massive <strong>92.5% reduction</strong> in required test cases compared to exhaustive testing. When benchmarked against top-tier global strategies (including T-SEQ, U, Ur, and BA), SCATS consistently produced tighter, highly optimized test suites, dominating at higher event scales.</p>
+            </div>
+
+            <div class="card" style="display: flex; flex-direction: column;">
+                <div class="timeline-date mb-2" style="align-self: flex-start;">Doctor of Philosophy (2023)</div>
+                <div class="card-title text-primary" style="font-size: 1.15rem;">Ant Colony Optimization & Fuzzy Logic</div>
+                <div class="card-subtitle mb-4" style="color: var(--text-main); font-style: italic; border-bottom: 1px solid var(--border-color); padding-bottom: 10px;">"A Self-Adapting Ant Colony Optimization Algorithm using Fuzzy Logic (ACOF) for Combinatorial Test Suite Generation"</div>
+                
+                <p class="text-sm text-muted mb-3"><strong><i class="fas fa-exclamation-triangle text-primary"></i> The NP-Hard Trap:</strong> Finding the smallest possible test suite is an NP-Hard problem. While the Ant Colony System (ACS) is a brilliant metaheuristic, it is historically rigid. It uses a fixed number of ants and a static probability rule for searching. This rigidity forces the algorithm to blindly guess when to explore or exploit, leading to wasted execution time and premature convergence.</p>
+                
+                <p class="text-sm text-muted mb-3"><strong><i class="fas fa-brain text-primary"></i> The "Self-Aware" Swarm:</strong> I developed <strong>ACOF</strong> to give the swarm a brain. By hybridizing the Ant Colony algorithm with a Mamdani-Fuzzy Inference System (FIS), the algorithm actively analyzes its test coverage and dynamically dictates exactly how many ants to deploy, mathematically shifting behavior between wide <em>Exploration</em> and aggressive <em>Exploitation</em>.</p>
+                
+                <p class="text-sm text-muted mb-0"><strong><i class="fas fa-chart-line text-primary"></i> The Big Win (Impact):</strong> To prove ACOF's superiority, I ran rigorous statistical validations, benchmarking it against a staggering <strong>26 different computational and metaheuristic strategies</strong>. ACOF not only generated highly competitive optimal test suite sizes, but the dynamic fuzzy controller slashed algorithm execution time by up to <strong>79.1%</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="tab-tools" class="tab-content">
+        <div class="card" style="border-left: 5px solid var(--primary); background: var(--glass-bg); margin-top: 1rem;">
+          <div class="card-title" style="font-size: 1.3rem;"><i class="fas fa-globe-americas"></i> The Real-World Impact (ROI)</div>
+          <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 1.05rem;">
+            In massive software systems, running a single test case might take 10 minutes and cost hundreds of dollars. By using modern metaheuristics to shrink a test suite from 10,000 cases down to just 400 cases, we save companies weeks of testing time, reduce computing costs, and guarantee the software is safe to deploy.
+          </p>
+          <div style="background: rgba(46, 125, 50, 0.05); border: 1px dashed var(--primary); padding: 3rem 1.5rem; border-radius: 8px; text-align: center;">
+            <i class="fas fa-laptop-code fa-3x mb-3" style="color: var(--primary); margin-bottom: 15px;"></i>
+            <h3 style="color: var(--primary); margin-bottom: 10px;">Interactive T-Way Testing Tool</h3>
+            <p style="color: var(--text-muted); font-size: 1rem; margin-bottom: 0;">
+              <em>Coming Soon! A live portal where you can input your own software parameters and run my algorithms directly in your browser.</em>
+            </p>
+          </div>
+        </div>
+    </div>
+
+  </section>
+
+  <script>
+    // TABS LOGIC
+    function openExpertiseTab(evt, tabId) {
+      // Hide all tab content
+      const tabContents = document.getElementsByClassName("tab-content");
+      for (let i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
       
-      <div class="grid-2" style="background: rgba(0,0,0,0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
-        <div>
-          <div class="card-title"><i class="fas fa-mobile-alt"></i> Interactive Example: Smartphone App</div>
-          <p style="font-size: 0.9rem;">Imagine testing an app with 3 parameters, each with 2 values:</p>
-          <ul class="custom-list text-sm" style="font-size: 0.9rem; margin-bottom: 1.5rem; background: var(--bg-base); padding: 15px 15px 15px 30px; border-radius: 8px; border: 1px solid var(--border-color);">
-            <li><strong>OS:</strong> iOS <em>or</em> Android</li>
-            <li><strong>Network:</strong> WiFi <em>or</em> 5G</li>
-            <li><strong>Theme:</strong> Light <em>or</em> Dark</li>
-          </ul>
-          <p style="font-size: 0.9rem; margin-bottom: 10px;">Click to see how the test suite scales:</p>
-          <div style="display: flex; gap: 10px; margin-bottom: 1rem;">
-            <button onclick="showExhaustive()" class="btn btn-outline" style="flex: 1; justify-content: center; font-size: 0.85rem;"><i class="fas fa-list"></i> Exhaustive</button>
-            <button onclick="showPairwise()" class="btn" style="flex: 1; justify-content: center; font-size: 0.85rem;"><i class="fas fa-compress-arrows-alt"></i> Pairwise (T=2)</button>
-          </div>
-        </div>
-        <div style="display: flex; flex-direction: column;">
-          <div id="explainer-stats" style="background: rgba(46, 125, 50, 0.1); color: var(--primary); padding: 10px; border-radius: 8px; font-weight: 700; margin-bottom: 10px; text-align: center; font-size: 0.9rem;">
-            Select an option to generate tests.
-          </div>
-          <div id="explainer-output" style="flex-grow: 1; background: var(--bg-base); color: var(--text-main); font-family: monospace; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); height: 180px; overflow-y: auto; font-size: 0.85rem;">
-            <div style="color: var(--text-muted); text-align: center; margin-top: 50px;">Waiting for generation...</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title" style="font-size: 1.3rem;"><i class="fas fa-brain"></i> 2. The Solution: Metaheuristics & The Search Dilemma</div>
-      <p class="text-muted">
-        Finding <em>a</em> T-Way test suite is easy, but finding the <strong>absolute smallest possible</strong> suite is an NP-Hard problem. To solve this, I develop Metaheuristic algorithms (like Sand Cat Swarm Optimization). A successful algorithm must actively balance two opposing forces:
-      </p>
-      <ul style="margin-bottom: 1.5rem; padding-left: 20px; color: var(--text-muted);">
-        <li><strong style="color: #3498db;">Exploration:</strong> Searching entirely new areas of the solution space to avoid missing the absolute best configuration.</li>
-        <li><strong style="color: #e74c3c;">Exploitation:</strong> Zooming in on a known "good" area and making rapid, tiny tweaks to squeeze out redundant test cases.</li>
-      </ul>
+      // Remove active class from all buttons
+      const tabBtns = document.getElementsByClassName("tab-btn");
+      for (let i = 0; i < tabBtns.length; i++) {
+        tabBtns[i].classList.remove("active");
+      }
       
-      <div class="grid-2" style="background: rgba(0,0,0,0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); align-items: center;">
-        <div>
-          <div class="card-title"><i class="fas fa-play-circle"></i> Live Algorithm Sandbox</div>
-          <p style="font-size: 0.9rem; margin-bottom: 1rem;">Watch how different strategies perform in a simulated solution space containing multiple "good" solutions, but only one "best" solution.</p>
-          <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem;">
-            <button onclick="runSimulation('explore')" class="btn btn-outline" style="justify-content: flex-start; font-size: 0.85rem;">
-              <i class="fas fa-search" style="width: 20px; color: #3498db;"></i> 1. Pure Exploration (Random)
-            </button>
-            <button onclick="runSimulation('exploit')" class="btn btn-outline" style="justify-content: flex-start; font-size: 0.85rem;">
-              <i class="fas fa-magnet" style="width: 20px; color: #e74c3c;"></i> 2. Pure Exploitation (Greedy)
-            </button>
-            <button onclick="runSimulation('balanced')" class="btn" style="justify-content: flex-start; font-size: 0.85rem; background: var(--primary); color: white;">
-              <i class="fas fa-balance-scale" style="width: 20px;"></i> 3. Dynamic Balance (SCSO Algorithm)
-            </button>
-          </div>
-          <div style="background: var(--bg-base); border: 1px solid var(--border-color); padding: 10px; border-radius: 8px;">
-            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">
-              <span style="color: #3498db;">Explore</span><span style="color: #e74c3c;">Exploit</span>
-            </div>
-            <div class="gauge-container">
-              <div id="gauge-explore" class="gauge-fill-explore" style="width: 50%;"></div>
-              <div id="gauge-exploit" class="gauge-fill-exploit" style="width: 50%;"></div>
-            </div>
-            <div id="sim-status" style="margin-top: 10px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); min-height: 45px;">
-              <em>Click a mode above to observe the algorithm's behavior.</em>
-            </div>
-          </div>
-        </div>
+      // Show the current tab, and add an "active" class to the button that opened the tab
+      document.getElementById(tabId).classList.add("active");
+      evt.currentTarget.classList.add("active");
 
-        <div style="position: relative; width: 100%; border-radius: 8px; overflow: hidden; background: #1a1a2e; border: 2px solid var(--border-color);">
-          <canvas id="swarmCanvas" width="400" height="340" style="display: block; width: 100%; height: auto;"></canvas>
-          <div style="position: absolute; top: 10px; left: 10px; color: rgba(255,255,255,0.7); font-size: 0.7rem; font-family: monospace;">SOLUTION SPACE</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card" style="border-left: 5px solid var(--primary); background: var(--glass-bg);">
-      <div class="card-title" style="font-size: 1.3rem;"><i class="fas fa-globe-americas"></i> 3. The Real-World Impact (ROI)</div>
-      <p class="text-muted" style="margin-bottom: 1.5rem; font-size: 1.05rem;">
-        In a massive software system (like a banking app or aviation software), running a single test case might take 10 minutes and cost hundreds of dollars. By using my SCSO-SARSA algorithm to shrink a test suite from 10,000 cases down to just 400 cases, we save companies weeks of testing time, reduce computing costs, and guarantee the software is safe to deploy.
-      </p>
-      <div style="background: rgba(46, 125, 50, 0.05); border: 1px dashed var(--primary); padding: 1.5rem; border-radius: 8px; text-align: center;">
-        <i class="fas fa-tools fa-2x mb-2" style="color: var(--primary); margin-bottom: 10px;"></i>
-        <h4 style="color: var(--primary); margin-bottom: 5px;">Interactive T-Way Testing Tool</h4>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0;">
-          <em>Coming Soon! A live portal where you can input your own software parameters and run my algorithm directly in your browser.</em>
-        </p>
-      </div>
-    </div>
+      // Redraw canvas if switching to Tab 1 to prevent glitching
+      if(tabId === 'tab-concepts' && typeof drawLandscape === "function") {
+          setTimeout(() => { drawLandscape(); }, 50); // slight delay ensures container is visible before rendering
+      }
+    }
+  </script>
   </section>
 
   <section id="research">
