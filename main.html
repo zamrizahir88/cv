@@ -88,7 +88,6 @@
     nav .logo { font-size: 1.6rem; font-weight: 700; color: var(--primary); font-family: 'Quicksand', sans-serif; letter-spacing: 1px; }
     nav .logo span { color: var(--text-main); }
 
-    /* Condensed gap and font-size to ensure 1 line fit */
     nav ul { list-style: none; display: flex; gap: 1.2rem; align-items: center; }
     nav ul li a {
       color: var(--text-muted); text-decoration: none; font-size: 0.8rem;
@@ -257,7 +256,7 @@
     }
     #swarmCanvas { width: 100%; height: auto; display: block; aspect-ratio: 400 / 340; }
 
-    /* Responsive */
+    /* --- MOBILE RESPONSIVENESS FIXES --- */
     @media (max-width: 1024px) {
       nav { padding: 1rem 2rem; }
       nav ul {
@@ -286,7 +285,6 @@
       .column-list { column-count: 1; }
     }
 
-    /* --- MOBILE RESPONSIVENESS FIXES --- */
     @media (max-width: 768px) {
       /* 1. Shrink massive paddings that are squeezing content off-screen */
       section { padding: 1.5rem 1rem !important; margin: 1.5rem 0.5rem 3rem !important; }
@@ -296,10 +294,10 @@
       .grid-2, .grid-3 { grid-template-columns: 1fr !important; gap: 1.5rem; }
       
       /* 3. Allow the T-Way interactive buttons to stack on tiny phones */
-      div[style*="display: flex; gap: 10px"] { flex-wrap: wrap; }
-      div[style*="display: flex; gap: 10px"] > button { width: 100%; flex: none !important; }
+      .expertise-mobile-stack { flex-direction: column !important; }
+      .expertise-mobile-stack > button { width: 100%; flex: none !important; }
+      .grant-card-full { grid-column: 1 / -1 !important; }
     }
-   
   </style>
 </head>
 <body>
@@ -608,42 +606,6 @@
     </div>
   </section>
 
-  <style>
-    /* Tab System CSS */
-    .expertise-tabs {
-      display: flex; gap: 15px; margin-bottom: 2rem; border-bottom: 2px solid var(--border-color);
-      padding-bottom: 0; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
-    }
-    .expertise-tabs::-webkit-scrollbar { height: 4px; }
-    .tab-btn {
-      background: transparent; border: none; color: var(--text-muted); font-weight: 700;
-      font-size: 1.05rem; padding: 12px 20px; cursor: pointer; transition: 0.3s ease;
-      position: relative; font-family: 'Quicksand', sans-serif; white-space: nowrap;
-    }
-    .tab-btn:hover { color: var(--primary); background: rgba(46, 125, 50, 0.05); border-radius: 8px 8px 0 0; }
-    .tab-btn.active { color: var(--primary); }
-    .tab-btn.active::after {
-      content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px;
-      background: var(--primary); border-radius: 3px 3px 0 0;
-    }
-    .tab-content { display: none; animation: fadeInTab 0.5s ease forwards; }
-    .tab-content.active { display: block; }
-    @keyframes fadeInTab { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-
-    /* Mobile Fixes for Expertise Section */
-    .canvas-responsive-wrapper {
-        width: 100%; max-width: 400px; margin: 0 auto; position: relative; 
-        border-radius: 8px; overflow: hidden; background: #1a1a2e; border: 2px solid var(--border-color);
-    }
-    #swarmCanvas { width: 100%; height: auto; display: block; aspect-ratio: 400 / 340; }
-
-    @media (max-width: 768px) {
-      .expertise-mobile-stack { flex-direction: column !important; }
-      .expertise-mobile-stack > button { width: 100%; flex: none !important; }
-      .grant-card-full { grid-column: 1 / -1 !important; }
-    }
-  </style>
-
   <section id="expertise">
     <div class="section-title"><i class="fas fa-project-diagram text-primary"></i> Core Expertise & Innovations</div>
     
@@ -777,189 +739,6 @@
     </div>
 
   </section>
-
-  <script>
-    // =====================================
-    // EXPERTISE JAVASCRIPT (T-WAY & SWARM)
-    // =====================================
-    
-    // TAB LOGIC
-    function openExpertiseTab(evt, tabId) {
-      const tabContents = document.getElementsByClassName("tab-content");
-      for (let i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove("active");
-      }
-      
-      const tabBtns = document.getElementsByClassName("tab-btn");
-      for (let i = 0; i < tabBtns.length; i++) {
-        tabBtns[i].classList.remove("active");
-      }
-      
-      document.getElementById(tabId).classList.add("active");
-      evt.currentTarget.classList.add("active");
-
-      // Redraw canvas if switching to Tab 1 to prevent glitching
-      if(tabId === 'tab-concepts' && typeof drawLandscape === "function") {
-          setTimeout(() => { drawLandscape(); }, 50); 
-      }
-    }
-
-    // T-WAY EXPLAINER LOGIC
-    function showExhaustive() {
-      document.getElementById('explainer-stats').innerHTML = "Exhaustive Testing: 8 Test Cases Required";
-      document.getElementById('explainer-stats').style.background = "rgba(231, 76, 60, 0.1)"; 
-      document.getElementById('explainer-stats').style.color = "#e74c3c";
-      document.getElementById('explainer-output').innerHTML = `
-        <table style="width: 100%; border-collapse: collapse; text-align: left;">
-          <tr style="border-bottom: 1px solid var(--border-color); color: #e74c3c;">
-            <th style="padding: 5px;">#</th><th>OS</th><th>Network</th><th>Theme</th>
-          </tr>
-          <tr><td style="padding: 5px;">1</td><td>iOS</td><td>WiFi</td><td>Light</td></tr>
-          <tr><td style="padding: 5px;">2</td><td>iOS</td><td>WiFi</td><td>Dark</td></tr>
-          <tr><td style="padding: 5px;">3</td><td>iOS</td><td>5G</td><td>Light</td></tr>
-          <tr><td style="padding: 5px;">4</td><td>iOS</td><td>5G</td><td>Dark</td></tr>
-          <tr><td style="padding: 5px;">5</td><td>Android</td><td>WiFi</td><td>Light</td></tr>
-          <tr><td style="padding: 5px;">6</td><td>Android</td><td>WiFi</td><td>Dark</td></tr>
-          <tr><td style="padding: 5px;">7</td><td>Android</td><td>5G</td><td>Light</td></tr>
-          <tr><td style="padding: 5px;">8</td><td>Android</td><td>5G</td><td>Dark</td></tr>
-        </table>`;
-    }
-
-    function showPairwise() {
-      document.getElementById('explainer-stats').innerHTML = "Pairwise (T=2) Testing: Only 4 Test Cases!";
-      document.getElementById('explainer-stats').style.background = "rgba(46, 125, 50, 0.1)"; 
-      document.getElementById('explainer-stats').style.color = "var(--primary)";
-      document.getElementById('explainer-output').innerHTML = `
-        <table style="width: 100%; border-collapse: collapse; text-align: left;">
-          <tr style="border-bottom: 1px solid var(--border-color); color: var(--primary);">
-            <th style="padding: 5px;">#</th><th>OS</th><th>Network</th><th>Theme</th>
-          </tr>
-          <tr><td style="padding: 5px;">1</td><td>iOS</td><td>WiFi</td><td>Light</td></tr>
-          <tr><td style="padding: 5px;">2</td><td>iOS</td><td>5G</td><td>Dark</td></tr>
-          <tr><td style="padding: 5px;">3</td><td>Android</td><td>WiFi</td><td>Dark</td></tr>
-          <tr><td style="padding: 5px;">4</td><td>Android</td><td>5G</td><td>Light</td></tr>
-        </table>
-        <div style="margin-top: 10px; color: var(--primary-dark); font-weight: 600; padding: 8px; background: rgba(46, 125, 50, 0.05); border-radius: 5px; font-size: 0.8rem;">
-          <i class="fas fa-check-circle"></i> Every possible pair (e.g., iOS+WiFi, Android+Light) is successfully tested in half the time!
-        </div>`;
-    }
-
-    // SWARM SIMULATION LOGIC
-    const canvas = document.getElementById('swarmCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [], animationId, currentMode = null, frameCount = 0, currentTrapTarget = null;
-
-    const optima = [
-      { x: 80,  y: 70,  r: 40, color: 'rgba(231, 76, 60, 0.2)', core: '#e74c3c', text: 'Local Optimum', isGlobal: false },
-      { x: 330, y: 70,  r: 50, color: 'rgba(231, 76, 60, 0.2)', core: '#e74c3c', text: 'Local Optimum', isGlobal: false },
-      { x: 90,  y: 260, r: 50, color: 'rgba(231, 76, 60, 0.2)', core: '#e74c3c', text: 'Local Trap', isGlobal: false }, 
-      { x: 290, y: 250, r: 70, color: 'rgba(76, 175, 80, 0.3)', core: '#4caf50', text: 'Global Optimum', isGlobal: true }
-    ];
-
-    class Particle {
-      constructor() {
-        this.x = 200; this.y = 160; 
-        this.vx = (Math.random() - 0.5) * 6; this.vy = (Math.random() - 0.5) * 6;
-      }
-      update(mode, frames) {
-        if (mode === 'explore') {
-          this.vx += (Math.random() - 0.5) * 2.5; this.vy += (Math.random() - 0.5) * 2.5;
-        } 
-        else if (mode === 'exploit') {
-          let target = currentTrapTarget; 
-          this.vx += (target.x - this.x) * 0.05 + (Math.random() - 0.5) * 3;
-          this.vy += (target.y - this.y) * 0.05 + (Math.random() - 0.5) * 3;
-          this.vx *= 0.88; this.vy *= 0.88; 
-        } 
-        else if (mode === 'balanced') {
-          if (frames < 120) {
-            this.vx += (Math.random() - 0.5) * 3.5; this.vy += (Math.random() - 0.5) * 3.5;
-          } else if (frames >= 120 && frames < 250) {
-            let ratio = (frames - 120) / 130; 
-            let target = optima.find(o => o.isGlobal);
-            this.vx += (Math.random() - 0.5) * (3.5 * (1 - ratio));
-            this.vy += (Math.random() - 0.5) * (3.5 * (1 - ratio));
-            this.vx += (target.x - this.x) * (0.04 * ratio);
-            this.vy += (target.y - this.y) * (0.04 * ratio);
-            this.vx *= 0.9; this.vy *= 0.9;
-          } else {
-            let target = optima.find(o => o.isGlobal);
-            this.vx += (target.x - this.x) * 0.05 + (Math.random() - 0.5) * 2;
-            this.vy += (target.y - this.y) * 0.05 + (Math.random() - 0.5) * 2;
-            this.vx *= 0.85; this.vy *= 0.85;
-          }
-        }
-        let speed = Math.hypot(this.vx, this.vy);
-        if (speed > 8) { this.vx = (this.vx/speed)*8; this.vy = (this.vy/speed)*8; }
-        this.x += this.vx; this.y += this.vy;
-        if (this.x < 0) { this.x = 0; this.vx *= -1; }
-        if (this.x > canvas.width) { this.x = canvas.width; this.vx *= -1; }
-        if (this.y < 0) { this.y = 0; this.vy *= -1; }
-        if (this.y > canvas.height) { this.y = canvas.height; this.vy *= -1; }
-      }
-      draw() {
-        ctx.beginPath(); ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = '#ffffff'; ctx.fill();
-      }
-    }
-
-    function drawLandscape() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      optima.forEach(opt => {
-        ctx.beginPath(); ctx.arc(opt.x, opt.y, opt.r, 0, Math.PI*2);
-        ctx.fillStyle = opt.color; ctx.fill();
-        ctx.beginPath(); ctx.arc(opt.x, opt.y, 5, 0, Math.PI*2);
-        ctx.fillStyle = opt.core; ctx.fill();
-        ctx.fillStyle = opt.core; 
-        ctx.font = opt.isGlobal ? "bold 13px sans-serif" : "11px sans-serif"; 
-        ctx.fillText(opt.text, opt.x - (opt.isGlobal ? 45 : 35), opt.y - 12);
-      });
-    }
-
-    function updateGauge(mode, frames) {
-      const gExp = document.getElementById('gauge-explore'), gExpt = document.getElementById('gauge-exploit'), sBox = document.getElementById('sim-status');
-      if (mode === 'explore') {
-        gExp.style.width = '100%'; gExpt.style.width = '0%';
-        sBox.innerHTML = '<span style="color:#3498db">Agents wander wildly. They map the entire space, but never converge to build a final test suite.</span>';
-      } else if (mode === 'exploit') {
-        gExp.style.width = '0%'; gExpt.style.width = '100%';
-        if (currentTrapTarget && currentTrapTarget.isGlobal) {
-            sBox.innerHTML = '<span style="color:#4caf50"><strong>Premature Convergence (Lucky!):</strong> The swarm greedily rushed to a target together. By pure luck, it was the <strong>Global Optimum</strong>! But relying on luck is bad engineering.</span>';
-        } else {
-            sBox.innerHTML = '<span style="color:#e74c3c"><strong>Premature Convergence (Trapped):</strong> The swarm shared information too greedily. They all rushed to a <strong>Local Trap</strong> and got permanently stuck together, missing the global best!</span>';
-        }
-      } else if (mode === 'balanced') {
-        if (frames < 120) {
-          gExp.style.width = '100%'; gExpt.style.width = '0%';
-          sBox.innerHTML = '<span style="color:#3498db"><strong>Phase 1:</strong> High exploration to effectively map out all possibilities in the solution space.</span>';
-        } else if (frames >= 120 && frames < 250) {
-          let ratio = (frames - 120) / 130;
-          gExp.style.width = (100 - (ratio*100)) + '%'; gExpt.style.width = (ratio*100) + '%';
-          sBox.innerHTML = '<span style="color:#f39c12"><strong>Phase 2:</strong> Dynamic Transition. Slowly ignoring Local Optima and gravitating towards the best area found.</span>';
-        } else {
-          gExp.style.width = '0%'; gExpt.style.width = '100%';
-          sBox.innerHTML = '<span style="color:#4caf50"><strong>Phase 3:</strong> High Exploitation. Safely swarming the <strong>Global Optimum</strong> to perfectly tune the final test suite!</span>';
-        }
-      }
-    }
-
-    function animate() {
-      drawLandscape(); frameCount++; updateGauge(currentMode, frameCount);
-      particles.forEach(p => { p.update(currentMode, frameCount); p.draw(); });
-      animationId = requestAnimationFrame(animate);
-    }
-
-    function runSimulation(mode) {
-      cancelAnimationFrame(animationId);
-      currentMode = mode; frameCount = 0; particles = [];
-      if (mode === 'exploit') { currentTrapTarget = optima[Math.floor(Math.random() * optima.length)]; }
-      for(let i=0; i<60; i++) { let p = new Particle(); p.x = Math.random() * canvas.width; p.y = Math.random() * canvas.height; particles.push(p); }
-      animate();
-    }
-    
-    // Initialize the canvas drawing on load
-    drawLandscape();
-  </script>
 
   <section id="research">
     <div class="section-title"><i class="fas fa-flask"></i> Academic Research & Publications</div>
@@ -1537,6 +1316,7 @@
     }
 
     function drawLandscape() {
+      if(!ctx) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       optima.forEach(opt => {
         ctx.beginPath(); ctx.arc(opt.x, opt.y, opt.r, 0, Math.PI*2);
@@ -1551,6 +1331,8 @@
 
     function updateGauge(mode, frames) {
       const gExp = document.getElementById('gauge-explore'), gExpt = document.getElementById('gauge-exploit'), sBox = document.getElementById('sim-status');
+      if (!gExp || !gExpt || !sBox) return;
+      
       if (mode === 'explore') {
         gExp.style.width = '100%'; gExpt.style.width = '0%';
         sBox.innerHTML = '<span style="color:#3498db">Agents wander wildly. They map the entire space, but never converge to build a final test suite.</span>';
@@ -1590,7 +1372,8 @@
       animate();
     }
     
-    drawLandscape();
+    // Initialize the canvas drawing on load
+    if(canvas) { drawLandscape(); }
 
     // TABS LOGIC
     function openExpertiseTab(evt, tabId) {
