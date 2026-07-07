@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ts. Dr. Mohd Zamri Bin Zahir Ahmad - CV</title>
+  <meta name="description" content="Ts. Dr. Mohd Zamri Bin Zahir Ahmad — Senior Lecturer at UniMAP specializing in Optimization Algorithms, Combinatorial Testing, and Software Testing."/>
+  <meta property="og:title" content="Ts. Dr. Mohd Zamri Bin Zahir Ahmad — CV"/>
+  <meta property="og:description" content="Senior Lecturer at UniMAP specializing in Optimization Algorithms, Combinatorial Testing, and Software Testing."/>
+  <meta property="og:type" content="website"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232e7d32'/><text x='50' y='72' font-size='65' font-weight='700' text-anchor='middle' fill='white' font-family='sans-serif'>Z</text></svg>"/>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
@@ -114,7 +119,7 @@
     /* Hero */
     .hero { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 140px 2rem 4rem; }
     .hero-content {
-      max-width: 1200px; width: 100%; padding: 4rem; 
+      max-width: 1100px; width: 100%; padding: 4rem; 
       background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-radius: 24px; box-shadow: var(--card-shadow); border: 1px solid var(--glass-border);
       animation: fadeUp 0.8s ease forwards; display: flex; align-items: center; gap: 4rem; margin-bottom: 2rem;
@@ -150,7 +155,7 @@
     .btn-outline:hover { background: var(--primary); color: white; }
 
     .impact-bar {
-      max-width: 1200px; width: 100%; display: grid; grid-template-columns: repeat(4, 1fr);
+      max-width: 1100px; width: 100%; display: grid; grid-template-columns: repeat(4, 1fr);
       background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-radius: 16px; box-shadow: var(--card-shadow); border: 1px solid var(--glass-border);
       padding: 1.5rem; gap: 1rem; text-align: center; animation: fadeUp 1s ease forwards;
@@ -229,11 +234,26 @@
     .gauge-fill-exploit { height: 100%; background: #e74c3c; width: 50%; float: right; transition: width 0.2s linear; }
 
     /* Tab System CSS */
+    .tab-scroll-wrapper { position: relative; display: flex; align-items: center; margin-bottom: 2rem; }
+    .tab-scroll-chevron {
+      display: none; align-items: center; justify-content: center;
+      background: var(--glass-bg); border: 1px solid var(--border-color);
+      color: var(--primary); width: 32px; height: 32px; border-radius: 50%;
+      cursor: pointer; font-size: 0.8rem; flex-shrink: 0; z-index: 2;
+      transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: absolute; top: 50%; transform: translateY(-50%);
+    }
+    .tab-scroll-chevron:hover { background: var(--primary); color: #fff; }
+    .tab-scroll-chevron.chevron-left { left: -8px; }
+    .tab-scroll-chevron.chevron-right { right: -8px; }
+    .tab-scroll-chevron.visible { display: flex; }
     .expertise-tabs {
-      display: flex; gap: 15px; margin-bottom: 2rem; border-bottom: 2px solid var(--border-color);
+      display: flex; gap: 15px; margin-bottom: 0; border-bottom: 2px solid var(--border-color);
       padding-bottom: 0; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+      position: relative; flex: 1;
     }
     .expertise-tabs::-webkit-scrollbar { height: 4px; }
+    .expertise-tabs::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
     .tab-btn {
       background: transparent; border: none; color: var(--text-muted); font-weight: 700;
       font-size: 1.05rem; padding: 12px 20px; cursor: pointer; transition: 0.3s ease;
@@ -362,15 +382,15 @@
             <span class="impact-label">Research Grants</span>
         </div>
         <div class="impact-stat">
-            <span class="impact-number">20+</span>
+            <span class="impact-number" data-target="25">0+</span>
             <span class="impact-label">Publications</span>
         </div>
         <div class="impact-stat">
-            <span class="impact-number">15+</span>
+            <span class="impact-number" data-target="20">0+</span>
             <span class="impact-label">Innovation Awards</span>
         </div>
         <div class="impact-stat">
-            <span class="impact-number">25+</span>
+            <span class="impact-number" data-target="30">0+</span>
             <span class="impact-label">Students Mentored</span>
         </div>
     </div>
@@ -443,18 +463,7 @@
         <div class="timeline-date">2016 - 2023</div>
         <div class="card">
             <div class="card-title">Lecturer</div>
-            <div class="card-subtitle">Faculty of Electronic Engineering & Technology (FKTEN) & School of Computer & Communication Engineering (SCCE), UniMAP</div>
-            <div class="section-content mt-3 text-main" style="font-weight:600;">Job Descriptions:</div>
-            <ul class="column-list">
-              <li>Teach core undergraduate courses including Software Engineering, Object-Oriented Programming, C Programming, Database Systems, Instrumentation, and Digital Systems.</li>
-              <li>Supervise undergraduate and postgraduate research projects in embedded systems, IoT, and artificial intelligence applications.</li>
-              <li>Develop and enhance course curriculum aligned with OBE and MQF standards.</li>
-              <li>Conduct research in optimization algorithms, smart system integration, and fuzzy logic control.</li>
-              <li>Publish and present research findings in indexed journals and international conferences.</li>
-              <li>Mentor students in innovation, product development, and final-year design projects.</li>
-              <li>Coordinate laboratory activities, assessment, and academic quality assurance.</li>
-              <li>Engage in faculty management, grant applications, and collaborative research initiatives.</li>
-            </ul>
+            <div class="card-subtitle">School of Computer & Communication Engineering (SCCE), UniMAP (2016-2020) → Faculty of Electronic Engineering & Technology (FKTEN), UniMAP (2020-2023)</div>
         </div>
       </div>
       <div class="timeline-item">
@@ -472,18 +481,33 @@
       </div>
     </div>
 
+    <div class="card mb-4">
+        <div class="card-title">Core Academic Responsibilities (2016 – Present)</div>
+        <ul class="column-list mt-3">
+          <li>Teach core undergraduate courses including Software Engineering, Object-Oriented Programming, C Programming, Database Systems, Instrumentation, and Digital Systems.</li>
+          <li>Supervise undergraduate and postgraduate research projects in embedded systems, IoT, and artificial intelligence applications.</li>
+          <li>Develop and enhance course curriculum aligned with OBE and MQF standards.</li>
+          <li>Conduct research in optimization algorithms, smart system integration, and fuzzy logic control.</li>
+          <li>Publish and present research findings in indexed journals and international conferences.</li>
+          <li>Mentor students in innovation, product development, and final-year design projects.</li>
+          <li>Coordinate laboratory activities, assessment, and academic quality assurance.</li>
+          <li>Engage in faculty management, grant applications, and collaborative research initiatives.</li>
+        </ul>
+    </div>
+
     <div class="subsection-title"><i class="fas fa-chalkboard-teacher"></i> Teaching Experiences</div>
     <div class="grid-2">
       <div class="card">
         <div class="card-title mb-3">Bachelor of Electronic Engineering Technology (System Electronic)</div>
         <ul class="column-list" style="column-count: 1;">
             <li>NMK20603 - Computer Architecture (Sem 2, 25/26 & Add Sem 24/25)</li>
-            <li>NMK31704 - Design Project (Sem 2, 25/26 & Sem 2 24/25)</li>
+            <li>NMK31704 - Design Project (Sem 2, 25/26 & Sem 2, 24/25)</li>
             <li>NMK42003 - Instrumentation (Sem 1, 25/26 & 24/25 & 23/24)</li>
             <li>NMK10702 - Writing in Engineering Technology (Sem 1, 25/26)</li>
             <li>NMK10803 - Digital System (Sem 2, 24/25)</li>
             <li>NMK31703 - Design Project (Sem 2, 23/24)</li>
-            <li>NMK10603 / PGT106 - C Programming (Sem 1 & Sem 2, 22/23)</li>
+            <li>NMK10603 - C Programming (Sem 2, 22/23)</li>
+            <li>NMK10603 - C Programming (Sem 1, 22/23)</li>
         </ul>
       </div>
       <div class="card">
@@ -501,6 +525,7 @@
     <div class="card mb-4">
         <div class="card-title">Administrative & Committee Appointments</div>
         <ul class="column-list mt-3">
+            <li>Committee Judging for Integrated Design Smart System Challenges (IDSSC), 2026.</li>
             <li>Program Committee for International Engineering Postgraduate Colloquium (IEPC), 2026.</li>
             <li>Committee in KPI Multimedia, FKTEN 2025 & 2026.</li>
             <li>Committee Program Pemerkasaan Pengaturcaraan Komputer Pelajar Tingkatan 6 STPM 2025.</li>
@@ -570,41 +595,105 @@
         </div>
     </div>
 
-    <div class="grid-2 mt-4">
-        <div class="card">
-            <div class="card-title"><i class="fas fa-plane-departure text-primary"></i> International Mobility Program</div>
-            <div class="timeline mt-3">
-                <div class="timeline-item" style="margin-bottom:1.5rem;">
-                    <div class="timeline-date">2025</div>
-                    <div class="card-title text-sm">Research Collaboration Visit</div>
-                    <div class="card-subtitle mb-0">University of Yamanashi (Outbound)</div>
-                </div>
-                <div class="timeline-item" style="margin-bottom:1.5rem;">
-                    <div class="timeline-date">2024 - 2025</div>
-                    <div class="card-title text-sm">A31 Campus Asia Plus Program</div>
-                    <div class="card-subtitle mb-0">Inbound Mobility Program</div>
-                </div>
-                <div class="timeline-item" style="margin-bottom:0;">
-                    <div class="timeline-date">2024</div>
-                    <div class="card-title text-sm">Engineering Camp UniMAP-RUTS</div>
-                    <div class="card-subtitle mb-0">Thailand (Outbound)</div>
-                </div>
-            </div>
+    <div class="subsection-title" style="margin-top: 2.5rem;"><i class="fas fa-microphone-alt"></i> Invited Speaker / Workshop</div>
+    <div class="timeline mt-3">
+        <div class="timeline-item">
+            <div class="timeline-date">2026</div>
+            <div class="card-title">My Professional URL: Transforming Traditional CVs Into Digital Portfolios Workshop</div>
+            <div class="card-subtitle mb-3">Center of Excellence for Advanced Computing, UniMAP.</div>
         </div>
-        <div class="card">
-            <div class="card-title"><i class="fas fa-microphone-alt text-primary"></i> Invited Speaker</div>
-            <div class="timeline mt-3">
-                <div class="timeline-item" style="margin-bottom:1.5rem;">
-                    <div class="timeline-date">2025</div>
-                    <div class="card-title text-sm">Hybrid Metaheuristic Approaches for T-Way Test Suite Generation</div>
-                    <div class="card-subtitle mb-0">University of Yamanashi, Japan.</div>
-                </div>
-                <div class="timeline-item" style="margin-bottom:0;">
-                    <div class="timeline-date">2025</div>
-                    <div class="card-title text-sm">MPKK IRC Workshop: Paperwork Writing Using AI Tools</div>
-                    <div class="card-subtitle mb-0">IRCNR, Universiti Malaysia Perlis.</div>
-                </div>
-            </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2026</div>
+            <div class="card-title">Lensa Sains: Menyingkap Rahsia Al-Quran di Era Teknologi</div>
+            <div class="card-subtitle mb-3">Tham Suksa Islamic School, Yala, Thailand.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2026</div>
+            <div class="card-title">Sistem dan Pelaksaan Projek Akhir Tahun untuk Program Sarjana Muda Teknologi Automasi Elektronik Industri – UR6523011</div>
+            <div class="card-subtitle mb-3">UniMAP.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2025</div>
+            <div class="card-title">Hybrid Metaheuristic Approaches for T-Way Test Suite Generation</div>
+            <div class="card-subtitle mb-3">University of Yamanashi, Japan.</div>
+        </div>
+        <div class="timeline-item" style="margin-bottom:0;">
+            <div class="timeline-date">2025</div>
+            <div class="card-title">MPKK IRC Workshop: Paperwork Writing Using AI Tools & Semester 2 Strategic Planning</div>
+            <div class="card-subtitle mb-0">International Resident College & Non-Resident (IRCNR), Universiti Malaysia Perlis.</div>
+        </div>
+    </div>
+
+    <div class="subsection-title" style="margin-top: 2.5rem;"><i class="fas fa-plane-departure"></i> International Mobility Program</div>
+    <div class="timeline mt-3">
+        <div class="timeline-item">
+            <div class="timeline-date">2025</div>
+            <div class="card-title">Research Collaboration Visit</div>
+            <div class="card-subtitle mb-3">University of Yamanashi (Outbound)</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2024 - 2025</div>
+            <div class="card-title">A3I Campus Asia Plus Program</div>
+            <div class="card-subtitle mb-3">Inbound Mobility Program</div>
+        </div>
+        <div class="timeline-item" style="margin-bottom:0;">
+            <div class="timeline-date">2024</div>
+            <div class="card-title">Engineering Camp UniMAP-RUTS</div>
+            <div class="card-subtitle mb-0">Thailand (Outbound)</div>
+        </div>
+    </div>
+
+    <div class="subsection-title" style="margin-top: 2.5rem;"><i class="fas fa-certificate"></i> Attended Course / Certification</div>
+    <div class="timeline mt-3">
+        <div class="timeline-item">
+            <div class="timeline-date">2026</div>
+            <ul class="custom-list" style="font-size: 0.95rem;">
+                <li><strong>Gemini Certified Faculty</strong></li>
+                <li><strong>Google for Education's Gemini Academy Workshop</strong></li>
+                <li><strong>3D Design and Print (FreeCAD + Orcaslicer)</strong></li>
+                <li><strong>Webinar Work-Based Learning (WBL)</strong></li>
+            </ul>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2024</div>
+            <ul class="custom-list" style="font-size: 0.95rem;">
+                <li><strong>Fundamental of Multifactorial Optimization Metaheuristic and Hyperheuristics</strong></li>
+                <li><strong>Kursus Asas Google Sites</strong></li>
+            </ul>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2022</div>
+            <ul class="custom-list" style="font-size: 0.95rem;">
+                <li><strong>MyRESKILL IoT Programme</strong></li>
+                <li><strong>Google Certified Educator Level 1 Training</strong></li>
+            </ul>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2018</div>
+            <ul class="custom-list" style="font-size: 0.95rem;">
+                <li><strong>Labview Workshop</strong></li>
+                <li><strong>Deploying Hyperheuristic & Metaheuristic Algorithms Workshop</strong></li>
+            </ul>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2013</div>
+            <ul class="custom-list" style="font-size: 0.95rem;">
+                <li><strong>i5 and System i System Operator Workshop AS24MY</strong></li>
+                <li><strong>Advanced System Operator Workshop for IBM i-Series</strong></li>
+            </ul>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">2012</div>
+            <ul class="custom-list" style="font-size: 0.95rem;">
+                <li><strong>IBM e-Business Administrator</strong></li>
+                <li><strong>IBM Certified System Administrator – WebSphere Application Server Network Deployment V6.1</strong></li>
+            </ul>
+        </div>
+        <div class="timeline-item" style="margin-bottom:0;">
+            <div class="timeline-date">2009</div>
+            <ul class="custom-list" style="font-size: 0.95rem;">
+                <li><strong>Certified Fiber Optic Technician</strong></li>
+            </ul>
         </div>
     </div>
   </section>
@@ -612,11 +701,15 @@
   <section id="expertise">
     <div class="section-title"><i class="fas fa-project-diagram text-primary"></i> Core Expertise & Innovations</div>
     
-    <div class="expertise-tabs">
+    <div class="tab-scroll-wrapper">
+      <button class="tab-scroll-chevron chevron-left" onclick="scrollTabs(-200)" aria-label="Scroll tabs left"><i class="fas fa-chevron-left"></i></button>
+      <div class="expertise-tabs">
         <button class="tab-btn active" onclick="openExpertiseTab(event, 'tab-concepts')"><i class="fas fa-brain"></i> 1. The Science Explained</button>
         <button class="tab-btn" onclick="openExpertiseTab(event, 'tab-foundations')"><i class="fas fa-graduation-cap"></i> 2. Research Foundations</button>
         <button class="tab-btn" onclick="openExpertiseTab(event, 'tab-tools')"><i class="fas fa-laptop-code"></i> 3. Live Tool: SandCatGo</button>
         <button class="tab-btn" onclick="openExpertiseTab(event, 'tab-webapps')"><i class="fas fa-window-maximize"></i> 4. Developed Web Apps</button>
+      </div>
+      <button class="tab-scroll-chevron chevron-right" onclick="scrollTabs(200)" aria-label="Scroll tabs right"><i class="fas fa-chevron-right"></i></button>
     </div>
 
     <div id="tab-concepts" class="tab-content active">
@@ -861,34 +954,32 @@
 
     <div class="subsection-title"><i class="fas fa-book text-main"></i> Publications</div>
     
-    <div class="card-subtitle text-main mb-3" style="font-size: 1.1rem; border-bottom: 1px solid var(--border-color); padding-bottom:5px;">Submitted, Accepted and Waiting to be published (2025)</div>
+    <div class="card-subtitle text-main mb-3 mt-5" style="font-size: 1.1rem; border-bottom: 1px solid var(--border-color); padding-bottom:5px;">Published Papers</div>
     <div class="publication-item">
       <div class="pub-title">Implementation of Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</div>
-      <div class="pub-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., et al. (2025).</div>
+      <div class="pub-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., Othman, R. R., Halim, A. A. A., Go, K., Ramli, N., Ahmad, R. B., Kamarudin, L. M., & Al-Walidi, M. M. H. S. (2026).</div>
       <div class="pub-journal">Journal of Advanced Mobile Robotics and Intelligent Systems (JAMRIS).</div>
     </div>
     <div class="publication-item">
       <div class="pub-title">Variable Strength Sand Cat Swarm Optimization (VSCSO) for T-Way Combinatorial Test Suite Generation</div>
-      <div class="pub-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., et al. (2025).</div>
+      <div class="pub-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., Othman, R. R., Halim, A. A. A., Go, K., Al-Walid, M. M. H. S., Suali, A. J., Rose, N. H. C., & Kamal, F. B. (2026).</div>
       <div class="pub-journal">In Proceedings of the International Exchange and Innovation Conference on Engineering & Sciences (IEICES 2025).</div>
     </div>
     <div class="publication-item">
       <div class="pub-title">ISCSO: Input-Output Relation Driven Sand Cat Swarm Optimization for Combinatorial Testing</div>
-      <div class="pub-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., et al. (2025).</div>
+      <div class="pub-authors">Muhammad Aiman, M. A., Ahmad, M. Z. Z., Othman, R. R., Halim, A. A. A., Go, K., & Al-Walidi, M. M. H. S. (2026).</div>
       <div class="pub-journal">In Proceedings of the International Conference on Science, Engineering and Technology Application (ICOSETA 2025).</div>
     </div>
     <div class="publication-item">
       <div class="pub-title">Application of Sewing Training-Based Optimization in Generating Effective Input-Output Relation-Based T-Way Test Suite Generation Strategies</div>
-      <div class="pub-authors">Murad, M. M. H. S., Halim, A. A. A., Ahmad, M. Z. Z., et al. (2025).</div>
+      <div class="pub-authors">Murad, M. M. H. S., Halim, A. A. A., Ahmad, M. Z. Z., Ramli, N., Zakaria, H. L., Aiman, M. A. M., Go, K., & Rahim, M. S. A. (2026).</div>
       <div class="pub-journal">In Proceedings of the International Exchange and Innovation Conference on Engineering & Sciences (IEICES 2025).</div>
     </div>
     <div class="publication-item">
       <div class="pub-title">A variable strength interaction test suites generation strategy using Sewing Training Optimization</div>
-      <div class="pub-authors">Murad, M. M. H. S. A.-W., Halim, A. A. A., Othman, R. R., Ahmad, M. Z. Z., et al. (2025).</div>
-      <div class="pub-journal">In Proceedings of the International Conference on Artificial Intelligence and Applied Sciences (i-CAIAS 2025).</div>
+      <div class="pub-authors">Murad, M. M. H. S. A.-W., Halim, A. A. A., Othman, R. R., Ahmad, M. Z. Z., Go, K., & Asyraf, M. A. M. (2026).</div>
+      <div class="pub-journal">In Proceedings of the International Conference on Artificial Intelligence and Applied Sciences (i-CAIAS 2025, Scopus).</div>
     </div>
-
-    <div class="card-subtitle text-main mb-3 mt-5" style="font-size: 1.1rem; border-bottom: 1px solid var(--border-color); padding-bottom:5px;">Published Papers</div>
     <div class="publication-item">
       <div class="pub-title">IoT Warning System for Early Forest Fire Detection</div>
       <div class="pub-authors">Ahmad, M. Z. Z., Hamdi, M. H. B., Halim, A. A. A., et al. (2025).</div>
@@ -899,6 +990,8 @@
       <div class="pub-authors">Fong, P. Y., Raja Ahmad, R. A., Ahmad, M. I., & Ahmad, M. Z. Z. (2025).</div>
       <div class="pub-journal">Studies in Computational Intelligence: Advances in Artificial Intelligence and Electronic Design Technologies. Springer.</div>
     </div>
+
+    <div id="publications-hidden" style="display: none;">
     <div class="publication-item">
       <div class="pub-title">Polyvinyl Chloride (PVC) Ultra-Wideband Wearable Antenna Under Bending and Wet Conditions</div>
       <div class="pub-authors">Anvar, H.H., Salleh, S.M., Kamarudin, L.M., and Ahmad, M.Z.Z. (2024).</div>
@@ -979,6 +1072,13 @@
       <div class="pub-authors">Rozmie R. Othman, Kamal Z. Zamli, Mohd Shaiful Aziz Rashid Ali, Mohd Zamri Zahir Ahmad. (2014).</div>
       <div class="pub-journal">UniMAP - PSU Engineering Postgraduate Conference 1st.</div>
     </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <button id="pub-toggle-btn" class="btn btn-outline" onclick="togglePublications()" style="font-size: 0.9rem;">
+        <i class="fas fa-chevron-down"></i> Show all publications
+      </button>
+    </div>
   </section>
 
   <section id="copyrights">
@@ -1055,6 +1155,16 @@
                     <li><strong style="color:var(--primary)">Gold Medal:</strong> Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
                     <li><strong style="color:var(--primary)">Gold Medal:</strong> Smart Mushroom: AI Driven Environmental Control System for Precision Mushroom Farming.</li>
                     <li><strong>Silver Medal:</strong> SandCatGo: An Intelligent Online Tool for Combinatorial T-Way Test Suite Generation Based on Sand Cat Swarm Optimization.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-date">2026</div>
+            <div class="card">
+                <div class="card-title mb-3">Postgraduate Colloquium & Research Exhibition</div>
+                <ul class="column-list text-sm">
+                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Introducing STBO for Efficient T-Way Test Suite Generation</li>
                 </ul>
             </div>
         </div>
@@ -1266,6 +1376,55 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+    // COUNTER ANIMATION FOR IMPACT STATS
+    const impactNumbers = document.querySelectorAll('.impact-number[data-target]');
+    let countersAnimated = false;
+
+    function animateCounters() {
+      if (countersAnimated) return;
+      const impactBar = document.querySelector('.impact-bar');
+      if (!impactBar) return;
+      const rect = impactBar.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        countersAnimated = true;
+        impactNumbers.forEach(el => {
+          const target = parseInt(el.getAttribute('data-target'));
+          const duration = 1500;
+          const startTime = performance.now();
+          function update(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.floor(eased * target);
+            el.textContent = current + '+';
+            if (progress < 1) {
+              requestAnimationFrame(update);
+            }
+          }
+          requestAnimationFrame(update);
+        });
+      }
+    }
+
+    window.addEventListener('scroll', animateCounters);
+    if (document.querySelector('.impact-bar')) {
+      setTimeout(animateCounters, 300);
+    }
+
+    function togglePublications() {
+      const hidden = document.getElementById('publications-hidden');
+      const btn = document.getElementById('pub-toggle-btn');
+      if (!hidden || !btn) return;
+      if (hidden.style.display === 'none') {
+        hidden.style.display = 'block';
+        btn.innerHTML = '<i class="fas fa-chevron-up"></i> Show less';
+      } else {
+        hidden.style.display = 'none';
+        btn.innerHTML = '<i class="fas fa-chevron-down"></i> Show all publications';
+      }
+    }
+
     // =====================================
     // EXPERTISE JAVASCRIPT (T-WAY & SWARM)
     // =====================================
@@ -1446,9 +1605,46 @@
 
       // Redraw canvas if switching to Tab 1 to prevent glitching
       if(tabId === 'tab-concepts' && typeof drawLandscape === "function") {
-          setTimeout(() => { drawLandscape(); }, 50); // slight delay ensures container is visible before rendering
+          setTimeout(() => { drawLandscape(); }, 50);
+      }
+
+      const activeBtn = evt.currentTarget;
+      const tabsContainer = activeBtn.closest('.expertise-tabs');
+      if (tabsContainer) {
+        activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
     }
+
+    function scrollTabs(offset) {
+      const tabsContainer = document.querySelector('.expertise-tabs');
+      if (tabsContainer) {
+        tabsContainer.scrollBy({ left: offset, behavior: 'smooth' });
+      }
+    }
+
+    function updateTabChevrons() {
+      const tabsContainer = document.querySelector('.expertise-tabs');
+      const leftChevron = document.querySelector('.chevron-left');
+      const rightChevron = document.querySelector('.chevron-right');
+      if (!tabsContainer) return;
+
+      const isOverflowing = tabsContainer.scrollWidth > tabsContainer.clientWidth + 2;
+      const canScrollLeft = tabsContainer.scrollLeft > 2;
+      const canScrollRight = tabsContainer.scrollLeft + tabsContainer.clientWidth < tabsContainer.scrollWidth - 2;
+
+      if (leftChevron) leftChevron.classList.toggle('visible', isOverflowing && canScrollLeft);
+      if (rightChevron) rightChevron.classList.toggle('visible', isOverflowing && canScrollRight);
+    }
+
+    window.addEventListener('resize', updateTabChevrons);
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(updateTabChevrons, 200);
+      const tabsContainer = document.querySelector('.expertise-tabs');
+      if (tabsContainer) {
+        tabsContainer.addEventListener('scroll', updateTabChevrons);
+      }
+    });
+    updateTabChevrons();
   </script>
 </body>
 </html>
