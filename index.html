@@ -1241,7 +1241,7 @@
                 <div class="sb-panel-body sb-settings-grid">
                   <label>Swarm size <output id="sb-n-out">30</output><input type="range" id="sb-n" min="10" max="100" step="5" value="30"></label>
                   <label>Iterations <output id="sb-t-out">100</output><input type="range" id="sb-t" min="50" max="300" step="10" value="100"></label>
-                  <label>Speed <output id="sb-speed-out">Normal</output><input type="range" id="sb-speed" min="1" max="5" step="1" value="3"></label>
+                  <label>Speed <output id="sb-speed-out">Fast</output><input type="range" id="sb-speed" min="1" max="5" step="1" value="4"></label>
                   <label>SCSO: switch to exploitation <output id="sb-k-out">Balanced</output><input type="range" id="sb-k" min="1" max="5" step="1" value="3"></label>
                   <div class="sb-land-row">
                     <span class="sb-label">Landscape</span>
@@ -2175,7 +2175,8 @@
     let iter = 0, running = false, finished = false, held = false;
     let lastTime = 0, acc = 0, rafId = null, onScreen = true;
     let viewT = null;                 // iteration shown by the replay slider (null = live)
-    let events = new Set(), lastEventIter = 0, slowUntil = 0, holdTimer = null;
+    let events = new Set(), lastEventIter = 0, slowUntil = 0, holdTimer = null, lastPauseIter = -99;
+    const MIN_PAUSE_GAP = 10;                                 // iterations of movement between two guided pauses
 
     const $ = id => document.getElementById(id);
     const cfg = () => ({
@@ -2339,8 +2340,9 @@
       const g = $('sb-guide');
       g.classList.remove('flash'); void g.offsetWidth; g.classList.add('flash');
       lastEventIter = iter;
-      slowUntil = iter + 8;                                    // slow motion right after a key moment
-      if (pause && guided() && running) hold();
+      slowUntil = iter + 5;                                    // brief slow motion right after a key moment
+      // Pause only if the swarm has had time to move since the last pause; otherwise just update the caption
+      if (pause && guided() && running && iter - lastPauseIter >= MIN_PAUSE_GAP) { lastPauseIter = iter; hold(); }
     }
 
     function hold() {
@@ -2367,6 +2369,8 @@
     let firedThisStep = false;
     function once(key, fn) {
       if (firedThisStep || events.has(key)) return;
+      // In a guided run, hold the next caption back until the swarm has moved for a while, so each one gets read
+      if (guided() && running && iter - lastPauseIter < MIN_PAUSE_GAP) return;
       if (fn()) { events.add(key); firedThisStep = true; }
     }
 
@@ -2378,14 +2382,14 @@
         greedy: `<strong>${n} agents</strong> are dropped at random. In every iteration, all of them move towards the best spot found so far.`,
         race: `Three swarms start on the same map: <span style="color:#3498db">blue = Pure Exploration</span>, <span style="color:#e74c3c">red = Pure Exploitation</span>, <span style="color:#4caf50">green = SCSO</span>. Which one finds the global best?`
       }[sbMode];
-      caption('Start', text, true);
+      caption('Start', text, false);
     }
 
     function checkEvents() {
       firedThisStep = false;
       const p = primary(), { T } = cfg();
       once('phase1', () => {
-        if (iter < 3) return false;
+        if (iter < 8) return false;
         const text = {
           scso: `<strong>Phase 1: Exploration.</strong> Sensitivity r<sub>G</sub> is high (${rGAt(iter).toFixed(2)}). Each cat draws a random R between −r<sub>G</sub> and r<sub>G</sub>; whenever |R| &gt; 1 it searches around a random team-mate instead of chasing the best spot. <span style="color:#8ec5ff">Light-blue dots</span> are exploring; white dots are attacking.`,
           random: '<strong>Pure exploration:</strong> the agents cover the whole map, but nobody stays to refine a good spot.',
@@ -2408,18 +2412,20 @@
         });
         once('exploit', () => {
           if (rGAt(iter) > 1) return false;
-          caption('Phase 3 · iteration ' + iter, `<strong>Exploitation.</strong> r<sub>G</sub> is now ${rGAt(iter).toFixed(2)}, below 1, so |R| can no longer exceed 1: <strong>every cat attacks</strong>. They circle the best prey from random angles, with moves that shrink as r<sub>G</sub> falls. Best so far: <strong>${pct(p.best.f)}%</strong>.`, true);
+          caption('Phase 3 · iteration ' + iter, `<strong>Exploitation.</strong> r<sub>G</sub> has fallen to ${rGAt(iter).toFixed(2)}, so |R| can no longer exceed 1: <strong>every cat attacks</strong>. They circle the best prey from random angles, with moves that shrink as r<sub>G</sub> falls. Best so far: <strong>${pct(p.best.f)}%</strong>.`, true);
           return true;
         });
       }
       const greedy = swarms.find(s => s.type === 'greedy');
+      if (greedy && greedy.convergedAt === undefined && iter >= 5 && spread(greedy) <= 0.01) greedy.convergedAt = iter;
       if (greedy) {
         once('greedyStuck', () => {
-          if (iter < 5 || spread(greedy) > 0.01) return false;
+          if (greedy.convergedAt === undefined) return false;
+          const at = greedy.convergedAt;
           const ok = greedy.hitAt !== null;
           caption((sbMode === 'race' ? 'Red swarm' : 'Converged') + ' · iteration ' + iter, ok
-            ? `Pure exploitation has converged at iteration ${iter}, and this time it was <strong>lucky</strong>: its first good spot was on the global peak. On another map it could just as easily be trapped.`
-            : `Pure exploitation has converged at iteration ${iter}, <strong>stuck at ${pct(greedy.best.f)}%</strong> of the best. With no exploration left, it can never escape this local peak.`, true);
+            ? `Pure exploitation converged at iteration ${at}, and this time it was <strong>lucky</strong>: its first good spot was on the global peak. On another map it could just as easily be trapped.`
+            : `Pure exploitation converged at iteration ${at}, <strong>stuck at ${pct(greedy.best.f)}%</strong> of the best. With no exploration left, it can never escape this local peak.`, true);
           return true;
         });
       }
@@ -2432,7 +2438,7 @@
       }
       once('found', () => {
         if (p.hitAt === null || !events.has('promising')) return false;   // tell the story in order
-        caption('Found it · iteration ' + p.hitAt, `<strong>${sbMode === 'race' ? 'SCSO' : STRATS[p.type].name} found the global best</strong> at iteration ${p.hitAt}, within 0.5% of the true optimum (dashed ring).` +
+        caption('Found it · iteration ' + iter, `<strong>${sbMode === 'race' ? 'SCSO' : STRATS[p.type].name} found the global best</strong> at iteration ${p.hitAt}, within 0.5% of the true optimum (dashed ring).` +
           (p.type === 'scso' ? ' The remaining iterations keep refining it.' : ''), true);
         return true;
       });
@@ -2454,7 +2460,7 @@
       release();
       const { n, T } = cfg();
       iter = 0; finished = false; viewT = null;
-      events = new Set(); lastEventIter = 0; slowUntil = 0;
+      events = new Set(); lastEventIter = 0; slowUntil = 0; lastPauseIter = -99;
       const types = sbMode === 'race' ? ['random', 'greedy', 'scso'] : [sbMode];
       swarms = types.map(t => makeSwarm(t, n));
       frames = []; snapshot();
@@ -2505,7 +2511,7 @@
 
     function effectiveSpeed() {
       const base = cfg().speed;
-      if (iter < slowUntil) return base * 0.4;                // slow motion after a key moment
+      if (iter < slowUntil) return base * 0.6;                // slow motion after a key moment
       if (iter - lastEventIter > 12) return base * 1.8;      // speed through quiet stretches
       return base;
     }
