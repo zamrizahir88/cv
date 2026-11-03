@@ -415,6 +415,226 @@
       .section-title { font-size: 16pt; margin-bottom: 0.8rem; }
       a { color: inherit; text-decoration: none; }
     }
+
+    /* ===== v3: mobile, share, sandbox, mini-game ===== */
+    .profile-bar { display: none; }
+    .bottom-nav { display: none; }
+
+    .share-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1rem; }
+    .share-modal[hidden] { display: none; }
+    .share-card { background: var(--bg-base); color: var(--text-main); border-radius: 18px; padding: 1.6rem; width: 100%; max-width: 440px; max-height: 92vh; overflow-y: auto; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.35); border: 1px solid var(--border-color); }
+    .share-card h3 { font-family: 'Quicksand', sans-serif; margin-bottom: 1rem; color: var(--primary); }
+    .share-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border-radius: 50%; border: none; background: rgba(46,125,50,0.1); color: var(--primary); cursor: pointer; font-size: 1rem; }
+    .share-scope { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.9rem; }
+    .share-link { display: flex; gap: 0.5rem; margin-bottom: 0.9rem; }
+    .share-link input { flex: 1; min-width: 0; padding: 0.6rem 0.8rem; border-radius: 10px; border: 1px solid var(--border-color); background: var(--glass-bg); color: var(--text-main); font-family: inherit; font-size: 0.85rem; }
+    .share-link .btn { padding: 0.6rem 1rem; font-size: 0.85rem; }
+    .share-native { width: 100%; justify-content: center; margin-bottom: 0.9rem; }
+    .share-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 1rem; }
+    .share-app { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0.7rem 0.2rem; border-radius: 12px; border: 1px solid var(--border-color); text-decoration: none; color: var(--text-main); font-size: 0.75rem; font-weight: 600; transition: 0.2s; }
+    .share-app i { font-size: 1.5rem; }
+    .share-app.wa i { color: #25d366; } .share-app.li i { color: #0a66c2; } .share-app.tg i { color: #229ed9; } .share-app.em i { color: var(--primary); }
+    .share-app:hover { transform: translateY(-2px); border-color: var(--primary); }
+    .qr-wrap { display: flex; gap: 1rem; align-items: center; padding: 1rem; border-radius: 12px; background: var(--glass-bg); border: 1px solid var(--border-color); }
+    #qr-box { background: #fff; padding: 8px; border-radius: 8px; line-height: 0; flex: 0 0 auto; }
+    #qr-box img, #qr-box canvas { width: 132px !important; height: 132px !important; }
+    .qr-side p { font-size: 0.8rem; color: var(--text-muted); margin: 0.3rem 0 0.6rem; line-height: 1.4; }
+    .qr-side .btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
+
+    /* Sandbox */
+    .sandbox { display: flex; flex-direction: column; gap: 1rem; background: rgba(0,0,0,0.02); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color); }
+    .sb-intro { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
+    .sb-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); }
+    .sb-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: 0 0 auto; }
+
+    .sb-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem; padding: 0.7rem; border-radius: 12px; background: var(--bg-base); border: 1px solid var(--border-color); }
+    .sb-modes { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .sb-mode { display: inline-flex; align-items: center; gap: 7px; padding: 0.5rem 0.85rem; border-radius: 20px; border: 1px solid var(--border-color); background: transparent; color: var(--text-main); font-family: inherit; font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: 0.2s; white-space: nowrap; }
+    .sb-mode:hover { border-color: var(--primary); }
+    .sb-mode.active { border-color: var(--primary); background: rgba(46,125,50,0.12); color: var(--primary); }
+    .sb-run { display: flex; align-items: center; gap: 0.5rem; }
+    .sb-run .btn { padding: 0.5rem 1.1rem; font-size: 0.85rem; }
+    .sb-run .sb-icon { padding: 0.5rem 0.75rem; }
+    .sb-switch { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; font-weight: 700; color: var(--text-muted); cursor: pointer; margin-right: 0.3rem; user-select: none; }
+    .sb-switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .sb-switch-ui { width: 34px; height: 20px; border-radius: 20px; background: var(--border-color); position: relative; transition: 0.2s; }
+    .sb-switch-ui::after { content: ''; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+    .sb-switch input:checked + .sb-switch-ui { background: var(--primary); }
+    .sb-switch input:checked + .sb-switch-ui::after { left: 17px; }
+    .sb-switch input:focus-visible + .sb-switch-ui { outline: 3px solid var(--primary-light); outline-offset: 2px; }
+
+    .sb-phasebar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.8rem; }
+    .sb-phases { display: flex; list-style: none; margin: 0; padding: 0; counter-reset: none; }
+    .sb-phases li { position: relative; padding: 0.4rem 0.9rem 0.4rem 1.2rem; font-size: 0.75rem; font-weight: 700; color: var(--text-muted); background: var(--bg-base); border: 1px solid var(--border-color); margin-right: -1px; transition: 0.3s; white-space: nowrap; }
+    .sb-phases li:first-child { border-radius: 20px 0 0 20px; padding-left: 0.9rem; }
+    .sb-phases li:last-child { border-radius: 0 20px 20px 0; }
+    .sb-phases li i { margin-right: 4px; }
+    .sb-phases li.past { color: var(--primary); }
+    .sb-phases li.now { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .sb-meters { display: flex; align-items: center; gap: 1rem; white-space: nowrap; font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
+    .sb-meter { display: flex; align-items: center; gap: 6px; }
+    .sb-meter-track { width: 90px; height: 8px; border-radius: 8px; background: var(--border-color); overflow: hidden; }
+    #sb-rg-fill { height: 100%; width: 100%; background: linear-gradient(90deg, #e74c3c, #f39c12, #3498db); transition: width 0.2s; }
+    .sb-meter b, .sb-itercount b { color: var(--text-main); font-variant-numeric: tabular-nums; }
+    .sb-meter.off { opacity: 0.4; }
+
+    .sb-main { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+    .sb-stage .canvas-responsive-wrapper { max-width: none; }
+    #swarmCanvas { cursor: crosshair; touch-action: none; }
+    .sb-overlay-label { position: absolute; top: 8px; left: 10px; color: rgba(255,255,255,0.75); font-size: 0.7rem; font-family: monospace; pointer-events: none; }
+    .sb-legend { position: absolute; bottom: 6px; left: 8px; right: 8px; display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.65rem; color: rgba(255,255,255,0.8); pointer-events: none; }
+    .sb-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+    .sb-legend i.ring { background: transparent; border: 2px solid #4caf50; width: 9px; height: 9px; }
+    .sb-replay { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.6rem; font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
+    .sb-replay input { flex: 1; accent-color: var(--primary); }
+    .sb-replay input:disabled { opacity: 0.4; }
+    #sb-scrub-out { min-width: 9.5rem; text-align: right; }
+
+    .sb-side { display: flex; flex-direction: column; gap: 0.8rem; }
+    .sb-guide { padding: 1rem 1.1rem; border-radius: 12px; background: var(--bg-base); border: 1px solid var(--border-color); border-left: 4px solid var(--primary); min-height: 150px; display: flex; flex-direction: column; gap: 0.5rem; }
+    .sb-guide.flash { animation: sbFlash 0.6s ease; }
+    @keyframes sbFlash { from { box-shadow: 0 0 0 4px rgba(76,175,80,0.45); } to { box-shadow: 0 0 0 0 rgba(76,175,80,0); } }
+    .sb-guide-step { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--primary); }
+    .sb-guide-text { font-size: 0.9rem; line-height: 1.55; color: var(--text-main); flex: 1; }
+    .sb-guide-text small { color: var(--text-muted); }
+    .sb-guide-timer { height: 4px; border-radius: 4px; background: var(--border-color); overflow: hidden; }
+    .sb-guide-timer[hidden], .sb-guide-actions[hidden] { display: none; }
+    #sb-guide-bar { height: 100%; width: 0; background: var(--primary); }
+    .sb-guide-actions { display: flex; gap: 0.5rem; }
+    .sb-guide-actions .btn { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
+    .sb-chart-wrap { background: #1a1a2e; border-radius: 8px; padding: 8px 8px 4px; border: 2px solid var(--border-color); }
+    .sb-chart-title { color: rgba(255,255,255,0.75); font-size: 0.7rem; font-family: monospace; margin-bottom: 2px; }
+    #sbChart { width: 100%; height: auto; display: block; aspect-ratio: 400 / 130; }
+    .sb-scoreboard { display: grid; gap: 0.4rem; }
+    .sb-score { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; padding: 0.45rem 0.7rem; border-radius: 8px; background: var(--bg-base); border: 1px solid var(--border-color); }
+    .sb-score b { margin-left: auto; }
+
+    .sb-extras { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; align-items: start; }
+    .sb-panel { border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-base); }
+    .sb-panel summary { cursor: pointer; padding: 0.7rem 1rem; font-weight: 700; font-size: 0.85rem; color: var(--primary); list-style: none; }
+    .sb-panel summary::-webkit-details-marker { display: none; }
+    .sb-panel summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; float: right; font-size: 0.75rem; transition: 0.2s; }
+    .sb-panel[open] summary::after { transform: rotate(180deg); }
+    .sb-panel-body { padding: 0 1rem 1rem; }
+    .sb-settings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 1rem; }
+    .sb-settings-grid label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+    .sb-settings-grid output { float: right; color: var(--primary); }
+    .sb-settings-grid input[type=range] { width: 100%; accent-color: var(--primary); }
+    .sb-land-row { grid-column: 1 / -1; display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.3rem; }
+    .sb-land { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .sb-bench-out table { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.6rem; }
+    .sb-bench-out th, .sb-bench-out td { padding: 6px 8px; border-bottom: 1px solid var(--border-color); text-align: left; }
+    .sb-bench-out th { color: var(--text-muted); font-weight: 700; }
+
+    .sb-bridge { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 1.2rem; padding: 1rem 1.2rem; border-radius: 10px; border-left: 4px solid var(--primary); background: rgba(46,125,50,0.06); }
+    .sb-bridge > i { color: var(--primary); font-size: 1.3rem; }
+    .sb-bridge p { flex: 1 1 320px; margin: 0; font-size: 0.88rem; color: var(--text-muted); }
+    .sb-bridge .btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+
+    @media (max-width: 900px) {
+      .sb-main, .sb-extras { grid-template-columns: 1fr; }
+      .sb-guide { min-height: 0; }
+    }
+    @media (max-width: 600px) {
+      .sandbox { padding: 0.9rem; }
+      .sb-toolbar { flex-direction: column; align-items: stretch; }
+      .sb-toolbar > * { min-width: 0; }
+      .sb-modes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .sb-mode { justify-content: center; white-space: normal; text-align: center; font-size: 0.75rem; padding: 0.5rem 0.4rem; }
+      .sb-run { justify-content: space-between; gap: 0.4rem; flex-wrap: wrap; }
+      .sb-switch { flex: 1 0 100%; margin: 0 0 0.2rem; }
+      .sb-run .btn { padding: 0.5rem 0.8rem; }
+      .sb-meter span { white-space: nowrap; }
+      .sb-meter-track { width: 60px; }
+      .sb-run #sb-play { flex: 1; justify-content: center; }
+      .sb-phases { width: 100%; }
+      .sb-phases li { flex: 1; text-align: center; padding: 0.4rem 0.2rem; font-size: 0.66rem; }
+      .sb-phases li:first-child { padding-left: 0.2rem; }
+      .sb-phases li i { display: none; }
+      .sb-meters { width: 100%; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem 0.8rem; font-size: 0.72rem; }
+      .sb-settings-grid { grid-template-columns: 1fr; }
+      #sb-scrub-out { min-width: 0; }
+    }
+
+    /* Pairwise mini-game */
+    .pg-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; background: rgba(0,0,0,0.02); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border-color); }
+    .pg-tests { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .pg-test { padding: 0.55rem 0.6rem; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-base); color: var(--text-main); font-family: inherit; font-size: 0.8rem; font-weight: 600; cursor: pointer; text-align: left; transition: 0.2s; }
+    .pg-test:hover { border-color: var(--primary); }
+    .pg-test.on { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .pg-test.hint { box-shadow: 0 0 0 3px #f39c12; }
+    .pg-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.8rem; }
+    .pg-actions .btn { padding: 0.5rem 0.9rem; font-size: 0.8rem; }
+    .pg-bar { height: 10px; background: var(--border-color); border-radius: 10px; overflow: hidden; margin-bottom: 0.8rem; }
+    #pg-bar-fill { height: 100%; width: 0; background: var(--primary); transition: width 0.3s; }
+    .pg-pairs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+    .pg-group { font-size: 0.72rem; }
+    .pg-group > div:first-child { font-weight: 700; color: var(--text-muted); margin-bottom: 4px; }
+    .pg-pair { padding: 3px 6px; border-radius: 6px; margin-bottom: 3px; background: var(--bg-base); border: 1px dashed var(--border-color); color: var(--text-muted); }
+    .pg-pair.ok { background: rgba(46,125,50,0.15); border: 1px solid var(--primary); color: var(--primary); font-weight: 700; }
+    .pg-msg { margin-top: 0.8rem; font-size: 0.85rem; font-weight: 600; padding: 0.6rem 0.8rem; border-radius: 8px; background: var(--bg-base); border: 1px solid var(--border-color); }
+
+    @media (max-width: 900px) {
+      .pg-layout { grid-template-columns: 1fr; }
+    }
+
+    /* Phone layout: compact home, header only on Home, profile bar, bottom nav */
+    @media (max-width: 768px) {
+      body { padding-bottom: 72px; }
+      #backToTop { bottom: 86px; right: 16px; width: 44px; height: 44px; }
+      .hamburger { display: none !important; }
+
+      .hero { min-height: auto; padding: 88px 0.75rem 1.5rem; }
+      .hero-content { padding: 1.6rem 1.1rem; gap: 1.2rem; }
+      .hero-image-container { width: 128px; }
+      .hero-image-pro { aspect-ratio: 1 / 1; border-radius: 50%; border-width: 3px; }
+      .hero-kicker { font-size: 0.8rem; padding: 4px 12px; }
+      .hero h1 { font-size: 1.75rem; }
+      .hero h2 { font-size: 1rem; margin-bottom: 1rem; }
+      .hero p { font-size: 0.92rem; margin-bottom: 1rem; }
+      .affiliations { margin-bottom: 1.2rem; gap: 0.5rem; }
+      .btn-group .btn { padding: 0.7rem 1.1rem; font-size: 0.85rem; }
+      .impact-bar { grid-template-columns: repeat(4, 1fr); padding: 0.9rem 0.3rem; gap: 0.2rem; }
+      .impact-number { font-size: 1.2rem; }
+      .impact-label { font-size: 0.58rem; letter-spacing: 0; line-height: 1.3; }
+      .impact-stat:nth-child(2)::after { display: block; }
+      .highlights { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 0.8rem; padding: 0.2rem 0.2rem 0.6rem; }
+      .highlight-card { flex: 0 0 84%; scroll-snap-align: start; }
+
+      body.section-open .hero { display: none; }
+      body.section-open .profile-bar {
+        display: flex; align-items: center; gap: 0.7rem; margin: 82px 0.5rem 0; padding: 0.6rem 0.8rem;
+        background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 14px; box-shadow: var(--card-shadow);
+      }
+      .pb-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; object-position: top; flex: 0 0 auto; border: 2px solid var(--primary); }
+      .pb-text { flex: 1; min-width: 0; line-height: 1.25; }
+      .pb-text strong { display: block; font-size: 0.82rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .pb-text span { font-size: 0.72rem; color: var(--text-muted); }
+      .pb-btn { width: 38px; height: 38px; border-radius: 50%; border: none; background: rgba(46,125,50,0.1); color: var(--primary); cursor: pointer; flex: 0 0 auto; }
+      body.section-open section { margin-top: 0.8rem !important; }
+      .section-title { font-size: 1.45rem; gap: 10px; margin-bottom: 1.5rem; }
+      .section-title i { font-size: 1.3rem; }
+      .subsection-title { font-size: 1.15rem; }
+
+      .bottom-nav {
+        display: grid; grid-template-columns: repeat(5, 1fr); position: fixed; bottom: 0; left: 0; right: 0; z-index: 1001;
+        background: var(--glass-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        border-top: 1px solid var(--glass-border); box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+        padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+      }
+      .bottom-nav a, .bottom-nav button { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 4px 0; text-decoration: none; color: var(--text-muted); font-size: 0.66rem; font-weight: 600; background: none; border: none; font-family: inherit; cursor: pointer; }
+      .bottom-nav i { font-size: 1.15rem; }
+      .bottom-nav .active { color: var(--primary); }
+
+      .share-grid { grid-template-columns: repeat(4, 1fr); }
+      .qr-wrap { flex-direction: column; text-align: center; }
+      .sb-modes { grid-template-columns: 1fr 1fr; }
+      .pg-pairs { grid-template-columns: 1fr 1fr 1fr; }
+    }
+
+    @media print {
+      .profile-bar, .bottom-nav, .share-modal, #pairwise-game, .sandbox, .sb-bridge { display: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -424,6 +644,7 @@
   <nav id="navbar">
     <div class="logo">Dr. <span>Zamri</span></div>
     <ul class="nav-links" id="nav-links">
+      <li><a href="./" onclick="goHome(); return false;">Home</a></li>
       <li><a href="#about" onclick="showSection('about'); return false;">About</a></li>
       <li><a href="#education" onclick="showSection('education'); return false;">Education</a></li>
       <li><a href="#experience" onclick="showSection('experience'); return false;">Experience</a></li>
@@ -442,6 +663,13 @@
       </button>
     </div>
   </nav>
+
+  <div class="profile-bar" id="profile-bar">
+    <img src="ZamriZahir.JPG" alt="" class="pb-avatar">
+    <div class="pb-text"><strong>Ts. Dr. Mohd Zamri Bin Zahir Ahmad</strong><span>Senior Lecturer, FKTEN UniMAP</span></div>
+    <button class="pb-btn" onclick="goHome()" aria-label="Back to home"><i class="fas fa-home"></i></button>
+    <button class="pb-btn" onclick="openShare()" aria-label="Share this CV"><i class="fas fa-share-alt"></i></button>
+  </div>
 
   <header class="hero" id="home">
     <div class="hero-content">
@@ -469,6 +697,7 @@
           <a href="#contact" onclick="showSection('contact'); return false;" class="btn"><i class="fas fa-paper-plane"></i> Contact Me</a>
           <a href="#expertise" onclick="showSection('expertise'); return false;" class="btn btn-outline"><i class="fas fa-project-diagram"></i> View Expertise</a>
           <a href="Zamri-CV-2026.pdf" class="btn btn-outline btn-download" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> <span>Download CV<small>PDF · Updated Nov 2026</small></span></a>
+          <button type="button" class="btn btn-outline" onclick="openShare()"><i class="fas fa-share-alt"></i> Share</button>
         </div>
       </div>
     </div>
@@ -911,35 +1140,134 @@
           </div>
         </div>
 
+
+        <div class="card mb-4" id="pairwise-game">
+          <div class="card-title" style="font-size: 1.3rem;"><i class="fas fa-gamepad"></i> Mini-Game: Can You Beat the Algorithm?</div>
+          <p class="text-muted" style="font-size: 0.95rem;">Pairwise testing means every <em>pair</em> of values (for example iOS + 5G, or WiFi + Dark) must appear together in at least one test. Tap test cases below to build your own test suite. Can you cover all 12 pairs with as few tests as possible?</p>
+          <div class="pg-layout">
+            <div>
+              <div class="sb-label">Candidate test cases (tap to add or remove)</div>
+              <div class="pg-tests" id="pg-tests"></div>
+              <div class="pg-actions">
+                <button type="button" class="btn btn-outline" onclick="pgReset()"><i class="fas fa-undo"></i> Reset</button>
+                <button type="button" class="btn btn-outline" onclick="pgReveal()"><i class="fas fa-robot"></i> Show the algorithm's answer</button>
+              </div>
+            </div>
+            <div>
+              <div class="sb-label">Pairs covered: <span id="pg-count">0</span> / 12 · tests used: <span id="pg-used">0</span></div>
+              <div class="pg-bar"><div id="pg-bar-fill"></div></div>
+              <div class="pg-pairs" id="pg-pairs"></div>
+              <div class="pg-msg" id="pg-msg" aria-live="polite">Exhaustive testing needs all 8 tests. Pairwise can do it in fewer.</div>
+            </div>
+          </div>
+        </div>
+
         <div class="card">
           <div class="card-title" style="font-size: 1.3rem;"><i class="fas fa-brain"></i> The Solution: Metaheuristics & The Search Dilemma</div>
           <p class="text-muted">A successful algorithm must actively balance two opposing forces: <strong style="color: #3498db;">Exploration</strong> (searching new areas) and <strong style="color: #e74c3c;">Exploitation</strong> (refining a known good area). If it explores too much, it wastes time. If it exploits too early, it suffers from premature convergence (getting trapped).</p>
-          <div class="grid-2" style="background: rgba(0,0,0,0.02); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); align-items: center;">
-            <div>
+          <div class="sandbox">
+            <div class="sb-head">
               <div class="card-title"><i class="fas fa-play-circle"></i> Live Algorithm Sandbox</div>
-              <p style="font-size: 0.9rem; margin-bottom: 1rem;">Watch how different strategies perform in a simulated solution space containing multiple "good" solutions, but only one "best" solution.</p>
-              <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem;">
-                <button onclick="runSimulation('explore')" class="btn btn-outline" style="justify-content: flex-start; font-size: 0.85rem;"><i class="fas fa-search" style="width: 20px; color: #3498db;"></i> 1. Pure Exploration (Random)</button>
-                <button onclick="runSimulation('exploit')" class="btn btn-outline" style="justify-content: flex-start; font-size: 0.85rem;"><i class="fas fa-magnet" style="width: 20px; color: #e74c3c;"></i> 2. Pure Exploitation (Greedy)</button>
-                <button onclick="runSimulation('balanced')" class="btn" style="justify-content: flex-start; font-size: 0.85rem; background: var(--primary); color: white;"><i class="fas fa-balance-scale" style="width: 20px;"></i> 3. Dynamic Balance (SCSO Algorithm)</button>
-              </div>
-              <div style="background: var(--bg-base); border: 1px solid var(--border-color); padding: 10px; border-radius: 8px;">
-                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">
-                  <span style="color: #3498db;">Explore</span><span style="color: #e74c3c;">Exploit</span>
-                </div>
-                <div class="gauge-container" style="width: 100%; height: 12px; background: #e0e0e0; border-radius: 10px; overflow: hidden; margin-top: 5px; position: relative;">
-                  <div id="gauge-explore" style="height: 100%; background: #3498db; width: 50%; float: left; transition: width 0.2s linear;"></div>
-                  <div id="gauge-exploit" style="height: 100%; background: #e74c3c; width: 50%; float: right; transition: width 0.2s linear;"></div>
-                </div>
-                <div id="sim-status" style="margin-top: 10px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); min-height: 55px;"><em>Click a mode above to observe the algorithm's behavior.</em></div>
-              </div>
-            </div>
-            
-            <div class="canvas-responsive-wrapper">
-              <canvas id="swarmCanvas" width="400" height="340"></canvas>
-              <div style="position: absolute; top: 10px; left: 10px; color: rgba(255,255,255,0.7); font-size: 0.7rem; font-family: monospace;">SOLUTION SPACE</div>
+              <p class="sb-intro">Bright areas are good solutions, but only one is the <strong>best</strong>. The agents are not told where it is: each one only feels the score of the spot it stands on. Keep <strong>Guided</strong> on for a step-by-step explanation.</p>
             </div>
 
+            <div class="sb-toolbar">
+              <div class="sb-modes" role="group" aria-label="Search strategy">
+                <button type="button" class="sb-mode" data-mode="random"><span class="sb-dot" style="background:#3498db"></span> Pure Exploration</button>
+                <button type="button" class="sb-mode" data-mode="greedy"><span class="sb-dot" style="background:#e74c3c"></span> Pure Exploitation</button>
+                <button type="button" class="sb-mode active" data-mode="scso"><span class="sb-dot" style="background:#4caf50"></span> SCSO</button>
+                <button type="button" class="sb-mode" data-mode="race"><i class="fas fa-flag-checkered" style="color:#f39c12"></i> Race all 3</button>
+              </div>
+              <div class="sb-run">
+                <label class="sb-switch" title="Pause at key moments with an explanation"><input type="checkbox" id="sb-guided" checked><span class="sb-switch-ui"></span> Guided</label>
+                <button type="button" class="btn" id="sb-play"><i class="fas fa-play"></i> Play</button>
+                <button type="button" class="btn btn-outline sb-icon" id="sb-step" title="One iteration" aria-label="One iteration"><i class="fas fa-step-forward"></i></button>
+                <button type="button" class="btn btn-outline sb-icon" id="sb-reset" title="Reset" aria-label="Reset"><i class="fas fa-undo"></i></button>
+              </div>
+            </div>
+
+            <div class="sb-phasebar">
+              <ol class="sb-phases" id="sb-phases" aria-label="Search phase">
+                <li data-phase="explore"><i class="fas fa-search"></i> Exploration</li>
+                <li data-phase="transition"><i class="fas fa-random"></i> Transition</li>
+                <li data-phase="exploit"><i class="fas fa-crosshairs"></i> Exploitation</li>
+                <li data-phase="done"><i class="fas fa-flag-checkered"></i> Result</li>
+              </ol>
+              <div class="sb-meters">
+                <div class="sb-meter" title="SCSO general sensitivity: drops from 2 to 0 during the run">
+                  <span>Sensitivity r<sub>G</sub></span>
+                  <div class="sb-meter-track"><div id="sb-rg-fill"></div></div>
+                  <b id="sb-rg">2.00</b>
+                </div>
+                <div class="sb-itercount">Iteration <b id="sb-iter">0</b> / <span id="sb-iter-max">100</span></div>
+              </div>
+            </div>
+
+            <div class="sb-main">
+              <div class="sb-stage">
+                <div class="canvas-responsive-wrapper">
+                  <canvas id="swarmCanvas" width="400" height="340" aria-label="Solution space: tap to add a peak, drag to move, hold to grow, double-tap to remove"></canvas>
+                  <div class="sb-overlay-label">SOLUTION SPACE</div>
+                  <div class="sb-legend"><span><i style="background:#8ec5ff"></i>exploring</span><span><i style="background:#fff"></i>attacking</span><span><i class="ring"></i>best so far</span></div>
+                </div>
+                <div class="sb-replay">
+                  <i class="fas fa-history"></i>
+                  <input type="range" id="sb-scrub" min="0" max="0" value="0" disabled aria-label="Replay: choose an iteration">
+                  <span id="sb-scrub-out">Replay unlocks when paused</span>
+                </div>
+              </div>
+
+              <div class="sb-side">
+                <div class="sb-guide" id="sb-guide">
+                  <div class="sb-guide-step" id="sb-guide-step"><i class="fas fa-chalkboard-teacher"></i> Guide</div>
+                  <div class="sb-guide-text" id="sb-guide-text" aria-live="polite">Press <strong>Play</strong> to start. The run pauses at each key moment so you can see what is happening.</div>
+                  <div class="sb-guide-timer" id="sb-guide-timer" hidden><div id="sb-guide-bar"></div></div>
+                  <div class="sb-guide-actions" id="sb-guide-actions" hidden>
+                    <button type="button" class="btn" id="sb-next">Next <i class="fas fa-chevron-right"></i></button>
+                    <button type="button" class="btn btn-outline" id="sb-skip">Skip guide</button>
+                  </div>
+                </div>
+                <div class="sb-chart-wrap">
+                  <div class="sb-chart-title">Best solution found (% of the true best)</div>
+                  <canvas id="sbChart" width="400" height="130"></canvas>
+                </div>
+                <div id="sb-scoreboard" class="sb-scoreboard"></div>
+              </div>
+            </div>
+
+            <div class="sb-extras">
+              <details class="sb-panel">
+                <summary><i class="fas fa-sliders-h"></i> Settings &amp; landscape</summary>
+                <div class="sb-panel-body sb-settings-grid">
+                  <label>Swarm size <output id="sb-n-out">30</output><input type="range" id="sb-n" min="10" max="100" step="5" value="30"></label>
+                  <label>Iterations <output id="sb-t-out">100</output><input type="range" id="sb-t" min="50" max="300" step="10" value="100"></label>
+                  <label>Speed <output id="sb-speed-out">Normal</output><input type="range" id="sb-speed" min="1" max="5" step="1" value="3"></label>
+                  <label>SCSO: switch to exploitation <output id="sb-k-out">Balanced</output><input type="range" id="sb-k" min="1" max="5" step="1" value="3"></label>
+                  <div class="sb-land-row">
+                    <span class="sb-label">Landscape</span>
+                    <div class="sb-land">
+                      <button type="button" class="chip" data-land="default">Default</button>
+                      <button type="button" class="chip" data-land="random">Random</button>
+                      <button type="button" class="chip" data-land="hard">Hard mode</button>
+                    </div>
+                    <small class="text-muted">Or edit the map directly: tap to add a peak, drag to move it, hold to grow it, double-tap to remove it.</small>
+                  </div>
+                </div>
+              </details>
+              <details class="sb-panel">
+                <summary><i class="fas fa-redo"></i> Benchmark: 10 runs per strategy</summary>
+                <div class="sb-panel-body">
+                  <p class="text-muted" style="font-size: 0.85rem; margin-bottom: 0.6rem;">One run can be lucky. Real algorithm research compares many independent runs on the same problem.</p>
+                  <button type="button" class="btn btn-outline" id="sb-bench"><i class="fas fa-play"></i> Run benchmark on this map</button>
+                  <div id="sb-bench-out" class="sb-bench-out" aria-live="polite"></div>
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="sb-bridge">
+            <i class="fas fa-link"></i>
+            <p><strong>How this maps to t-way testing:</strong> in SandCatGo, every position on this map is a candidate test case, and its score is how many uncovered parameter interactions it covers. The swarm repeatedly picks the best test case, until every interaction is covered with as few tests as possible.</p>
+            <a href="#expertise/tab-tools" onclick="showSection('expertise', 'tab-tools'); return false;" class="btn"><i class="fas fa-rocket"></i> Try the real thing in SandCatGo</a>
           </div>
         </div>
     </div>
@@ -1541,9 +1869,45 @@
 
   <footer style="text-align: center; padding: 1rem; margin-top: -3rem; margin-bottom: 2rem; color: var(--text-muted); font-family: 'Quicksand', sans-serif;">
       <p style="margin: 0; font-weight: 700; font-size: 1rem; color: var(--text-main);">&copy; 2026 Zamm Studio. All Rights Reserved. | Ts. Dr. Mohd Zamri Bin Zahir Ahmad</p>
+      <p style="margin: 0.3rem 0 0; font-size: 0.85rem;"><i class="far fa-clock"></i> Last updated: November 2026</p>
   </footer>
 
   <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+  <div class="bottom-nav" role="navigation" aria-label="Quick navigation">
+    <a href="./" onclick="goHome(); return false;" data-sec="home"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="#research" onclick="showSection('research'); return false;" data-sec="research"><i class="fas fa-flask"></i><span>Research</span></a>
+    <a href="#awards" onclick="showSection('awards'); return false;" data-sec="awards"><i class="fas fa-medal"></i><span>Awards</span></a>
+    <a href="#experience" onclick="showSection('experience'); return false;" data-sec="experience"><i class="fas fa-chalkboard-teacher"></i><span>Teaching</span></a>
+    <button type="button" onclick="toggleMenu()" data-sec="more" aria-label="More sections"><i class="fas fa-bars"></i><span>More</span></button>
+  </div>
+
+  <div class="share-modal" id="share-modal" hidden>
+    <div class="share-card" role="dialog" aria-modal="true" aria-labelledby="share-title">
+      <button type="button" class="share-close" onclick="closeShare()" aria-label="Close"><i class="fas fa-times"></i></button>
+      <h3 id="share-title"><i class="fas fa-share-alt"></i> Share my CV</h3>
+      <div class="share-scope" id="share-scope" role="group" aria-label="What to share"></div>
+      <div class="share-link">
+        <input id="share-url" type="text" readonly aria-label="Link to share">
+        <button type="button" class="btn" id="share-copy" onclick="copyShareLink()"><i class="far fa-copy"></i> Copy</button>
+      </div>
+      <button type="button" class="btn share-native" id="share-native" onclick="nativeShare()" hidden><i class="fas fa-mobile-alt"></i> Share via apps on this phone</button>
+      <div class="share-grid">
+        <a id="share-wa" target="_blank" rel="noopener" class="share-app wa"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+        <a id="share-li" target="_blank" rel="noopener" class="share-app li"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+        <a id="share-tg" target="_blank" rel="noopener" class="share-app tg"><i class="fab fa-telegram"></i><span>Telegram</span></a>
+        <a id="share-em" class="share-app em"><i class="fas fa-envelope"></i><span>Email</span></a>
+      </div>
+      <div class="qr-wrap">
+        <div id="qr-box" aria-label="QR code of the link"></div>
+        <div class="qr-side">
+          <strong>Scan to open</strong>
+          <p>Use it on posters, name cards or slides at conferences and exhibitions.</p>
+          <button type="button" class="btn btn-outline" onclick="downloadQR()"><i class="fas fa-download"></i> Download QR</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     // SINGLE PAGE APP LOGIC
@@ -1552,12 +1916,16 @@
         const target = document.getElementById(id);
         if (target) {
             target.classList.add('active');
+            document.body.classList.add('section-open');
             setTimeout(() => {
                 const navHeight = document.getElementById('navbar').offsetHeight;
-                const offsetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                let offsetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                // On phones the header is hidden on section pages, so start at the very top (profile bar)
+                if (isPhone()) offsetPosition = 0;
                 window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }, 50);
         }
+        syncBottomNav(id);
 
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.classList.remove('active');
@@ -1584,6 +1952,27 @@
         if (target && !fromHash && location.hash !== hash) history.pushState(null, '', hash);
     }
 
+    function isPhone() { return window.matchMedia('(max-width: 768px)').matches; }
+
+    function syncBottomNav(id) {
+        document.querySelectorAll('.bottom-nav [data-sec]').forEach(el => el.classList.toggle('active', el.dataset.sec === id));
+    }
+
+    function goHome() {
+        document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+        document.body.classList.remove('section-open');
+        syncBottomNav('home');
+        const hamburger = document.querySelector('.hamburger');
+        if (hamburger.classList.contains('active')) toggleMenu();
+        if (location.hash) history.pushState(null, '', location.pathname + location.search);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+        document.querySelector('.hamburger').click();
+    }
+
     function openFromHash() {
         const [id, tabId] = location.hash.replace('#', '').split('/');
         if (id && document.getElementById(id) && document.getElementById(id).tagName === 'SECTION') {
@@ -1591,6 +1980,8 @@
         } else {
             document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
             document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            document.body.classList.remove('section-open');
+            syncBottomNav('home');
         }
     }
     window.addEventListener('popstate', openFromHash);
@@ -1736,125 +2127,818 @@
         </div>`;
     }
 
+    // =====================================
+    // LIVE ALGORITHM SANDBOX
+    // Agents only see the score of the spot they stand on; nobody tells them where the best peak is.
+    // =====================================
     const canvas = document.getElementById('swarmCanvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [], animationId, currentMode = null, frameCount = 0, currentTrapTarget = null;
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    const chart = document.getElementById('sbChart');
+    const cctx = chart ? chart.getContext('2d') : null;
+    const W = 400, H = 340;
 
-    const optima = [
-      { x: 80,  y: 70,  r: 40, color: 'rgba(231, 76, 60, 0.2)', core: '#e74c3c', text: 'Local Optimum', isGlobal: false },
-      { x: 330, y: 70,  r: 50, color: 'rgba(231, 76, 60, 0.2)', core: '#e74c3c', text: 'Local Optimum', isGlobal: false },
-      { x: 90,  y: 260, r: 50, color: 'rgba(231, 76, 60, 0.2)', core: '#e74c3c', text: 'Local Trap', isGlobal: false }, 
-      { x: 290, y: 250, r: 70, color: 'rgba(76, 175, 80, 0.3)', core: '#4caf50', text: 'Global Optimum', isGlobal: true }
-    ];
+    const STRATS = {
+      random: { name: 'Pure Exploration', color: '#3498db' },
+      greedy: { name: 'Pure Exploitation', color: '#e74c3c' },
+      scso:   { name: 'SCSO', color: '#4caf50' }
+    };
+    const SPEEDS = [2, 4, 6, 12, 30];                         // iterations per second
+    const SPEED_LABELS = ['Very slow', 'Slow', 'Normal', 'Fast', 'Very fast'];
+    const K_VALUES = [0.45, 0.7, 1, 1.6, 2.6];                // sensitivity decay exponent
+    const K_LABELS = ['Very late', 'Late', 'Balanced', 'Early', 'Very early'];
+    const HOLD_MS = 5500;                                     // how long a guided caption stays before the run continues
+    const TRAIL = 6;                                          // iterations of trail behind each agent
 
-    class Particle {
-      constructor() {
-        this.x = 200; this.y = 160; 
-        this.vx = (Math.random() - 0.5) * 6; this.vy = (Math.random() - 0.5) * 6;
+    const LANDSCAPES = {
+      default: () => [
+        { x: 0.2,  y: 0.22, h: 0.62, s: 0.1 },
+        { x: 0.82, y: 0.2,  h: 0.66, s: 0.11 },
+        { x: 0.22, y: 0.78, h: 0.72, s: 0.1 },
+        { x: 0.74, y: 0.74, h: 1.0,  s: 0.055 }
+      ],
+      random: () => {
+        const n = 3 + Math.floor(Math.random() * 4);
+        return Array.from({ length: n }, () => ({ x: 0.1 + Math.random() * 0.8, y: 0.1 + Math.random() * 0.8, h: 0.4 + Math.random() * 0.6, s: 0.04 + Math.random() * 0.08 }));
+      },
+      hard: () => {
+        const peaks = Array.from({ length: 7 }, () => ({ x: 0.08 + Math.random() * 0.84, y: 0.08 + Math.random() * 0.84, h: 0.55 + Math.random() * 0.3, s: 0.07 + Math.random() * 0.06 }));
+        peaks.push({ x: 0.1 + Math.random() * 0.8, y: 0.1 + Math.random() * 0.8, h: 1.0, s: 0.03 });
+        return peaks;
       }
-      update(mode, frames) {
-        if (mode === 'explore') {
-          this.vx += (Math.random() - 0.5) * 2.5; this.vy += (Math.random() - 0.5) * 2.5;
-        } 
-        else if (mode === 'exploit') {
-          let target = currentTrapTarget; 
-          this.vx += (target.x - this.x) * 0.05 + (Math.random() - 0.5) * 3;
-          this.vy += (target.y - this.y) * 0.05 + (Math.random() - 0.5) * 3;
-          this.vx *= 0.88; this.vy *= 0.88; 
-        } 
-        else if (mode === 'balanced') {
-          if (frames < 120) {
-            this.vx += (Math.random() - 0.5) * 3.5; this.vy += (Math.random() - 0.5) * 3.5;
-          } else if (frames >= 120 && frames < 250) {
-            let ratio = (frames - 120) / 130; 
-            let target = optima.find(o => o.isGlobal);
-            this.vx += (Math.random() - 0.5) * (3.5 * (1 - ratio));
-            this.vy += (Math.random() - 0.5) * (3.5 * (1 - ratio));
-            this.vx += (target.x - this.x) * (0.04 * ratio);
-            this.vy += (target.y - this.y) * (0.04 * ratio);
-            this.vx *= 0.9; this.vy *= 0.9;
-          } else {
-            let target = optima.find(o => o.isGlobal);
-            this.vx += (target.x - this.x) * 0.05 + (Math.random() - 0.5) * 2;
-            this.vy += (target.y - this.y) * 0.05 + (Math.random() - 0.5) * 2;
-            this.vx *= 0.85; this.vy *= 0.85;
-          }
-        }
-        let speed = Math.hypot(this.vx, this.vy);
-        if (speed > 8) { this.vx = (this.vx/speed)*8; this.vy = (this.vy/speed)*8; }
-        this.x += this.vx; this.y += this.vy;
-        if (this.x < 0) { this.x = 0; this.vx *= -1; }
-        if (this.x > canvas.width) { this.x = canvas.width; this.vx *= -1; }
-        if (this.y < 0) { this.y = 0; this.vy *= -1; }
-        if (this.y > canvas.height) { this.y = canvas.height; this.vy *= -1; }
+    };
+
+    let peaks = LANDSCAPES.default();
+    let gBest = null;                 // the true best spot: used only for drawing and scoring, never by the agents
+    let heat = null;                  // cached background image
+    let sbMode = 'scso';
+    let swarms = [], frames = [];
+    let iter = 0, running = false, finished = false, held = false;
+    let lastTime = 0, acc = 0, rafId = null, onScreen = true;
+    let viewT = null;                 // iteration shown by the replay slider (null = live)
+    let events = new Set(), lastEventIter = 0, slowUntil = 0, holdTimer = null;
+
+    const $ = id => document.getElementById(id);
+    const cfg = () => ({
+      n: +$('sb-n').value, T: +$('sb-t').value,
+      speed: SPEEDS[$('sb-speed').value - 1], k: K_VALUES[$('sb-k').value - 1]
+    });
+    const guided = () => $('sb-guided').checked;
+    const pct = f => Math.round(f / gBest.f * 100);
+    const rGAt = t => { const { T, k } = cfg(); return 2 * Math.pow(Math.max(0, 1 - t / T), k); };
+
+    function fitness(u, v) {
+      let f = 0;
+      for (const p of peaks) {
+        const dx = u - p.x, dy = v - p.y;
+        f += p.h * Math.exp(-(dx * dx + dy * dy) / (2 * p.s * p.s));
       }
-      draw() {
-        ctx.beginPath(); ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = '#ffffff'; ctx.fill();
-      }
+      return f;
     }
 
-    function drawLandscape() {
-      if(!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      optima.forEach(opt => {
-        ctx.beginPath(); ctx.arc(opt.x, opt.y, opt.r, 0, Math.PI*2);
-        ctx.fillStyle = opt.color; ctx.fill();
-        ctx.beginPath(); ctx.arc(opt.x, opt.y, 5, 0, Math.PI*2);
-        ctx.fillStyle = opt.core; ctx.fill();
-        ctx.fillStyle = opt.core; 
-        ctx.font = opt.isGlobal ? "bold 13px sans-serif" : "11px sans-serif"; 
-        ctx.fillText(opt.text, opt.x - (opt.isGlobal ? 45 : 35), opt.y - 12);
+    // The true optimum: refine each peak centre with a small local search and keep the highest
+    function findGlobal() {
+      let best = null;
+      for (const p of peaks) {
+        let u = p.x, v = p.y, f = fitness(u, v);
+        for (let step = 0.02; step > 0.0005; step /= 2) {
+          let improved = true;
+          while (improved) {
+            improved = false;
+            for (const [du, dv] of [[step, 0], [-step, 0], [0, step], [0, -step]]) {
+              const nf = fitness(u + du, v + dv);
+              if (nf > f) { u += du; v += dv; f = nf; improved = true; }
+            }
+          }
+        }
+        if (!best || f > best.f) best = { u, v, f, peak: p };
+      }
+      gBest = best;
+    }
+
+    function buildHeat() {
+      const off = document.createElement('canvas');
+      off.width = W; off.height = H;
+      const o = off.getContext('2d');
+      const B = 4;
+      for (let y = 0; y < H; y += B) {
+        for (let x = 0; x < W; x += B) {
+          o.fillStyle = heatColor(Math.max(0, Math.min(1, fitness((x + B / 2) / W, (y + B / 2) / H) / gBest.f)));
+          o.fillRect(x, y, B, B);
+        }
+      }
+      heat = off;
+    }
+
+    function heatColor(t) {
+      const stops = [[0, [18, 18, 42]], [0.3, [26, 58, 95]], [0.6, [46, 125, 50]], [0.85, [192, 202, 51]], [1, [255, 245, 157]]];
+      for (let i = 1; i < stops.length; i++) {
+        if (t <= stops[i][0]) {
+          const [t0, c0] = stops[i - 1], [t1, c1] = stops[i];
+          const r = (t - t0) / (t1 - t0);
+          return `rgb(${c0.map((c, j) => Math.round(c + (c1[j] - c) * r)).join(',')})`;
+        }
+      }
+      return 'rgb(255,245,157)';
+    }
+
+    function landscapeChanged() {
+      findGlobal();
+      buildHeat();
+      resetRun();
+    }
+
+    // ---------- strategies ----------
+    function makeSwarm(type, n) {
+      const agents = Array.from({ length: n }, () => ({ u: Math.random(), v: Math.random(), explore: true }));
+      const sw = { type, agents, best: null, history: [], hitAt: null, exploreShare: type === 'greedy' ? 0 : 1 };
+      evaluate(sw, 0);
+      return sw;
+    }
+
+    function evaluate(sw, t) {
+      for (const a of sw.agents) {
+        a.f = fitness(a.u, a.v);
+        if (!sw.best || a.f > sw.best.f) sw.best = { u: a.u, v: a.v, f: a.f };
+      }
+      sw.history.push(sw.best.f / gBest.f);
+      if (sw.hitAt === null && isGlobalHit(sw.best)) sw.hitAt = t;
+    }
+
+    // Within 0.5% of the true best: landing near the peak is not enough, the swarm must refine it
+    function isGlobalHit(b) {
+      return b.f >= 0.995 * gBest.f && Math.hypot(b.u - gBest.u, b.v - gBest.v) < gBest.peak.s;
+    }
+
+    function spread(sw) {
+      const A = sw.agents, mu = A.reduce((s, a) => s + a.u, 0) / A.length, mv = A.reduce((s, a) => s + a.v, 0) / A.length;
+      return Math.sqrt(A.reduce((s, a) => s + (a.u - mu) ** 2 + (a.v - mv) ** 2, 0) / A.length);
+    }
+
+    const clamp01 = x => x < 0 ? 0 : x > 1 ? 1 : x;
+
+    function stepSwarm(sw, t, T, k) {
+      const A = sw.agents;
+      if (sw.type === 'random') {
+        for (const a of A) { a.u = Math.random(); a.v = Math.random(); a.explore = true; }
+        sw.exploreShare = 1;
+      } else if (sw.type === 'greedy') {
+        // Everyone rushes to the best spot seen so far, with a little noise
+        for (const a of A) {
+          a.u = clamp01(a.u + 0.35 * (sw.best.u - a.u) + (Math.random() - 0.5) * 0.02);
+          a.v = clamp01(a.v + 0.35 * (sw.best.v - a.v) + (Math.random() - 0.5) * 0.02);
+          a.explore = false;
+        }
+        sw.exploreShare = 0;
+      } else {
+        // Simplified Sand Cat Swarm Optimization in centred coordinates [-1, 1]
+        const rG = 2 * Math.pow(Math.max(0, 1 - t / T), k);   // general sensitivity: 2 -> 0
+        const bu = sw.best.u * 2 - 1, bv = sw.best.v * 2 - 1;
+        let explorers = 0;
+        for (const a of A) {
+          const r = rG * Math.random();
+          const R = 2 * rG * Math.random() - rG;
+          let cu = a.u * 2 - 1, cv = a.v * 2 - 1;
+          if (Math.abs(R) > 1) {
+            // Exploration: search around a random team-mate
+            const c = A[Math.floor(Math.random() * A.length)];
+            const pu = c.u * 2 - 1, pv = c.v * 2 - 1;
+            cu = r * (pu - Math.random() * cu);
+            cv = r * (pv - Math.random() * cv);
+            a.explore = true; explorers++;
+          } else {
+            // Exploitation: attack the best prey from a random angle
+            const theta = Math.random() * 2 * Math.PI;
+            const ru = Math.abs(Math.random() * bu - cu), rv = Math.abs(Math.random() * bv - cv);
+            cu = bu - r * ru * Math.cos(theta);
+            cv = bv - r * rv * Math.cos(theta);
+            a.explore = false;
+          }
+          if (cu < -1 || cu > 1 || cv < -1 || cv > 1) { cu = Math.random() * 2 - 1; cv = Math.random() * 2 - 1; }
+          a.u = (cu + 1) / 2; a.v = (cv + 1) / 2;
+        }
+        sw.exploreShare = explorers / A.length;
+      }
+      evaluate(sw, t);
+    }
+
+    // ---------- recording (for trails and replay) ----------
+    function snapshot() {
+      frames.push(swarms.map(sw => ({
+        pos: Float32Array.from(sw.agents.flatMap(a => [a.u, a.v])),
+        ex: Uint8Array.from(sw.agents.map(a => a.explore ? 1 : 0)),
+        best: { ...sw.best }, share: sw.exploreShare
+      })));
+    }
+
+    // ---------- guide ----------
+    const primary = () => swarms.find(s => s.type === 'scso') || swarms[0];
+
+    function caption(label, html, pause) {
+      $('sb-guide-step').innerHTML = '<i class="fas fa-chalkboard-teacher"></i> ' + label;
+      $('sb-guide-text').innerHTML = html;
+      const g = $('sb-guide');
+      g.classList.remove('flash'); void g.offsetWidth; g.classList.add('flash');
+      lastEventIter = iter;
+      slowUntil = iter + 8;                                    // slow motion right after a key moment
+      if (pause && guided() && running) hold();
+    }
+
+    function hold() {
+      held = true;
+      $('sb-guide-actions').hidden = false;
+      $('sb-guide-timer').hidden = false;
+      const bar = $('sb-guide-bar');
+      bar.style.transition = 'none'; bar.style.width = '0%';
+      void bar.offsetWidth;
+      bar.style.transition = `width ${HOLD_MS}ms linear`; bar.style.width = '100%';
+      clearTimeout(holdTimer);
+      holdTimer = setTimeout(release, HOLD_MS);
+    }
+
+    function release() {
+      clearTimeout(holdTimer);
+      held = false;
+      $('sb-guide-actions').hidden = true;
+      $('sb-guide-timer').hidden = true;
+      lastTime = performance.now(); acc = 0;
+    }
+
+    // One caption per iteration, so a second event waits for the next step instead of overwriting the first
+    let firedThisStep = false;
+    function once(key, fn) {
+      if (firedThisStep || events.has(key)) return;
+      if (fn()) { events.add(key); firedThisStep = true; }
+    }
+
+    function introCaption() {
+      const n = cfg().n;
+      const text = {
+        scso: `<strong>${n} sand cats</strong> are dropped at random. None of them knows where the best spot is: each cat only feels the score of the spot it stands on.`,
+        random: `<strong>${n} agents</strong> are dropped at random. In every iteration, each agent jumps to a brand-new random spot.`,
+        greedy: `<strong>${n} agents</strong> are dropped at random. In every iteration, all of them move towards the best spot found so far.`,
+        race: `Three swarms start on the same map: <span style="color:#3498db">blue = Pure Exploration</span>, <span style="color:#e74c3c">red = Pure Exploitation</span>, <span style="color:#4caf50">green = SCSO</span>. Which one finds the global best?`
+      }[sbMode];
+      caption('Start', text, true);
+    }
+
+    function checkEvents() {
+      firedThisStep = false;
+      const p = primary(), { T } = cfg();
+      once('phase1', () => {
+        if (iter < 3) return false;
+        const text = {
+          scso: `<strong>Phase 1: Exploration.</strong> Sensitivity r<sub>G</sub> is high (${rGAt(iter).toFixed(2)}). Each cat draws a random R between −r<sub>G</sub> and r<sub>G</sub>; whenever |R| &gt; 1 it searches around a random team-mate instead of chasing the best spot. <span style="color:#8ec5ff">Light-blue dots</span> are exploring; white dots are attacking.`,
+          random: '<strong>Pure exploration:</strong> the agents cover the whole map, but nobody stays to refine a good spot.',
+          greedy: '<strong>Pure exploitation:</strong> everyone moves towards the best spot found so far. It is fast, but if that spot is only a local peak, the whole swarm gets trapped there.',
+          race: 'Watch the <span style="color:#e74c3c">red swarm</span>: it collapses onto one spot almost immediately, while the <span style="color:#4caf50">green SCSO cats</span> are still spread out exploring.'
+        }[sbMode];
+        caption('Phase 1 · iteration ' + iter, text, true);
+        return true;
+      });
+      once('promising', () => {
+        if (p.best.f < 0.8 * gBest.f || !events.has('phase1')) return false;
+        caption('Discovery · iteration ' + iter, `A ${sbMode === 'race' ? 'green cat' : 'searcher'} found a promising area: <strong>${pct(p.best.f)}%</strong> of the true best. The swarm remembers it as the current <em>best prey</em> (the ring on the map).`, true);
+        return true;
+      });
+      if (p.type === 'scso') {
+        once('transition', () => {
+          if (rGAt(iter) > 1.5) return false;
+          caption('Phase 2 · iteration ' + iter, `<strong>Transition.</strong> r<sub>G</sub> has dropped to ${rGAt(iter).toFixed(2)}, so |R| &gt; 1 happens less and less often. Only <strong>${Math.round(p.exploreShare * 100)}%</strong> of the cats roamed this iteration; the rest attacked the best prey.`, true);
+          return true;
+        });
+        once('exploit', () => {
+          if (rGAt(iter) > 1) return false;
+          caption('Phase 3 · iteration ' + iter, `<strong>Exploitation.</strong> r<sub>G</sub> is now ${rGAt(iter).toFixed(2)}, below 1, so |R| can no longer exceed 1: <strong>every cat attacks</strong>. They circle the best prey from random angles, with moves that shrink as r<sub>G</sub> falls. Best so far: <strong>${pct(p.best.f)}%</strong>.`, true);
+          return true;
+        });
+      }
+      const greedy = swarms.find(s => s.type === 'greedy');
+      if (greedy) {
+        once('greedyStuck', () => {
+          if (iter < 5 || spread(greedy) > 0.01) return false;
+          const ok = greedy.hitAt !== null;
+          caption((sbMode === 'race' ? 'Red swarm' : 'Converged') + ' · iteration ' + iter, ok
+            ? `Pure exploitation has converged at iteration ${iter}, and this time it was <strong>lucky</strong>: its first good spot was on the global peak. On another map it could just as easily be trapped.`
+            : `Pure exploitation has converged at iteration ${iter}, <strong>stuck at ${pct(greedy.best.f)}%</strong> of the best. With no exploration left, it can never escape this local peak.`, true);
+          return true;
+        });
+      }
+      if (sbMode === 'random') {
+        once('randomHalf', () => {
+          if (iter < Math.floor(T / 2) || p.hitAt !== null) return false;
+          caption('Halfway · iteration ' + iter, `Random jumps have found <strong>${pct(p.best.f)}%</strong> of the best, but nobody refines it. Hitting the exact top by chance is very unlikely.`, true);
+          return true;
+        });
+      }
+      once('found', () => {
+        if (p.hitAt === null || !events.has('promising')) return false;   // tell the story in order
+        caption('Found it · iteration ' + p.hitAt, `<strong>${sbMode === 'race' ? 'SCSO' : STRATS[p.type].name} found the global best</strong> at iteration ${p.hitAt}, within 0.5% of the true optimum (dashed ring).` +
+          (p.type === 'scso' ? ' The remaining iterations keep refining it.' : ''), true);
+        return true;
       });
     }
 
-    function updateGauge(mode, frames) {
-      const gExp = document.getElementById('gauge-explore'), gExpt = document.getElementById('gauge-exploit'), sBox = document.getElementById('sim-status');
-      if (!gExp || !gExpt || !sBox) return;
-      
-      if (mode === 'explore') {
-        gExp.style.width = '100%'; gExpt.style.width = '0%';
-        sBox.innerHTML = '<span style="color:#3498db">Agents wander wildly. They map the entire space, but never converge to build a final test suite.</span>';
-      } else if (mode === 'exploit') {
-        gExp.style.width = '0%'; gExpt.style.width = '100%';
-        if (currentTrapTarget && currentTrapTarget.isGlobal) {
-            sBox.innerHTML = '<span style="color:#4caf50"><strong>Premature Convergence (Lucky!):</strong> The swarm greedily rushed to a target together. By pure luck, it was the <strong>Global Optimum</strong>! But relying on luck is bad engineering.</span>';
-        } else {
-            sBox.innerHTML = '<span style="color:#e74c3c"><strong>Premature Convergence (Trapped):</strong> The swarm shared information too greedily. They all rushed to a <strong>Local Trap</strong> and got permanently stuck together, missing the global best!</span>';
+    function endCaption() {
+      const lines = swarms.map(sw => {
+        const c = STRATS[sw.type].color;
+        return sw.hitAt !== null
+          ? `<span style="color:${c}">●</span> <strong>${STRATS[sw.type].name}</strong>: found the global best at iteration ${sw.hitAt}.`
+          : `<span style="color:${c}">●</span> <strong>${STRATS[sw.type].name}</strong>: trapped at ${pct(sw.best.f)}% of the best.`;
+      });
+      caption('Result', lines.join('<br>') + '<br><small>Drag the replay slider to review any iteration, or try another strategy or landscape.</small>', false);
+    }
+
+    // ---------- run control ----------
+    function resetRun() {
+      stop();
+      release();
+      const { n, T } = cfg();
+      iter = 0; finished = false; viewT = null;
+      events = new Set(); lastEventIter = 0; slowUntil = 0;
+      const types = sbMode === 'race' ? ['random', 'greedy', 'scso'] : [sbMode];
+      swarms = types.map(t => makeSwarm(t, n));
+      frames = []; snapshot();
+      $('sb-iter').textContent = '0';
+      $('sb-iter-max').textContent = T;
+      caption('Guide', 'Press <strong>Play</strong> to start.' + (guided() ? ' The run pauses at each key moment, so you can see what is happening.' : ''), false);
+      playLabel();
+      updateScrub();
+      updateHud();
+      render();
+      renderScoreboard();
+    }
+
+    function doStep() {
+      const { T, k } = cfg();
+      if (finished) return;
+      iter++;
+      swarms.forEach(sw => stepSwarm(sw, iter, T, k));
+      snapshot();
+      $('sb-iter').textContent = iter;
+      checkEvents();
+      if (iter >= T) finish();
+    }
+
+    function play() {
+      if (finished) resetRun();
+      viewT = null;
+      running = true;
+      $('sb-play').innerHTML = '<i class="fas fa-pause"></i> Pause';
+      updateScrub();
+      lastTime = performance.now(); acc = 0;
+      if (iter === 0 && !events.has('intro')) { events.add('intro'); introCaption(); }
+      rafId = requestAnimationFrame(loop);
+    }
+
+    function playLabel() {
+      const btn = $('sb-play');
+      if (btn) btn.innerHTML = running ? '<i class="fas fa-pause"></i> Pause'
+        : '<i class="fas fa-play"></i> ' + (finished ? 'Run again' : (iter ? 'Resume' : 'Play'));
+    }
+
+    function stop() {
+      running = false;
+      cancelAnimationFrame(rafId);
+      playLabel();
+      updateScrub();
+    }
+
+    function effectiveSpeed() {
+      const base = cfg().speed;
+      if (iter < slowUntil) return base * 0.4;                // slow motion after a key moment
+      if (iter - lastEventIter > 12) return base * 1.8;      // speed through quiet stretches
+      return base;
+    }
+
+    function loop(now) {
+      if (!running) return;
+      if (onScreen && !document.hidden) {
+        if (!held) {
+          acc += Math.min(now - lastTime, 250);
+          while (!held && !finished && acc >= 1000 / effectiveSpeed()) { acc -= 1000 / effectiveSpeed(); doStep(); }
         }
-      } else if (mode === 'balanced') {
-        if (frames < 120) {
-          gExp.style.width = '100%'; gExpt.style.width = '0%';
-          sBox.innerHTML = '<span style="color:#3498db"><strong>Phase 1:</strong> High exploration to effectively map out all possibilities in the solution space.</span>';
-        } else if (frames >= 120 && frames < 250) {
-          let ratio = (frames - 120) / 130;
-          gExp.style.width = (100 - (ratio*100)) + '%'; gExpt.style.width = (ratio*100) + '%';
-          sBox.innerHTML = '<span style="color:#f39c12"><strong>Phase 2:</strong> Dynamic Transition. Slowly ignoring Local Optima and gravitating towards the best area found.</span>';
-        } else {
-          gExp.style.width = '0%'; gExpt.style.width = '100%';
-          sBox.innerHTML = '<span style="color:#4caf50"><strong>Phase 3:</strong> High Exploitation. Safely swarming the <strong>Global Optimum</strong> to perfectly tune the final test suite!</span>';
+        render(); updateHud(); renderScoreboard();
+      }
+      lastTime = now;
+      if (finished) { stop(); return; }
+      rafId = requestAnimationFrame(loop);
+    }
+
+    function finish() {
+      finished = true;
+      release();
+      endCaption();
+      render(); renderScoreboard(); updateHud();
+    }
+
+    // ---------- HUD: phase strip, sensitivity meter, replay ----------
+    function phaseOf(t) {
+      if (finished && (viewT === null || viewT === iter)) return 'done';
+      const fr = frames[t]; if (!fr) return 'explore';
+      const sw = primary();
+      if (sw.type === 'random') return 'explore';
+      if (sw.type === 'greedy') return 'exploit';
+      const rG = rGAt(t);
+      return rG > 1.5 ? 'explore' : rG > 1 ? 'transition' : 'exploit';
+    }
+
+    function updateHud() {
+      const t = viewT ?? iter;
+      const order = ['explore', 'transition', 'exploit', 'done'], ph = phaseOf(t), at = order.indexOf(ph);
+      document.querySelectorAll('#sb-phases li').forEach((li, i) => { li.classList.toggle('now', i === at); li.classList.toggle('past', i < at); });
+      const meter = document.querySelector('.sb-meter'), hasScso = swarms.some(s => s.type === 'scso');
+      meter.classList.toggle('off', !hasScso);
+      const rG = hasScso ? rGAt(t) : 0;
+      $('sb-rg').textContent = hasScso ? rG.toFixed(2) : '–';
+      $('sb-rg-fill').style.width = (hasScso ? rG / 2 * 100 : 0) + '%';
+    }
+
+    function updateScrub() {
+      const s = $('sb-scrub');
+      const can = !running && iter > 0;
+      s.disabled = !can;
+      s.max = iter; s.value = viewT ?? iter;
+      $('sb-scrub-out').textContent = can ? `Replay: iteration ${viewT ?? iter}` : (running ? 'Replay unlocks when paused' : 'Replay unlocks after a run');
+    }
+
+    // ---------- drawing ----------
+    function render() {
+      if (!ctx || !heat) return;
+      const t = viewT ?? iter, fr = frames[t];
+      ctx.drawImage(heat, 0, 0);
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,255,255,0.9)'; ctx.lineWidth = 1.5; ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.arc(gBest.u * W, gBest.v * H, 12, 0, Math.PI * 2); ctx.stroke();
+      ctx.restore();
+      ctx.fillStyle = '#fff'; ctx.font = 'bold 11px sans-serif';
+      ctx.fillText('★ Global best', Math.min(gBest.u * W + 14, W - 92), Math.max(14, gBest.v * H - 14));
+      if (!fr) return renderChart(t);
+      const race = swarms.length > 1;
+      swarms.forEach((sw, si) => {
+        const col = STRATS[sw.type].color;
+        // fading trails (not for random jumps, which would just be noise)
+        if (sw.type !== 'random') {
+          for (let k = Math.max(1, t - TRAIL + 1); k <= t; k++) {
+            const a = frames[k - 1][si].pos, b = frames[k][si].pos;
+            ctx.strokeStyle = race ? col : 'rgba(255,255,255,1)';
+            ctx.globalAlpha = 0.08 + 0.35 * (k - (t - TRAIL)) / TRAIL;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            for (let j = 0; j < a.length; j += 2) {
+              if (Math.abs(a[j] - b[j]) + Math.abs(a[j + 1] - b[j + 1]) > 0.18) continue;   // long jumps would just be streaks
+              ctx.moveTo(a[j] * W, a[j + 1] * H); ctx.lineTo(b[j] * W, b[j + 1] * H);
+            }
+            ctx.stroke();
+          }
+          ctx.globalAlpha = 1;
         }
+        const f = fr[si];
+        for (let j = 0; j < f.pos.length; j += 2) {
+          ctx.beginPath(); ctx.arc(f.pos[j] * W, f.pos[j + 1] * H, 3, 0, Math.PI * 2);
+          ctx.fillStyle = race ? col : (f.ex[j / 2] ? '#8ec5ff' : '#ffffff');
+          ctx.fill();
+        }
+        ctx.beginPath(); ctx.arc(f.best.u * W, f.best.v * H, 7, 0, Math.PI * 2);
+        ctx.strokeStyle = col; ctx.lineWidth = 2.5; ctx.stroke();
+      });
+      renderChart(t);
+    }
+
+    function renderChart(t) {
+      if (!cctx) return;
+      const cw = chart.width, ch = chart.height, pad = 22, T = cfg().T;
+      const X = i => pad + (i / T) * (cw - pad - 4), Y = v => ch - 14 - Math.min(1, v) * (ch - 24);
+      cctx.clearRect(0, 0, cw, ch);
+      cctx.strokeStyle = 'rgba(255,255,255,0.15)'; cctx.lineWidth = 1;
+      cctx.fillStyle = 'rgba(255,255,255,0.55)'; cctx.font = '10px monospace';
+      [0, 0.5, 1].forEach(y => {
+        cctx.beginPath(); cctx.moveTo(pad, Y(y)); cctx.lineTo(cw - 4, Y(y)); cctx.stroke();
+        cctx.fillText(Math.round(y * 100) + '%', 0, Y(y) + 3);
+      });
+      cctx.fillText('iteration ' + T, cw - 78, ch - 2);
+      swarms.forEach(sw => {
+        cctx.strokeStyle = STRATS[sw.type].color; cctx.lineWidth = 2;
+        cctx.beginPath();
+        sw.history.slice(0, t + 1).forEach((v, i) => i ? cctx.lineTo(X(i), Y(v)) : cctx.moveTo(X(i), Y(v)));
+        cctx.stroke();
+      });
+      if (viewT !== null) {
+        cctx.strokeStyle = 'rgba(255,255,255,0.7)'; cctx.setLineDash([3, 3]);
+        cctx.beginPath(); cctx.moveTo(X(t), 4); cctx.lineTo(X(t), ch - 14); cctx.stroke();
+        cctx.setLineDash([]);
       }
     }
 
-    function animate() {
-      drawLandscape(); frameCount++; updateGauge(currentMode, frameCount);
-      particles.forEach(p => { p.update(currentMode, frameCount); p.draw(); });
-      animationId = requestAnimationFrame(animate);
+    function renderScoreboard() {
+      const box = $('sb-scoreboard');
+      if (!box) return;
+      const t = viewT ?? iter;
+      box.innerHTML = swarms.map((sw, si) => {
+        const best = frames[t] ? frames[t][si].best : sw.best;
+        const hit = sw.hitAt !== null && sw.hitAt <= t;
+        const tag = hit ? `found at it. ${sw.hitAt}` : `${pct(best.f)}% of best`;
+        return `<div class="sb-score"><span class="sb-dot" style="background:${STRATS[sw.type].color}"></span>${STRATS[sw.type].name}<b>${tag}</b></div>`;
+      }).join('');
     }
 
-    function runSimulation(mode) {
-      cancelAnimationFrame(animationId);
-      currentMode = mode; frameCount = 0; particles = [];
-      if (mode === 'exploit') { currentTrapTarget = optima[Math.floor(Math.random() * optima.length)]; }
-      for(let i=0; i<60; i++) { let p = new Particle(); p.x = Math.random() * canvas.width; p.y = Math.random() * canvas.height; particles.push(p); }
-      animate();
-    }
-    
-    // Initialize the canvas drawing on load
-    if(canvas) { drawLandscape(); }
+    // Kept for the tab switcher, which redraws the canvas when tab 1 opens
+    function drawLandscape() { render(); }
 
-    // TABS LOGIC
+    // ---------- benchmark ----------
+    function runBenchmark() {
+      const out = $('sb-bench-out');
+      out.innerHTML = '<em>Running 10 trials per strategy…</em>';
+      setTimeout(() => {
+        const { n, T, k } = cfg();
+        const rows = Object.keys(STRATS).map(type => {
+          let hits = 0, its = 0, quality = 0;
+          for (let r = 0; r < 10; r++) {
+            const sw = makeSwarm(type, n);
+            for (let t = 1; t <= T; t++) stepSwarm(sw, t, T, k);
+            if (sw.hitAt !== null) { hits++; its += sw.hitAt; }
+            quality += sw.best.f / gBest.f;
+          }
+          return `<tr><td><span class="sb-dot" style="background:${STRATS[type].color}"></span> ${STRATS[type].name}</td>` +
+                 `<td><strong>${hits}/10</strong></td><td>${hits ? Math.round(its / hits) : '–'}</td><td>${Math.round(quality * 10)}%</td></tr>`;
+        }).join('');
+        out.innerHTML = `<table><thead><tr><th>Strategy</th><th>Found best</th><th>Avg. iteration</th><th>Avg. quality</th></tr></thead><tbody>${rows}</tbody></table>` +
+          '<small class="text-muted">Same landscape and settings, 10 independent runs each. Results vary from map to map, just like real benchmarks.</small>';
+      }, 30);
+    }
+
+    // ---------- landscape editing (tap / drag / hold / double-tap) ----------
+    let drag = null, growTimer = null, growRaf = null, lastTap = { t: 0, peak: null };
+
+    function toUV(e) {
+      const r = canvas.getBoundingClientRect();
+      return { u: clamp01((e.clientX - r.left) / r.width), v: clamp01((e.clientY - r.top) / r.height) };
+    }
+
+    function peakAt(u, v) {
+      let hit = null, bestD = Infinity;
+      for (const p of peaks) {
+        const d = Math.hypot(u - p.x, (v - p.y) * H / W);
+        if (d < Math.max(0.04, p.s * 0.8) && d < bestD) { hit = p; bestD = d; }
+      }
+      return hit;
+    }
+
+    function onDown(e) {
+      if (running) { caption('Editing', 'Pause the run first, then edit the landscape.', false); return; }
+      canvas.setPointerCapture(e.pointerId);
+      const { u, v } = toUV(e);
+      let p = peakAt(u, v);
+      const now = performance.now();
+      if (p && lastTap.peak === p && now - lastTap.t < 350) {
+        if (peaks.length > 1) { peaks = peaks.filter(q => q !== p); landscapeChanged(); }
+        lastTap = { t: 0, peak: null };
+        return;
+      }
+      if (!p) {
+        if (peaks.length >= 10) { caption('Editing', 'Maximum of 10 peaks. Double-tap a peak to remove it.', false); return; }
+        p = { x: u, y: v, h: 0.6, s: 0.05 };
+        peaks.push(p);
+        landscapeChanged();
+      }
+      lastTap = { t: now, peak: p };
+      drag = { p, sx: u, sy: v, moved: false };
+      growTimer = setTimeout(() => { if (drag && !drag.moved) grow(); }, 350);
+    }
+
+    function grow() {
+      if (!drag) return;
+      drag.p.h = Math.min(1.4, drag.p.h + 0.012);
+      drag.p.s = Math.min(0.16, drag.p.s + 0.0012);
+      findGlobal(); buildHeat(); render();
+      growRaf = requestAnimationFrame(grow);
+    }
+
+    function onMove(e) {
+      if (!drag) return;
+      const { u, v } = toUV(e);
+      if (!drag.moved && Math.hypot(u - drag.sx, v - drag.sy) < 0.015) return;
+      drag.moved = true;
+      clearTimeout(growTimer); cancelAnimationFrame(growRaf);
+      drag.p.x = u; drag.p.y = v;
+      findGlobal(); buildHeat(); render();
+    }
+
+    function onUp() {
+      clearTimeout(growTimer); cancelAnimationFrame(growRaf);
+      if (drag) { drag = null; landscapeChanged(); }
+    }
+
+    // ---------- wiring ----------
+    if (canvas) {
+      canvas.addEventListener('pointerdown', onDown);
+      canvas.addEventListener('pointermove', onMove);
+      canvas.addEventListener('pointerup', onUp);
+      canvas.addEventListener('pointercancel', onUp);
+
+      document.querySelectorAll('.sb-mode').forEach(b => b.addEventListener('click', () => {
+        document.querySelectorAll('.sb-mode').forEach(x => x.classList.toggle('active', x === b));
+        sbMode = b.dataset.mode;
+        resetRun();
+      }));
+      document.querySelectorAll('[data-land]').forEach(b => b.addEventListener('click', () => {
+        peaks = LANDSCAPES[b.dataset.land]();
+        $('sb-bench-out').innerHTML = '';
+        landscapeChanged();
+      }));
+      $('sb-play').addEventListener('click', () => running ? stop() : play());
+      $('sb-step').addEventListener('click', () => {
+        if (running) stop();
+        if (finished) resetRun();
+        viewT = null; release();
+        doStep(); render(); updateHud(); renderScoreboard(); updateScrub(); playLabel();
+      });
+      $('sb-reset').addEventListener('click', resetRun);
+      $('sb-bench').addEventListener('click', runBenchmark);
+      $('sb-next').addEventListener('click', release);
+      $('sb-skip').addEventListener('click', () => { $('sb-guided').checked = false; release(); });
+      $('sb-guided').addEventListener('change', () => { if (!guided()) release(); });
+      $('sb-scrub').addEventListener('input', e => {
+        viewT = +e.target.value;
+        if (viewT === iter) viewT = null;
+        $('sb-scrub-out').textContent = `Replay: iteration ${viewT ?? iter}`;
+        render(); updateHud(); renderScoreboard();
+      });
+
+      const sliders = [['sb-n', v => v], ['sb-t', v => v], ['sb-speed', v => SPEED_LABELS[v - 1]], ['sb-k', v => K_LABELS[v - 1]]];
+      sliders.forEach(([id, fmt]) => {
+        const el = $(id);
+        el.addEventListener('input', () => {
+          $(id + '-out').textContent = fmt(+el.value);
+          if (id === 'sb-n' || id === 'sb-t') resetRun();
+        });
+      });
+
+      // Pause drawing when the sandbox is off-screen
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(entries => { onScreen = entries[0].isIntersecting; }).observe(canvas);
+      }
+
+      landscapeChanged();
+    }
+
+    // =====================================
+    // PAIRWISE MINI-GAME
+    // =====================================
+    const PG_PARAMS = [['iOS', 'Android'], ['WiFi', '5G'], ['Light', 'Dark']];
+    const PG_NAMES = ['OS', 'Network', 'Theme'];
+    const PG_TESTS = [];
+    for (const a of PG_PARAMS[0]) for (const b of PG_PARAMS[1]) for (const c of PG_PARAMS[2]) PG_TESTS.push([a, b, c]);
+    const PG_OPTIMAL = ['iOS|WiFi|Light', 'iOS|5G|Dark', 'Android|WiFi|Dark', 'Android|5G|Light'];
+    let pgChosen = new Set();
+
+    function pgPairsOf(test) {
+      return [[0, 1], [0, 2], [1, 2]].map(([i, j]) => `${i}${j}:${test[i]}+${test[j]}`);
+    }
+
+    function pgRender() {
+      const testsBox = $('pg-tests'), pairsBox = $('pg-pairs');
+      if (!testsBox) return;
+      testsBox.innerHTML = PG_TESTS.map(t => {
+        const key = t.join('|');
+        return `<button type="button" class="pg-test${pgChosen.has(key) ? ' on' : ''}" data-key="${key}" aria-pressed="${pgChosen.has(key)}">${t.join(' · ')}</button>`;
+      }).join('');
+      const covered = new Set();
+      pgChosen.forEach(k => pgPairsOf(k.split('|')).forEach(p => covered.add(p)));
+      pairsBox.innerHTML = [[0, 1], [0, 2], [1, 2]].map(([i, j]) => {
+        const items = [];
+        for (const a of PG_PARAMS[i]) for (const b of PG_PARAMS[j]) {
+          const id = `${i}${j}:${a}+${b}`;
+          items.push(`<div class="pg-pair${covered.has(id) ? ' ok' : ''}">${a} + ${b}</div>`);
+        }
+        return `<div class="pg-group"><div>${PG_NAMES[i]} × ${PG_NAMES[j]}</div>${items.join('')}</div>`;
+      }).join('');
+      const n = covered.size, used = pgChosen.size;
+      $('pg-count').textContent = n; $('pg-used').textContent = used;
+      $('pg-bar-fill').style.width = (n / 12 * 100) + '%';
+      const msg = $('pg-msg');
+      if (n === 12) {
+        msg.innerHTML = used <= 4
+          ? `🏆 <strong>Optimal!</strong> All 12 pairs with only ${used} tests. That is a 50% saving over exhaustive testing, the same result a t-way algorithm finds.`
+          : `✅ All pairs covered with <strong>${used} tests</strong>. The algorithm needs only <strong>4</strong>. Can you remove some tests and still cover everything?`;
+      } else if (used === 0) {
+        msg.textContent = 'Exhaustive testing needs all 8 tests. Pairwise can do it in fewer.';
+      } else {
+        msg.textContent = `${12 - n} pairs still uncovered. Pick tests that cover new pairs.`;
+      }
+      testsBox.querySelectorAll('.pg-test').forEach(b => b.addEventListener('click', () => {
+        const k = b.dataset.key;
+        pgChosen.has(k) ? pgChosen.delete(k) : pgChosen.add(k);
+        pgRender();
+      }));
+    }
+
+    function pgReset() { pgChosen = new Set(); pgRender(); }
+    function pgReveal() {
+      pgChosen = new Set(PG_OPTIMAL);
+      pgRender();
+      $('pg-msg').innerHTML = '🤖 <strong>The algorithm\'s answer: 4 tests</strong> cover all 12 pairs. With 10 parameters of 5 values each, exhaustive testing needs 9,765,625 tests, while pairwise needs only a few dozen. That gap is why my research builds optimizers for t-way testing.';
+    }
+    pgRender();
+
+    // =====================================
+    // SHARE
+    // =====================================
+    const SECTION_NAMES = { about: 'About', education: 'Education', experience: 'Experience & Teaching', expertise: 'Expertise',
+      research: 'Research', copyrights: 'Copyrights', awards: 'Awards', contact: 'Contact' };
+    const SHARE_TITLE = 'Ts. Dr. Mohd Zamri Bin Zahir Ahmad - CV';
+    let shareScope = 'cv', lastFocus = null, qrLoading = null;
+
+    function baseUrl() { return location.origin + location.pathname.replace(/index\.html$|main\.html$/, ''); }
+    function currentSection() { const id = location.hash.replace('#', '').split('/')[0]; return SECTION_NAMES[id] ? id : null; }
+    function shareUrl() { const sec = currentSection(); return baseUrl() + (shareScope === 'section' && sec ? '#' + sec : ''); }
+    function shareText() {
+      const sec = currentSection();
+      return shareScope === 'section' && sec
+        ? `${SECTION_NAMES[sec]} | Ts. Dr. Mohd Zamri Bin Zahir Ahmad, Senior Lecturer at UniMAP`
+        : 'CV of Ts. Dr. Mohd Zamri Bin Zahir Ahmad, Senior Lecturer at UniMAP';
+    }
+
+    function openShare() {
+      lastFocus = document.activeElement;
+      const sec = currentSection();
+      shareScope = sec ? 'section' : 'cv';
+      $('share-scope').innerHTML = sec
+        ? `<button type="button" class="chip" data-scope="cv">Whole CV</button><button type="button" class="chip" data-scope="section">This section: ${SECTION_NAMES[sec]}</button>`
+        : '';
+      $('share-scope').querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => { shareScope = c.dataset.scope; refreshShare(); }));
+      $('share-native').hidden = !navigator.share;
+      $('share-modal').hidden = false;
+      document.body.style.overflow = 'hidden';
+      refreshShare();
+      document.querySelector('.share-close').focus();
+    }
+
+    function closeShare() {
+      $('share-modal').hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    function refreshShare() {
+      const url = shareUrl(), text = shareText();
+      $('share-url').value = url;
+      $('share-scope').querySelectorAll('.chip').forEach(c => { c.classList.toggle('active', c.dataset.scope === shareScope); c.setAttribute('aria-pressed', c.dataset.scope === shareScope); });
+      const enc = encodeURIComponent;
+      $('share-wa').href = `https://wa.me/?text=${enc(text + ' ' + url)}`;
+      $('share-li').href = `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}`;
+      $('share-tg').href = `https://t.me/share/url?url=${enc(url)}&text=${enc(text)}`;
+      $('share-em').href = `mailto:?subject=${enc(SHARE_TITLE)}&body=${enc(text + '\n\n' + url)}`;
+      $('share-copy').innerHTML = '<i class="far fa-copy"></i> Copy';
+      drawQR(url);
+    }
+
+    function loadQRLib() {
+      if (window.QRCode) return Promise.resolve();
+      if (!qrLoading) {
+        qrLoading = new Promise((res, rej) => {
+          const sc = document.createElement('script');
+          sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+          sc.onload = res; sc.onerror = rej;
+          document.head.appendChild(sc);
+        });
+      }
+      return qrLoading;
+    }
+
+    function drawQR(url) {
+      const box = $('qr-box');
+      box.innerHTML = '';
+      loadQRLib().then(() => {
+        box.innerHTML = '';
+        new QRCode(box, { text: url, width: 240, height: 240, colorDark: '#1b5e20', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+      }).catch(() => { box.innerHTML = '<small style="color:#555">QR code unavailable offline</small>'; });
+    }
+
+    function downloadQR() {
+      const c = $('qr-box').querySelector('canvas');
+      if (!c) return;
+      const a = document.createElement('a');
+      a.href = c.toDataURL('image/png');
+      a.download = shareScope === 'section' && currentSection() ? `Zamri-CV-${currentSection()}-QR.png` : 'Zamri-CV-QR.png';
+      a.click();
+    }
+
+    function copyShareLink() {
+      const input = $('share-url');
+      const done = () => { $('share-copy').innerHTML = '<i class="fas fa-check"></i> Copied'; };
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(input.value).then(done, () => { input.select(); document.execCommand('copy'); done(); });
+      } else { input.select(); document.execCommand('copy'); done(); }
+    }
+
+    function nativeShare() {
+      navigator.share({ title: SHARE_TITLE, text: shareText(), url: shareUrl() }).catch(() => {});
+    }
+
+    $('share-modal').addEventListener('click', e => { if (e.target.id === 'share-modal') closeShare(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('share-modal').hidden) closeShare(); });
+
+    // TABS LOGIC    // TABS LOGIC
     function openExpertiseTab(evt, tabId) {
       // Hide all tab content
       const tabContents = document.getElementsByClassName("tab-content");
