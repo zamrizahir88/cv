@@ -36,8 +36,18 @@
     ]
   }
   </script>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232e7d32'/><text x='50' y='72' font-size='65' font-weight='700' text-anchor='middle' fill='white' font-family='sans-serif'>Z</text></svg>"/>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
     /* Premium CSS Variables */
@@ -85,7 +95,7 @@
       background-image: var(--bg-pattern);
       background-size: 30px 30px;
       color: var(--text-main);
-      font-family: 'Montserrat', sans-serif;
+      font-family: var(--font-body);
       line-height: 1.7;
       transition: background-color 0.4s ease, color 0.4s ease;
       position: relative;
@@ -118,7 +128,7 @@
     }
     nav.scrolled { padding: 0.8rem 3rem; }
 
-    nav .logo { font-size: 1.6rem; font-weight: 700; color: var(--primary); font-family: 'Quicksand', sans-serif; letter-spacing: 1px; }
+    nav .logo { font-size: 1.6rem; font-weight: 700; color: var(--primary); font-family: var(--font-head); letter-spacing: 1px; }
     nav .logo span { color: var(--text-main); }
 
     nav ul { list-style: none; display: flex; gap: 1.2rem; align-items: center; }
@@ -164,7 +174,7 @@
 
     .hero-text { text-align: left; }
     .hero-kicker { display: inline-block; font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.8rem; letter-spacing: 3px; text-transform: uppercase; background: rgba(46, 125, 50, 0.1); padding: 6px 16px; border-radius: 20px; }
-    .hero h1 { font-size: 3.8rem; line-height: 1.1; margin-bottom: 1rem; color: var(--text-main); font-family: 'Quicksand', sans-serif; font-weight: 700; }
+    .hero h1 { font-size: 3.8rem; line-height: 1.1; margin-bottom: 1rem; color: var(--text-main); font-family: var(--font-head); font-weight: 700; }
     .hero h2 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent); font-weight: 500; }
     .hero p { font-size: 1.15rem; margin-bottom: 1.5rem; color: var(--text-muted); max-width: 800px; }
 
@@ -190,7 +200,7 @@
     }
     .impact-stat { display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
     .impact-stat:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 10%; height: 80%; width: 1px; background: var(--border-color); }
-    .impact-number { font-size: 2rem; font-weight: 700; color: var(--primary); font-family: 'Quicksand', sans-serif; line-height: 1.2; }
+    .impact-number { font-size: 2rem; font-weight: 700; color: var(--primary); font-family: var(--font-head); line-height: 1.2; }
     .impact-label { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
     /* Single Page Application Logic */
@@ -203,10 +213,10 @@
 
     @keyframes fadeUpSection { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; color: var(--text-main); position: relative; display: inline-flex; align-items: center; gap: 12px; font-family: 'Quicksand', sans-serif; }
+    .section-title { font-size: 2rem; font-weight: 700; margin-bottom: 2rem; color: var(--text-main); position: relative; display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-head); }
     .section-title i { color: var(--primary); font-size: 1.8rem; }
     .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 80px; height: 4px; background: linear-gradient(90deg, var(--primary), transparent); border-radius: 2px; }
-    .subsection-title { font-size: 1.4rem; font-weight: 700; margin: 2.5rem 0 1.5rem 0; color: var(--accent); font-family: 'Quicksand', sans-serif; display: flex; align-items: center; gap: 10px; }
+    .subsection-title { font-size: 1.4rem; font-weight: 700; margin: 2.5rem 0 1.5rem 0; color: var(--accent); font-family: var(--font-head); display: flex; align-items: center; gap: 10px; }
     .section-content { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.05rem; }
 
     /* Grids & Cards */
@@ -285,7 +295,7 @@
     .tab-btn {
       background: transparent; border: none; color: var(--text-muted); font-weight: 700;
       font-size: 1.05rem; padding: 12px 20px; cursor: pointer; transition: 0.3s ease;
-      position: relative; font-family: 'Quicksand', sans-serif; white-space: nowrap;
+      position: relative; font-family: var(--font-head); white-space: nowrap;
     }
     .tab-btn:hover { color: var(--primary); background: rgba(46, 125, 50, 0.05); border-radius: 8px 8px 0 0; }
     .tab-btn.active { color: var(--primary); }
@@ -361,13 +371,13 @@
     .highlight-card:hover { transform: translateY(-4px); box-shadow: var(--hover-shadow); border-color: var(--primary); }
     .highlight-card > i { font-size: 1.5rem; color: var(--primary); margin-bottom: 4px; }
     .hl-kicker { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-    .hl-title { font-family: 'Quicksand', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--primary); }
+    .hl-title { font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; color: var(--primary); }
     .hl-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
     .hl-link { font-size: 0.85rem; font-weight: 600; color: var(--primary); margin-top: 6px; }
 
     .medal-strip { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.2rem; }
     .medal-pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 30px; font-weight: 700; font-size: 0.95rem; border: 1px solid var(--border-color); background: var(--bg-base); }
-    .medal-pill b { font-family: 'Quicksand', sans-serif; font-size: 1.25rem; }
+    .medal-pill b { font-family: var(--font-head); font-size: 1.25rem; }
     .medal-pill.gold i { color: #c9a227; } .medal-pill.silver i { color: #8a99a6; } .medal-pill.bronze i { color: #b06d3b; } .medal-pill.special i { color: var(--primary); }
 
     .year-filter { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 0.5rem; }
@@ -423,7 +433,7 @@
     .share-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1rem; }
     .share-modal[hidden] { display: none; }
     .share-card { background: var(--bg-base); color: var(--text-main); border-radius: 18px; padding: 1.6rem; width: 100%; max-width: 440px; max-height: 92vh; overflow-y: auto; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.35); border: 1px solid var(--border-color); }
-    .share-card h3 { font-family: 'Quicksand', sans-serif; margin-bottom: 1rem; color: var(--primary); }
+    .share-card h3 { font-family: var(--font-head); margin-bottom: 1rem; color: var(--primary); }
     .share-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border-radius: 50%; border: none; background: rgba(46,125,50,0.1); color: var(--primary); cursor: pointer; font-size: 1rem; }
     .share-scope { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.9rem; }
     .share-link { display: flex; gap: 0.5rem; margin-bottom: 0.9rem; }
@@ -635,6 +645,146 @@
     @media print {
       .profile-bar, .bottom-nav, .share-modal, #pairwise-game, .sandbox, .sb-bridge { display: none !important; }
     }
+
+    /* ===================================================================
+       v4 DESIGN SYSTEM (overrides the earlier styles above)
+       Colour roles: green = actions, links, active state, icons
+                     ink   = headings · grey = body text · medal colours = awards only
+       =================================================================== */
+    :root {
+      --font-head: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --primary: #2e7d32; --primary-light: #4caf50; --primary-dark: #1b5e20;
+      --accent: #455a64;
+      --bg-base: #f4f6f5;
+      --surface: #ffffff;
+      --glass-bg: rgba(255, 255, 255, 0.88);
+      --glass-border: rgba(31, 42, 48, 0.08);
+      --text-main: #1d2a30;
+      --text-muted: #5a6a72;
+      --border-color: rgba(31, 42, 48, 0.10);
+      --dot: rgba(46, 125, 50, 0.22);
+      --card-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 4px 18px rgba(16, 24, 40, 0.05);
+      --hover-shadow: 0 10px 28px rgba(16, 24, 40, 0.10);
+      --tint: rgba(46, 125, 50, 0.08);
+      --space-1: 0.5rem; --space-2: 1rem; --space-3: 1.5rem; --space-4: 2rem; --space-5: 3rem;
+      --radius: 14px;
+    }
+    [data-theme="dark"] {
+      --primary: #66bb6a; --primary-light: #81c784; --primary-dark: #43a047;
+      --accent: #b0bec5;
+      --bg-base: #101315;
+      --surface: #171c1f;
+      --glass-bg: rgba(23, 28, 31, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.06);
+      --text-main: #e4e9eb;
+      --text-muted: #9ba7ad;
+      --border-color: rgba(255, 255, 255, 0.08);
+      --dot: rgba(255, 255, 255, 0.09);
+      --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 18px rgba(0, 0, 0, 0.25);
+      --hover-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+      --tint: rgba(102, 187, 106, 0.10);
+    }
+
+    /* Plain page background; dots only behind the hero */
+    body { background-image: none; font-family: var(--font-body); font-size: 16px; line-height: 1.65; }
+    body::before { display: none; }
+    .hero { position: relative; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+      background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px); background-size: 26px 26px;
+      -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+      mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    }
+
+    /* Typography */
+    .hero h1, .section-title, .hl-title, nav .logo, .impact-number, .share-card h3 { font-family: var(--font-head); letter-spacing: -0.01em; }
+    .hero h1 { font-weight: 700; }
+    .hero h2 { color: var(--accent); font-weight: 500; }
+    .section-title { font-size: 1.85rem; color: var(--text-main); }
+    .section-title i { color: var(--primary); font-size: 1.5rem; }
+    .section-title::after { background: var(--primary); height: 3px; width: 56px; }
+    .subsection-title { color: var(--text-main); font-family: var(--font-body); font-size: 1.2rem; font-weight: 700; margin: var(--space-5) 0 var(--space-3); }
+    .subsection-title i { color: var(--primary); }
+    .card-title { color: var(--text-main); font-weight: 600; }
+    .card-subtitle { color: var(--text-muted); font-weight: 600; }
+    .section-content, .text-muted { color: var(--text-muted); }
+    .pub-title { font-weight: 600; }
+    .pub-authors { font-style: normal; }
+    nav ul li a { font-family: var(--font-body); letter-spacing: 0.4px; }
+
+    /* Surfaces: flat, thin border, soft shadow. Glass stays on the top menu only */
+    section, .hero-content, .impact-bar, .highlight-card, .profile-bar {
+      background: var(--surface) !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+      border: 1px solid var(--border-color); box-shadow: var(--card-shadow);
+    }
+    section { padding: var(--space-5); border-radius: 18px; margin-bottom: var(--space-5); }
+    .hero-content, .impact-bar { border-radius: 18px; }
+    .card { background: transparent; border: 1px solid var(--border-color); border-radius: var(--radius); }
+    .card::before { display: none; }
+    .card:hover { transform: none; box-shadow: none; background: transparent; }
+    .publication-item:hover { transform: none; background: transparent; }
+    .skill-pill:hover { background: var(--bg-base); color: var(--text-main); border-color: var(--border-color); transform: none; box-shadow: none; }
+    .skill-pill:hover i { color: var(--primary); }
+    .hero-image-pro:hover { transform: none; box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+    /* Hover feedback only on things you can click */
+    .highlight-card:hover { transform: translateY(-3px); box-shadow: var(--hover-shadow); border-color: var(--primary); }
+    .affil-badge { background: var(--surface); }
+
+    /* Buttons: one size everywhere */
+    .btn { padding: 0.65rem 1.3rem; font-size: 0.9rem; font-weight: 600; border-radius: 999px; gap: 8px; min-height: 42px; line-height: 1.2; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(46, 125, 50, 0.22); }
+    .btn-icon { width: 42px; height: 42px; min-height: 42px; padding: 0; justify-content: center; border-radius: 50%; }
+    .hero-actions { gap: 0.6rem; align-items: center; }
+    .hero-meta { margin-top: 0.6rem; font-size: 0.78rem; color: var(--text-muted); }
+
+    /* Pills share one shape */
+    .timeline-date, .role-badge, .medal-tag, .chip {
+      font-size: 0.75rem; font-weight: 700; line-height: 1.5; padding: 3px 11px; border-radius: 999px; letter-spacing: 0.2px;
+    }
+    .timeline-date { background: var(--tint); color: var(--primary); }
+    .chip { padding: 5px 14px; }
+
+    /* Lists: one small dot everywhere */
+    .column-list li, ul.custom-list li { font-size: 0.95rem; color: var(--text-muted); padding-left: 1.2rem; margin-bottom: 0.6rem; line-height: 1.6; }
+    .column-list li::before, ul.custom-list li::before {
+      content: ''; font-family: inherit; position: absolute; left: 2px; top: 0.62em;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--primary);
+    }
+    .column-list li strong, ul.custom-list li strong { color: var(--text-main); }
+
+    /* Awards: the medal tag is the marker, no bullet */
+    #awards-timeline li { padding-left: 0; }
+    #awards-timeline li::before { display: none; }
+    .medal-tag { display: inline-block; margin-right: 6px; vertical-align: 1px; white-space: nowrap; }
+    .medal-tag.gold { background: #fbefc5; color: #7a5a00; }
+    .medal-tag.silver { background: #e6ebef; color: #46566a; }
+    .medal-tag.bronze { background: #f5dfcd; color: #7c461c; }
+    .medal-tag.special { background: var(--tint); color: var(--primary); }
+    .medal-tag.neutral { background: var(--border-color); color: var(--text-muted); }
+    [data-theme="dark"] .medal-tag.gold { background: rgba(232, 193, 74, 0.18); color: #f0d27a; }
+    [data-theme="dark"] .medal-tag.silver { background: rgba(176, 190, 197, 0.16); color: #cfd8dc; }
+    [data-theme="dark"] .medal-tag.bronze { background: rgba(205, 127, 50, 0.18); color: #e0a878; }
+
+    /* Research & IP block */
+    .ip-block { margin-top: var(--space-2); scroll-margin-top: 90px; }
+
+    @media (max-width: 1024px) {
+      section { padding: var(--space-4); }
+    }
+    @media (max-width: 768px) {
+      section { padding: var(--space-3) var(--space-2) !important; }
+      .hero::before { background-size: 22px 22px; }
+      .impact-label { font-size: 0.66rem; }
+      .hero-actions { display: grid; grid-template-columns: 1fr 1fr auto; width: 100%; }
+      .hero-actions .btn { justify-content: center; padding: 0.55rem 0.6rem; font-size: 0.82rem; gap: 6px; white-space: nowrap; }
+      .hero-meta { text-align: center; }
+      .section-title { font-size: 1.5rem; }
+    }
+    @media print {
+      .hero::before, .hero-meta { display: none !important; }
+      section, .hero-content, .impact-bar { box-shadow: none !important; border: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -649,8 +799,7 @@
       <li><a href="#education" onclick="showSection('education'); return false;">Education</a></li>
       <li><a href="#experience" onclick="showSection('experience'); return false;">Experience</a></li>
       <li><a href="#expertise" onclick="showSection('expertise'); return false;">Expertise</a></li>
-      <li><a href="#research" onclick="showSection('research'); return false;">Research</a></li>
-      <li><a href="#copyrights" onclick="showSection('copyrights'); return false;">Copyrights</a></li>
+      <li><a href="#research" onclick="showSection('research'); return false;">Research &amp; IP</a></li>
       <li><a href="#awards" onclick="showSection('awards'); return false;">Awards</a></li>
       <li><a href="#contact" onclick="showSection('contact'); return false;">Contact</a></li>
     </ul>
@@ -665,7 +814,7 @@
   </nav>
 
   <div class="profile-bar" id="profile-bar">
-    <img src="ZamriZahir.JPG" alt="" class="pb-avatar">
+    <picture><source srcset="ZamriZahir.webp" type="image/webp"><img src="ZamriZahir.JPG" alt="" class="pb-avatar" width="44" height="44"></picture>
     <div class="pb-text"><strong>Ts. Dr. Mohd Zamri Bin Zahir Ahmad</strong><span>Senior Lecturer, FKTEN UniMAP</span></div>
     <button class="pb-btn" onclick="goHome()" aria-label="Back to home"><i class="fas fa-home"></i></button>
     <button class="pb-btn" onclick="openShare()" aria-label="Share this CV"><i class="fas fa-share-alt"></i></button>
@@ -674,7 +823,7 @@
   <header class="hero" id="home">
     <div class="hero-content">
       <div class="hero-image-container">
-        <img src="ZamriZahir.JPG" alt="Ts. Dr. Mohd Zamri Bin Zahir Ahmad" class="hero-image-pro">
+        <picture><source srcset="ZamriZahir.webp" type="image/webp"><img src="ZamriZahir.JPG" alt="Ts. Dr. Mohd Zamri Bin Zahir Ahmad" class="hero-image-pro" width="600" height="667"></picture>
       </div>
       
       <div class="hero-text">
@@ -688,17 +837,17 @@
             <a href="https://fkten.unimap.edu.my/" target="_blank" class="affil-badge" title="Visit FKTEN UniMAP">
                 <i class="fas fa-university"></i> FKTEN UniMAP
             </a>
-            <a href="https://sites.google.com/view/advcomp-unimap/home" target="_blank" class="affil-badge" title="Visit ADVCOMP Center">
-                <i class="fas fa-microchip"></i> ADVCOMP Center
+            <a href="https://sites.google.com/view/advcomp-unimap/home" target="_blank" rel="noopener" class="affil-badge" title="Centre of Excellence for Advanced Computing, UniMAP">
+                <i class="fas fa-microchip"></i> CoE AdvComp
             </a>
         </div>
 
-        <div class="btn-group">
-          <a href="#contact" onclick="showSection('contact'); return false;" class="btn"><i class="fas fa-paper-plane"></i> Contact Me</a>
-          <a href="#expertise" onclick="showSection('expertise'); return false;" class="btn btn-outline"><i class="fas fa-project-diagram"></i> View Expertise</a>
-          <a href="Zamri-CV-2026.pdf" class="btn btn-outline btn-download" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> <span>Download CV<small>PDF · Updated Nov 2026</small></span></a>
-          <button type="button" class="btn btn-outline" onclick="openShare()"><i class="fas fa-share-alt"></i> Share</button>
+        <div class="btn-group hero-actions">
+          <a href="#contact" onclick="showSection('contact'); return false;" class="btn"><i class="fas fa-envelope"></i> Contact Me</a>
+          <a href="Zamri-CV-2026.pdf" class="btn btn-outline" target="_blank" rel="noopener"><i class="fas fa-download"></i> Download CV</a>
+          <button type="button" class="btn btn-outline btn-icon" onclick="openShare()" aria-label="Share this CV" title="Share"><i class="fas fa-share-alt"></i></button>
         </div>
+        <div class="hero-meta">PDF · updated November 2026</div>
       </div>
     </div>
 
@@ -932,7 +1081,7 @@
     <div class="grid-2">
         <div class="card">
             <div class="card-title">Scholarly & Technical Service</div>
-            <ul class="custom-list mt-3" style="font-size: 0.9rem;">
+            <ul class="custom-list mt-3">
             <li>Reviewer, IEEE Int. Conf. of Electrical, Electronic and Computer Engineering (ICEECE) 2026.</li>
             <li>Reviewer, 9th Int. Conf. on Man-Machine Systems (ICoMMS) 2025.</li>
             <li>Reviewer, eBook Juadah Minda Peringkat Kebangsaan (Politeknik Port Dickson) 2025.</li>
@@ -946,7 +1095,7 @@
         </div>
         <div class="card">
             <div class="card-title">Evaluation, Judging & Assessment</div>
-            <ul class="custom-list mt-3" style="font-size: 0.9rem;">
+            <ul class="custom-list mt-3">
             <li>Judge, AI &amp; IoT International Innovation Expo (AIOTIE) 2026, 2025 &amp; 2024.</li>
             <li>Jury, International Virtual Expo of Innovation Product and System Design (INVIDE) 2026.</li>
             <li>Jury, Ekspo Cipta 2025 (X-CIPTA 2025).</li>
@@ -1024,7 +1173,7 @@
     <div class="timeline mt-3">
         <div class="timeline-item">
             <div class="timeline-date">2026</div>
-            <ul class="custom-list" style="font-size: 0.95rem;">
+            <ul class="custom-list">
                 <li><strong>Gemini Certified Faculty (Google for Education)</strong></li>
                 <li><strong>Kursus Pensijilan Kompetensi Pengajar TVET UniMAP (LEAD)</strong></li>
                 <li><strong>Webinar Work-Based Learning (WBL)</strong></li>
@@ -1034,14 +1183,14 @@
         </div>
         <div class="timeline-item">
             <div class="timeline-date">2024</div>
-            <ul class="custom-list" style="font-size: 0.95rem;">
+            <ul class="custom-list">
                 <li><strong>Fundamentals of Multifactorial Optimization, Metaheuristics and Hyper-heuristics</strong></li>
                 <li><strong>Kursus Asas Google Sites</strong></li>
             </ul>
         </div>
         <div class="timeline-item">
             <div class="timeline-date">2022</div>
-            <ul class="custom-list" style="font-size: 0.95rem;">
+            <ul class="custom-list">
                 <li><strong>MyRESKILL IoT Programme</strong></li>
                 <li><strong>Google Certified Educator Level 1 Training</strong></li>
                 <li><strong>Kursus Pengurusan Kewangan Berhemah</strong></li>
@@ -1050,13 +1199,13 @@
         </div>
         <div class="timeline-item">
             <div class="timeline-date">2019</div>
-            <ul class="custom-list" style="font-size: 0.95rem;">
+            <ul class="custom-list">
                 <li><strong>LabVIEW Workshop</strong></li>
             </ul>
         </div>
         <div class="timeline-item">
             <div class="timeline-date">2018</div>
-            <ul class="custom-list" style="font-size: 0.95rem;">
+            <ul class="custom-list">
                 <li><strong>Deploying Hyper-heuristic &amp; Metaheuristic Algorithms Workshop (UMP)</strong></li>
                 <li><strong>IEEE Distinguished Lecturer Program</strong></li>
                 <li><strong>Kursus Pengurusan Jenazah</strong></li>
@@ -1065,28 +1214,28 @@
         </div>
         <div class="timeline-item">
             <div class="timeline-date">2017</div>
-            <ul class="custom-list" style="font-size: 0.95rem;">
+            <ul class="custom-list">
                 <li><strong>Kursus Asas Pengajaran dan Pembelajaran (PdP)</strong></li>
                 <li><strong>Program Transformasi Minda</strong></li>
             </ul>
         </div>
         <div class="timeline-item">
             <div class="timeline-date">2013</div>
-            <ul class="custom-list" style="font-size: 0.95rem;">
+            <ul class="custom-list">
                 <li><strong>i5 and System i System Operator Workshop (AS24MY)</strong></li>
                 <li><strong>Advanced System Operator Workshop for IBM i-Series</strong></li>
             </ul>
         </div>
         <div class="timeline-item">
             <div class="timeline-date">2012</div>
-            <ul class="custom-list" style="font-size: 0.95rem;">
+            <ul class="custom-list">
                 <li><strong>IBM e-Business Administrator</strong></li>
                 <li><strong>IBM Certified System Administrator – WebSphere Application Server Network Deployment V6.1</strong></li>
             </ul>
         </div>
         <div class="timeline-item" style="margin-bottom:0;">
             <div class="timeline-date">2009</div>
-            <ul class="custom-list" style="font-size: 0.95rem;">
+            <ul class="custom-list">
                 <li><strong>Certified Fiber Optic Technician (CFOT)</strong></li>
             </ul>
         </div>
@@ -1110,7 +1259,7 @@
     <div id="tab-concepts" role="tabpanel" class="tab-content active">
         
         <div style="background: var(--primary); color: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 15px rgba(46,125,50,0.3);">
-            <h3 style="font-family: 'Quicksand', sans-serif; margin-bottom: 10px;"><i class="fas fa-globe"></i> The Big Picture: T-Way Testing & Optimization</h3>
+            <h3 style="font-family: var(--font-head); margin-bottom: 10px;"><i class="fas fa-globe"></i> The Big Picture: T-Way Testing & Optimization</h3>
             <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 10px;">In modern software engineering, applications have too many interacting parameters. Testing every single combination (Exhaustive Testing) causes a "Combinatorial Explosion" that costs companies billions in wasted time and resources. <strong>T-Way Testing</strong> solves this by intelligently sampling interactions, drastically reducing test cases while maintaining high fault-detection rates.</p>
             <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">However, finding the absolute <em>smallest</em> T-Way test suite is mathematically proven to be an NP-Hard problem. Traditional computation fails here. That is why my research applies <strong>Metaheuristic Optimization</strong> (like Swarm Intelligence). I build algorithms that act as AI "search parties" to navigate millions of possibilities, mathematically balancing exploration and exploitation to find the most perfectly optimized test suite.</p>
         </div>
@@ -1386,7 +1535,7 @@
   </section>
 
   <section id="research">
-    <div class="section-title"><i class="fas fa-flask"></i> Academic Research & Publications</div>
+    <div class="section-title"><i class="fas fa-flask"></i> Research &amp; Intellectual Property</div>
     
     <div class="subsection-title" style="margin-top:0;"><i class="fas fa-brain text-main"></i> Research Interests</div>
     <div class="skills-container">
@@ -1601,7 +1750,7 @@
 
     <div class="subsection-title"><i class="fas fa-chalkboard text-main"></i> Conference Participation</div>
     <div class="card">
-        <ul class="custom-list" style="font-size: 0.95rem;">
+        <ul class="custom-list">
             <li><strong>2025</strong> · Presenter, International Exchange and Innovation Conference on Engineering &amp; Sciences (IEICES 2025)</li>
             <li><strong>2023</strong> · Participant, International Symposium on Engineering and Technology (ISETech 2023)</li>
             <li><strong>2022</strong> · Presenter, International Conference on Software and Computer Applications (ICSCA 2022) — <strong>Excellent Paper Presentation</strong></li>
@@ -1609,12 +1758,10 @@
             <li><strong>2019</strong> · Presenter, International Symposium on Engineering and Technology (ISETech 2019)</li>
         </ul>
     </div>
-  </section>
 
-  <section id="copyrights">
-    <div class="section-title"><i class="fas fa-copyright"></i> Copyright Registration</div>
-    
-    <div class="grid-3 mt-4">
+    <div id="copyrights" class="ip-block">
+    <div class="subsection-title"><i class="fas fa-copyright text-main"></i> Intellectual Property: MyIPO Copyrights</div>
+    <div class="grid-3">
       <div class="card">
         <div class="timeline-date">2026</div>
         <div class="card-title text-primary">CRLY2026E09159</div>
@@ -1656,6 +1803,7 @@
         <div class="card-title text-primary">CRLY2023P03962</div>
         <p class="section-content text-sm mb-0"><strong>Title of Work:</strong> A Self-Adapting Ant Colony Optimization Algorithm using Fuzzy Logic (ACOF) for Combinatorial Test Suite Generation</p>
       </div>
+    </div>
     </div>
   </section>
 
@@ -1701,8 +1849,8 @@
             <div class="card">
                 <div class="card-title mb-3">Education Innovation Challenge (EDIC)</div>
                 <ul class="column-list text-sm">
-                    <li><strong style="color:var(--primary)">Gold Award:</strong> Transforming Course Administration: An Automated Management Ecosystem for the NMK31704 Design Project (Transformative Teaching)</li>
-                    <li><strong>Silver Award:</strong> Hybrid TechShare Innovation Framework (HTIF): Hybrid SULAM Model for Enhancing STEM Engagement and Global Technology Knowledge Transfer (SULAM)</li>
+                    <li><span class="medal-tag gold">Gold Award</span> Transforming Course Administration: An Automated Management Ecosystem for the NMK31704 Design Project (Transformative Teaching)</li>
+                    <li><span class="medal-tag silver">Silver Award</span> Hybrid TechShare Innovation Framework (HTIF): Hybrid SULAM Model for Enhancing STEM Engagement and Global Technology Knowledge Transfer (SULAM)</li>
                 </ul>
             </div>
         </div>
@@ -1712,10 +1860,10 @@
             <div class="card">
                 <div class="card-title mb-3">Various Exhibitions (2026)</div>
                 <ul class="column-list text-sm">
-                    <li><strong style="color:var(--primary)">Best Product Design:</strong> Integrated Design &amp; Smart System Challenge (IDSSC 2026), Theme: Agricultural Application.</li>
-                    <li><strong>Silver Award:</strong> International Virtual Expo of Innovation Product and System Design (INVIDE 2026). "Fuzzy-MedCare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients"</li>
-                    <li><strong>Silver Award:</strong> International Virtual Expo of Innovation Product and System Design (INVIDE 2026). "IoT-Based Smart Vehicle Anti-Theft System with Real-Time Monitoring"</li>
-                    <li><strong>Silver Medal:</strong> AI &amp; IoT International Innovation Expo (AIOTIE 2026). "FuzzyFishCare: Design and Simulation of a Fuzzy Logic Decision Algorithm for Aquaculture Water Quality Control"</li>
+                    <li><span class="medal-tag special">Best Product Design</span> Integrated Design &amp; Smart System Challenge (IDSSC 2026), Theme: Agricultural Application.</li>
+                    <li><span class="medal-tag silver">Silver Award</span> International Virtual Expo of Innovation Product and System Design (INVIDE 2026). "Fuzzy-MedCare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients"</li>
+                    <li><span class="medal-tag silver">Silver Award</span> International Virtual Expo of Innovation Product and System Design (INVIDE 2026). "IoT-Based Smart Vehicle Anti-Theft System with Real-Time Monitoring"</li>
+                    <li><span class="medal-tag silver">Silver Medal</span> AI &amp; IoT International Innovation Expo (AIOTIE 2026). "FuzzyFishCare: Design and Simulation of a Fuzzy Logic Decision Algorithm for Aquaculture Water Quality Control"</li>
                 </ul>
             </div>
         </div>
@@ -1725,9 +1873,9 @@
             <div class="card">
                 <div class="card-title mb-3">Perlis International Engineering Invention & Innovation Exhibition (Pi-ENVEX)</div>
                 <ul class="column-list text-sm">
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Smart Mushroom: AI Driven Environmental Control System for Precision Mushroom Farming.</li>
-                    <li><strong>Silver Medal:</strong> SandCatGo: An Intelligent Online Tool for Combinatorial T-Way Test Suite Generation Based on Sand Cat Swarm Optimization.</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> Smart Mushroom: AI Driven Environmental Control System for Precision Mushroom Farming.</li>
+                    <li><span class="medal-tag silver">Silver Medal</span> SandCatGo: An Intelligent Online Tool for Combinatorial T-Way Test Suite Generation Based on Sand Cat Swarm Optimization.</li>
                 </ul>
             </div>
         </div>
@@ -1737,7 +1885,7 @@
             <div class="card">
                 <div class="card-title mb-3">Postgraduate Colloquium & Research Exhibition</div>
                 <ul class="column-list text-sm">
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Introducing STBO for Efficient T-Way Test Suite Generation</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> Introducing STBO for Efficient T-Way Test Suite Generation</li>
                 </ul>
             </div>
         </div>
@@ -1747,8 +1895,8 @@
             <div class="card">
                 <div class="card-title mb-3">Ekspo Rekacipta UniMAP (EREKA)</div>
                 <ul class="column-list text-sm">
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
-                    <li><strong style="color:var(--accent)">Bronze Medal:</strong> SandCatGo: Intelligent T-Way Testing Platform</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
+                    <li><span class="medal-tag bronze">Bronze Medal</span> SandCatGo: Intelligent T-Way Testing Platform</li>
                 </ul>
             </div>
         </div>
@@ -1758,10 +1906,10 @@
             <div class="card">
                 <div class="card-title mb-3">Innovation Excellence (INNOVEX)</div>
                 <ul class="column-list text-sm">
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Flexisolar: A Metaheuristic Testing Tool For Solar Dashboard Monitoring System</li>
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> SandCatGo: Intelligent T-Way Testing Platform</li>
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring And Emergency Detection for Home Bedridden Patients</li>
-                    <li><strong>Silver Medal:</strong> Self-Sustained Active Water-Cooling System for PV Modules using Irradiance-Based Control</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> Flexisolar: A Metaheuristic Testing Tool For Solar Dashboard Monitoring System</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> SandCatGo: Intelligent T-Way Testing Platform</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring And Emergency Detection for Home Bedridden Patients</li>
+                    <li><span class="medal-tag silver">Silver Medal</span> Self-Sustained Active Water-Cooling System for PV Modules using Irradiance-Based Control</li>
                 </ul>
             </div>
         </div>
@@ -1772,18 +1920,18 @@
                 <div class="card">
                     <div class="card-title mb-3">Ekspo Rekacipta UniMAP (EREKA)</div>
                     <ul class="custom-list text-sm">
-                        <li><strong style="color:var(--primary)">Gold Medal:</strong> Adaptive Water-Cooling System for photovoltaic Modules Using Ai Optimization</li>
-                        <li><strong style="color:var(--primary)">Gold Medal:</strong> IoT-Based Smart Paddy Field Monitoring Crop Management System</li>
-                        <li><strong>Silver Medal:</strong> Intelligent Parcel Delivery and Notification System for Apartment House</li>
-                        <li><strong>Silver Medal:</strong> Smart Waste Management System with IoT Integration using ESP32</li>
+                        <li><span class="medal-tag gold">Gold Medal</span> Adaptive Water-Cooling System for photovoltaic Modules Using Ai Optimization</li>
+                        <li><span class="medal-tag gold">Gold Medal</span> IoT-Based Smart Paddy Field Monitoring Crop Management System</li>
+                        <li><span class="medal-tag silver">Silver Medal</span> Intelligent Parcel Delivery and Notification System for Apartment House</li>
+                        <li><span class="medal-tag silver">Silver Medal</span> Smart Waste Management System with IoT Integration using ESP32</li>
                     </ul>
                 </div>
                 <div class="card">
                     <div class="card-title mb-3">IDEA BESTARI Innovation Exhibition</div>
                     <ul class="custom-list text-sm">
-                        <li><strong style="color:var(--primary)">Gold Medal:</strong> Smart Fire Detection and Prevention System Using Fuzzy Logic</li>
-                        <li><strong style="color:var(--primary)">Gold Medal:</strong> SandCatTest: Software Testing Tool Based on Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</li>
-                        <li><strong>Silver Medal:</strong> Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
+                        <li><span class="medal-tag gold">Gold Medal</span> Smart Fire Detection and Prevention System Using Fuzzy Logic</li>
+                        <li><span class="medal-tag gold">Gold Medal</span> SandCatTest: Software Testing Tool Based on Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation</li>
+                        <li><span class="medal-tag silver">Silver Medal</span> Fuzzy-Medcare: Fuzzy Logic-Based Health Monitoring and Emergency Detection for Home Bedridden Patients</li>
                     </ul>
                 </div>
             </div>
@@ -1794,13 +1942,13 @@
             <div class="card">
                 <div class="card-title mb-3">Various Exhibitions (2025)</div>
                 <ul class="column-list text-sm">
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Ekspo Cipta 2025 (X-CIPTA). SandCatTest: Software Testing Tool Based on Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation.</li>
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Ekspo Cipta 2025 (X-CIPTA). Design and Development of T-Way Test Suite Generator Adopting Sewing Training Based Optimization Algorithm.</li>
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> Integrated Design Project Exhibition (IDPEx). "UniTAG: Renewable Vehicle Access System for UniMAP Campus using RFID-Based"</li>
-                    <li><strong>Silver Medal:</strong> Postgraduate Research Poster Competition (iFuture 2025) @ UniMAP. "Implementation of Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation".</li>
-                    <li><strong>Silver Medal:</strong> AI & IOT International Innovation Expo (AIOTIE). "Intelligent Parcel Delivery and Notification System for Apartment House"</li>
-                    <li><strong>Silver Award:</strong> Sulam Innovate Showcase And Symposium (SUISS). "Hari Teknologi & Masyarakat 2024 (HTM2024): Empowering Youth Through Stem Activities With Rumah Kanak-Kanak Arau"</li>
-                    <li><strong>Participant:</strong> "Pertandingan SULAM Innovate Ke-3" in conjunction with 3rd International Conference on SULAM 2025.</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> Ekspo Cipta 2025 (X-CIPTA). SandCatTest: Software Testing Tool Based on Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation.</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> Ekspo Cipta 2025 (X-CIPTA). Design and Development of T-Way Test Suite Generator Adopting Sewing Training Based Optimization Algorithm.</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> Integrated Design Project Exhibition (IDPEx). "UniTAG: Renewable Vehicle Access System for UniMAP Campus using RFID-Based"</li>
+                    <li><span class="medal-tag silver">Silver Medal</span> Postgraduate Research Poster Competition (iFuture 2025) @ UniMAP. "Implementation of Sand Cat Swarm Optimization for Uniform T-Way Test Suite Generation".</li>
+                    <li><span class="medal-tag silver">Silver Medal</span> AI & IOT International Innovation Expo (AIOTIE). "Intelligent Parcel Delivery and Notification System for Apartment House"</li>
+                    <li><span class="medal-tag silver">Silver Award</span> Sulam Innovate Showcase And Symposium (SUISS). "Hari Teknologi & Masyarakat 2024 (HTM2024): Empowering Youth Through Stem Activities With Rumah Kanak-Kanak Arau"</li>
+                    <li><span class="medal-tag neutral">Participant</span> "Pertandingan SULAM Innovate Ke-3" in conjunction with 3rd International Conference on SULAM 2025.</li>
                 </ul>
             </div>
         </div>
@@ -1809,16 +1957,16 @@
             <div class="timeline-date">2024 & Prior</div>
             <div class="card">
                 <ul class="column-list text-sm">
-                    <li><strong style="color:var(--primary)">Silver Medal:</strong> Ekspo Rekacipta UniMAP (EREKA), 2024. "IOT Warning System for Early Forest Fire Detection"</li>
-                    <li><strong style="color:var(--accent)">Bronze Medal:</strong> AI & IOT International Innovation Expo (AIOTIE), 2024. "IoT Warning System for Early Forest Fire Detection"</li>
-                    <li><strong>Exhibition:</strong> Undergraduate Project Exhibition (UPEx 2024) FKTEN 2024.</li>
-                    <li><strong>Excellent Paper:</strong> Int. Conf. on Software and Computer Applications (ICSCA), 2022. "VS-TACO: A Tuned Version of Ant Colony Optimization for Generating Variable Strength Interaction in T-Way Testing Strategy"</li>
-                    <li><strong>Best Paper Award:</strong> The 1st Int. Conf. on Engineering and Technology (ICoEngTech), 2021. "A Tuned Version of Ant Colony Optimization Algorithm (TACO) for Uniform Strength T-way Test Suite Generator: An Execution's Time Comparison"</li>
-                    <li><strong style="color:var(--primary)">Gold Award:</strong> Virtual Research and Innovation Exhibition (EREKA), 2020. "TTSGA T-Way Test Suite Generator"</li>
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> International Invention, Innovation & Technology Exhibition (ITEX), 2020. "TTSGA T-Way Test Suite Generator"</li>
-                    <li><strong style="color:var(--primary)">Gold Medal:</strong> International Engineering Invention and Innovation Exhibition (I-ENVEX), 2015. "GVS: T-Way Test Suite Generator Supporting Constraints"</li>
-                    <li><strong>Silver Medal:</strong> Malaysia Technology Exhibition (MTE), 2015. "GVS: T-Way Test Suite Generator Supporting Constraints"</li>
-                    <li><strong>Silver Medal:</strong> International Invention, Innovation & Technology Exhibition (ITEX), 2015. "GVS: T-Way Test Suite Generator Supporting Constraints"</li>
+                    <li><span class="medal-tag silver">Silver Medal</span> Ekspo Rekacipta UniMAP (EREKA), 2024. "IOT Warning System for Early Forest Fire Detection"</li>
+                    <li><span class="medal-tag bronze">Bronze Medal</span> AI & IOT International Innovation Expo (AIOTIE), 2024. "IoT Warning System for Early Forest Fire Detection"</li>
+                    <li><span class="medal-tag neutral">Exhibition</span> Undergraduate Project Exhibition (UPEx 2024) FKTEN 2024.</li>
+                    <li><span class="medal-tag special">Excellent Paper</span> Int. Conf. on Software and Computer Applications (ICSCA), 2022. "VS-TACO: A Tuned Version of Ant Colony Optimization for Generating Variable Strength Interaction in T-Way Testing Strategy"</li>
+                    <li><span class="medal-tag special">Best Paper Award</span> The 1st Int. Conf. on Engineering and Technology (ICoEngTech), 2021. "A Tuned Version of Ant Colony Optimization Algorithm (TACO) for Uniform Strength T-way Test Suite Generator: An Execution's Time Comparison"</li>
+                    <li><span class="medal-tag gold">Gold Award</span> Virtual Research and Innovation Exhibition (EREKA), 2020. "TTSGA T-Way Test Suite Generator"</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> International Invention, Innovation & Technology Exhibition (ITEX), 2020. "TTSGA T-Way Test Suite Generator"</li>
+                    <li><span class="medal-tag gold">Gold Medal</span> International Engineering Invention and Innovation Exhibition (I-ENVEX), 2015. "GVS: T-Way Test Suite Generator Supporting Constraints"</li>
+                    <li><span class="medal-tag silver">Silver Medal</span> Malaysia Technology Exhibition (MTE), 2015. "GVS: T-Way Test Suite Generator Supporting Constraints"</li>
+                    <li><span class="medal-tag silver">Silver Medal</span> International Invention, Innovation & Technology Exhibition (ITEX), 2015. "GVS: T-Way Test Suite Generator Supporting Constraints"</li>
                 </ul>
             </div>
         </div>
@@ -1867,9 +2015,9 @@
     </div>
   </section>
 
-  <footer style="text-align: center; padding: 1rem; margin-top: -3rem; margin-bottom: 2rem; color: var(--text-muted); font-family: 'Quicksand', sans-serif;">
-      <p style="margin: 0; font-weight: 700; font-size: 1rem; color: var(--text-main);">&copy; 2026 Zamm Studio. All Rights Reserved. | Ts. Dr. Mohd Zamri Bin Zahir Ahmad</p>
-      <p style="margin: 0.3rem 0 0; font-size: 0.85rem;"><i class="far fa-clock"></i> Last updated: November 2026</p>
+  <footer style="text-align: center; padding: 1rem; margin-top: -3rem; margin-bottom: 2rem; color: var(--text-muted); font-family: var(--font-head);">
+      <p style="margin: 0; font-weight: 600; font-size: 0.95rem; color: var(--text-main);">&copy; 2026 Ts. Dr. Mohd Zamri Bin Zahir Ahmad</p>
+      <p style="margin: 0.2rem 0 0; font-size: 0.85rem;">Faculty of Electronic Engineering &amp; Technology, UniMAP · Last updated November 2026</p>
   </footer>
 
   <button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
@@ -1901,8 +2049,8 @@
       <div class="qr-wrap">
         <div id="qr-box" aria-label="QR code of the link"></div>
         <div class="qr-side">
-          <strong>Scan to open</strong>
-          <p>Use it on posters, name cards or slides at conferences and exhibitions.</p>
+          <strong>QR code</strong>
+          <p>Scan with a phone camera to open this page.</p>
           <button type="button" class="btn btn-outline" onclick="downloadQR()"><i class="fas fa-download"></i> Download QR</button>
         </div>
       </div>
@@ -1913,15 +2061,19 @@
     // SINGLE PAGE APP LOGIC
     function showSection(id, tabId, fromHash) {
         document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-        const target = document.getElementById(id);
+        const linkId = id;
+        let target = document.getElementById(id), anchor = null;
+        if (target && target.tagName !== 'SECTION' && target.closest('section')) {
+            anchor = target; target = target.closest('section'); id = target.id;
+        }
         if (target) {
             target.classList.add('active');
             document.body.classList.add('section-open');
             setTimeout(() => {
                 const navHeight = document.getElementById('navbar').offsetHeight;
-                let offsetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
+                let offsetPosition = (anchor || target).getBoundingClientRect().top + window.pageYOffset - navHeight - 20;
                 // On phones the header is hidden on section pages, so start at the very top (profile bar)
-                if (isPhone()) offsetPosition = 0;
+                if (isPhone() && !anchor) offsetPosition = 0;
                 window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }, 50);
         }
@@ -1948,7 +2100,7 @@
         }
 
         // Keep the address bar in sync so every section can be linked directly
-        const hash = '#' + id + (tabId ? '/' + tabId : '');
+        const hash = '#' + linkId + (tabId ? '/' + tabId : '');
         if (target && !fromHash && location.hash !== hash) history.pushState(null, '', hash);
     }
 
@@ -1975,7 +2127,8 @@
 
     function openFromHash() {
         const [id, tabId] = location.hash.replace('#', '').split('/');
-        if (id && document.getElementById(id) && document.getElementById(id).tagName === 'SECTION') {
+        const el = id && document.getElementById(id);
+        if (el && (el.tagName === 'SECTION' || el.closest('section'))) {
             showSection(id, tabId, true);
         } else {
             document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
@@ -1991,11 +2144,15 @@
     const themeToggle = document.getElementById('theme-toggle');
     const icon = themeToggle.querySelector('i');
     
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        if(currentTheme === 'dark') { icon.classList.replace('fa-moon', 'fa-sun'); }
+    // Theme: the visitor's own choice wins, otherwise follow the phone or laptop setting
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        icon.classList.remove('fa-moon', 'fa-sun');
+        icon.classList.add(theme === 'dark' ? 'fa-sun' : 'fa-moon');
     }
+    applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+    const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    darkQuery.addEventListener('change', e => { if (!localStorage.getItem('theme')) applyTheme(e.matches ? 'dark' : 'light'); });
 
     themeToggle.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
@@ -2850,7 +3007,7 @@
     // SHARE
     // =====================================
     const SECTION_NAMES = { about: 'About', education: 'Education', experience: 'Experience & Teaching', expertise: 'Expertise',
-      research: 'Research', copyrights: 'Copyrights', awards: 'Awards', contact: 'Contact' };
+      research: 'Research & IP', copyrights: 'Copyrights', awards: 'Awards', contact: 'Contact' };
     const SHARE_TITLE = 'Ts. Dr. Mohd Zamri Bin Zahir Ahmad - CV';
     let shareScope = 'cv', lastFocus = null, qrLoading = null;
 
@@ -3017,12 +3174,8 @@
       const timeline = document.getElementById('awards-timeline');
       if (!strip || !timeline) return;
       const counts = { gold: 0, silver: 0, bronze: 0, special: 0 };
-      timeline.querySelectorAll('li > strong:first-child').forEach(el => {
-        const t = el.textContent.trim().toLowerCase();
-        if (t.startsWith('gold')) counts.gold++;
-        else if (t.startsWith('silver')) counts.silver++;
-        else if (t.startsWith('bronze')) counts.bronze++;
-        else if (t.startsWith('best') || t.startsWith('excellent')) counts.special++;
+      timeline.querySelectorAll('.medal-tag').forEach(el => {
+        for (const k of Object.keys(counts)) if (el.classList.contains(k)) counts[k]++;
       });
       const pill = (cls, icon, n, label) => n ? `<span class="medal-pill ${cls}"><i class="fas ${icon}"></i><b>${n}</b> ${label}</span>` : '';
       strip.innerHTML = pill('gold', 'fa-medal', counts.gold, 'Gold') + pill('silver', 'fa-medal', counts.silver, 'Silver') +
